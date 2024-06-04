@@ -1,0 +1,29 @@
+{
+  "name": "spotifyclon",
+  "version": "1.0.0",
+  "description": "Clon de la plataforma de musica Spotify",
+  "scripts": {
+    "int:dev": "npm run dev -w Interface",
+    "app:dev": "npm run start -w Application",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PintoGamer64/SpotifyClon.git"
+  },
+  "workspaces": [
+    "Application",
+    "Interface"
+  ],
+  "keywords": [
+    "Spotify",
+    "Clon",
+    "Project"
+  ],
+  "author": "PintoGamer64",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PintoGamer64/SpotifyClon/issues"
+  },
+  "homepage": "https://github.com/PintoGamer64/SpotifyClon#readme"
+}

@@ -1,0 +1,16 @@
+:root {
+  --BgMain: #060606;
+  --BgPrimary: #111111;
+  --BgSecondary: #202020;
+
+  --FgPrimary: #E0E0E0;
+  --FgSecondary: #898989;
+  --FgTertiary: #323232;
+
+  --LightPrimary: #13BF51;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

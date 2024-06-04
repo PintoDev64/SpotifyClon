@@ -1,0 +1,37 @@
+node_modules
+
+# ---------> Application <---------
+Application/logs
+
+Application/node_modules
+Application/dist
+
+Application/.vscode/*
+Application/!.vscode/extensions.json
+
+# --------->  Interface  <---------
+
+# Logs
+Interface/logs
+Interface/*.log
+Interface/npm-debug.log*
+Interface/yarn-debug.log*
+Interface/yarn-error.log*
+Interface/pnpm-debug.log*
+Interface/lerna-debug.log*
+
+Interface/node_modules
+Interface/dist
+Interface/dist-ssr
+Interface/*.local
+
+# Editor directories and files
+Interface/.vscode/*
+Interface/!.vscode/extensions.json
+Interface/.idea
+Interface/.DS_Store
+Interface/*.suo
+Interface/*.ntvs*
+Interface/*.njsproj
+Interface/*.sln
+Interface/*.sw?
