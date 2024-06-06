@@ -2,15 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 
 // Assets
 import { NotificationClose, NotificationOpen } from "../../../assets/Notifications";
-import ProfilePicture from '../../../assets/ProfilePicture.png'
 import { SettingsClose, SettingsOpen } from "../../../assets/Settings";
 import Prmeiun from "../../../assets/Premiun";
 import { FriendsClose, FriendsOpen } from "../../../assets/Friends";
 
 export default function Buttons() {
-
-    console.log();
-
     return (
         <div id="Topbar-Buttons">
             <a href="https://www.spotify.com/premium/" target="_blank" id="Topbar-Buttons-Premiun">
@@ -33,7 +29,7 @@ export default function Buttons() {
                 }
             </Link>
             <Link to="user" className="Topbar-Buttons-Buttons">
-                <img src={ProfilePicture} alt="ProfilePictureAccount" className={`Topbar-Buttons-Buttons-ProfilePictureAccount ${useLocation().pathname === '/user' && "ProfilePictureAccountSelect"}`} />
+                <img src="ProfilePicture.png" alt="ProfilePictureAccount" className={`Topbar-Buttons-Buttons-ProfilePictureAccount ${useLocation().pathname === '/user' && "ProfilePictureAccountSelect"}`} />
             </Link>
         </div>
     )

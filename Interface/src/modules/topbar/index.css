@@ -4,7 +4,8 @@ nav#Topbar {
     width: 100%;
     height: 50px;
     display: grid;
-    grid-template-columns: calc(60% - 7px) calc(40% - 150px) 150px;
+    grid-area: Navbar;
+    /* grid-template-columns: calc(60% - 7px) calc(40% - 150px) 150px; */
     grid-template-areas: "Links Buttons WinControls";
     overflow: hidden;
     font-family: "Satoshi Medium", sans-serif;
@@ -23,6 +24,7 @@ nav#Topbar {
 #Topbar-Links,
 #Topbar-Buttons,
 #Topbar-WinControls {
+    font-family: "Satoshi Bold";
     display: flex;
     align-items: center;
 }
@@ -49,7 +51,28 @@ nav#Topbar {
     height: 35px;   
 }
 
+#LibraryLink.Topbar-Links-Buttons {
+    position: relative;
+    border-radius: 10px 10px 0 0 ;
+}
+
+#LibraryLink.Topbar-Links-Buttons-Selected::after {
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 10px;
+    background-color: var(--BgPrimary);
+}
+
+.Topbar-Links-Buttons,
+.Topbar-Buttons-Buttons {
+    color: var(--FgSecondary);
+}
+
 .Topbar-Links-Buttons-Selected {
+    color: var(--FgPrimary);
     background-color: var(--BgPrimary);
 }
 
@@ -91,7 +114,7 @@ nav#Topbar {
     transform: scale(0.7);
 }
 
-.Topbar-Buttons-Buttons:hover {
+#Topbar-Buttons > .Topbar-Buttons-Buttons:hover {
     background: radial-gradient(var(--BgSecondary) 0 50%, transparent 50% 100%);
 }
 
@@ -101,4 +124,14 @@ nav#Topbar {
 
 #Topbar-WinControls-Close:hover {
     background-color: var(--LightSecondary);
+}
+
+
+#Topbar-Links > .Topbar-Buttons-Buttons {
+    height: 35px;
+    margin: 0 7px 0 0;
+}
+
+#Topbar-Links > .Topbar-Buttons-Buttons:hover {
+    background-color: var(--BgPrimary);
 }

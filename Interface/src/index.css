@@ -10,26 +10,28 @@
   --LightPrimary: #13BF51;
   --LightSecondary: #FF0000;
   --LightTertiary: #14ad4c;
+
+  --StrokeDef: #202020
 }
 
 @font-face {
   font-family: "Satoshi Black";
-  src: url("public/Satoshi-Black.ttf");
+  src: url("/Satoshi-Black.ttf") format('truetype');
 }
 
 @font-face {
   font-family: "Satoshi Bold";
-  src: url("public/Satoshi-Bold.ttf");
+  src: url("/Satoshi-Bold.ttf") format('truetype');
 }
 
 @font-face {
   font-family: "Satoshi Medium";
-  src: url("public/Satoshi-Medium.ttf");
+  src: url("/Satoshi-Medium.ttf") format('truetype');
 }
 
 @font-face {
   font-family: "Satoshi Regular";
-  src: url("public/Satoshi-Regular.ttf");
+  src: url("/Satoshi-Regular.ttf") format('truetype');
 }
 
 * {
@@ -53,4 +55,15 @@ button {
 
 svg {
   transform: scale(0.8);
+}
+
+#Application {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "Navbar Navbar"
+    "library Main";
+  grid-template-columns: 204px calc(100% - 211px);
+  grid-template-rows: 50px calc(100% - 57px);
 }
