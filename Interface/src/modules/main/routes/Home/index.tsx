@@ -1,5 +1,12 @@
+import { Outlet } from "react-router-dom"
+
 export default function Home() {
+
+    navigator.userAgent === "SpotifyClon" ? document.title = "Spotify Clon - App" : document.title = "Spotify Clon - Web Player"
+
     return (
-        <h1>Inicio</h1>
+        <>
+            <h1 id="MainContent-Home-Content">Inicio</h1>
+        </>
     )
 }

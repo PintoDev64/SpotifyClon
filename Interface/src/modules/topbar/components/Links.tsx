@@ -17,15 +17,15 @@ export default function Links() {
 
     return (
         <div id="Topbar-Links">
-            <Link to="/library" id="LibraryLink" className={`Topbar-Links-Buttons ${pathname === '/library' && "Topbar-Links-Buttons-Selected"}`}>
+            <Link to="/library" id="LibraryLink" className={`Topbar-Links-Buttons ${pathname.includes("/library") && "Topbar-Links-Buttons-Selected"}`}>
                 {
-                    pathname !== '/library'
+                    !pathname.includes("/library")
                         ? <LibraryClose />
                         : <LibraryOpen />
                 }
                 Library
             </Link>
-            <button className="Topbar-Buttons-Buttons" onClick={backward}>
+            <button id="Topbar-Buttons-Buttons-Forward" className="Topbar-Buttons-Buttons" onClick={backward}>
                 {"◀"}
             </button>
             <Link to="/" className={`Topbar-Links-Buttons ${pathname === '/' && "Topbar-Links-Buttons-Selected"}`}>
@@ -44,13 +44,19 @@ export default function Links() {
                 }
                 Discover
             </Link>
-            <Link to="/search" className={`Topbar-Links-Buttons ${pathname === '/search' && "Topbar-Links-Buttons-Selected"}`}>
+            <Link to="/search" id="TopbarSearch" className={`Topbar-Links-Buttons ${pathname === '/search' && "Topbar-Links-Buttons-Selected"}`}>
                 {
                     pathname !== '/search'
-                        ? <SearchClose />
-                        : <SearchOpen />
+                        ? <>
+                            <SearchClose />
+                            Search
+                        </>
+                        : <>
+                            <SearchOpen />
+                            <input type="search" name="Search" id="Topbar-Links-Buttons-Search" spellCheck="false" placeholder="Search..." autoComplete="off" autoFocus />
+                        </>
                 }
-                Search
+
             </Link>
         </div>
     )

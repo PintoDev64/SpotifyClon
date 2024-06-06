@@ -5,27 +5,36 @@ import { NotificationClose, NotificationOpen } from "../../../assets/Notificatio
 import { SettingsClose, SettingsOpen } from "../../../assets/Settings";
 import Prmeiun from "../../../assets/Premiun";
 import { FriendsClose, FriendsOpen } from "../../../assets/Friends";
+import { useContext } from "react";
+import { SidebarContext } from "../../../context";
 
 export default function Buttons() {
+
+    const { pathname } = useLocation();
+
+    const { SidebarState, ModifySidebar } = useContext(SidebarContext);
+
     return (
         <div id="Topbar-Buttons">
             <a href="https://www.spotify.com/premium/" target="_blank" id="Topbar-Buttons-Premiun">
                 <Prmeiun />
-                Premiun
             </a>
-            <Link to="notifications" className="Topbar-Buttons-Buttons">
+            <Link to="/notifications" className="Topbar-Buttons-Buttons">
                 {
-                    useLocation().pathname !== '/notifications' ? <NotificationClose /> : <NotificationOpen />
+                    pathname !== '/notifications' ? <NotificationClose /> : <NotificationOpen />
                 }
             </Link>
-            <Link to="friends" className="Topbar-Buttons-Buttons">
+            <button className="Topbar-Buttons-Buttons" onClick={() => ModifySidebar({
+                action: "Sidebar",
+                value: SidebarState.Sidebar === "Friends" ? "" : "Friends"
+            })}>
                 {
-                    useLocation().pathname !== '/friends' ? <FriendsClose /> : <FriendsOpen />
+                    (SidebarState.Sidebar !== "Friends") ? <FriendsClose /> : <FriendsOpen />
                 }
-            </Link>
+            </button>
             <Link to="settings" className="Topbar-Buttons-Buttons">
                 {
-                    useLocation().pathname !== '/settings' ? <SettingsClose /> : <SettingsOpen />
+                    pathname !== '/settings' ? <SettingsClose /> : <SettingsOpen />
                 }
             </Link>
             <Link to="user" className="Topbar-Buttons-Buttons">
