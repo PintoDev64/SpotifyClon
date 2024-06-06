@@ -1,0 +1,104 @@
+nav#Topbar {
+    padding: 0 0 0 7px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: calc(60% - 7px) calc(40% - 150px) 150px;
+    grid-template-areas: "Links Buttons WinControls";
+    overflow: hidden;
+    font-family: "Satoshi Medium", sans-serif;
+}
+
+#Topbar-Links {
+    grid-area: Links;
+}
+#Topbar-Buttons {
+    grid-area: Buttons;
+}
+#Topbar-WinControls {
+    grid-area: WinControls;
+}
+
+#Topbar-Links,
+#Topbar-Buttons,
+#Topbar-WinControls {
+    display: flex;
+    align-items: center;
+}
+
+.Topbar-Links-Buttons,
+#Topbar-Buttons-Premiun {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#Topbar-Buttons-Premiun {
+    width: 130px;
+    min-width: 130px;
+    height: 35px;
+    background: var(--LightTertiary);
+}
+
+.Topbar-Links-Buttons {
+    border-radius: 10px;
+    margin: 0 7px 0 0;
+    width: 190px;
+    min-width: 190px;
+    height: 35px;   
+}
+
+.Topbar-Links-Buttons-Selected {
+    background-color: var(--BgPrimary);
+}
+
+#Topbar-Buttons-Premiun,
+.ProfilePictureAccountSelect,
+.Topbar-Buttons-Buttons {
+    border-radius: 25px;
+}
+
+.ProfilePictureAccountSelect,
+.Topbar-Buttons-Buttons,
+.Topbar-WinControls-Buttons {
+    display: grid;
+    box-sizing: border-box;
+    align-content: center;
+    justify-content: center;
+}
+
+#Topbar-Buttons,
+#Topbar-WinControls {
+    justify-content: flex-end;
+}
+
+.Topbar-Buttons-Buttons,
+.Topbar-WinControls-Buttons {
+    width: 50px;
+    height: 50px;
+}
+
+.ProfilePictureAccountSelect {
+    outline: 3px var(--FgPrimary) solid;
+}
+
+
+#Topbar-Buttons-Premiun svg,
+.Topbar-Buttons-Buttons-ProfilePictureAccount,
+.Topbar-Links-Buttons svg,
+.Topbar-WinControls-Buttons svg {
+    transform: scale(0.7);
+}
+
+.Topbar-Buttons-Buttons:hover {
+    background: radial-gradient(var(--BgSecondary) 0 50%, transparent 50% 100%);
+}
+
+.Topbar-WinControls-Buttons:hover {
+    background-color: var(--FgTertiary);
+}
+
+#Topbar-WinControls-Close:hover {
+    background-color: var(--LightSecondary);
+}

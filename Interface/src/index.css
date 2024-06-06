@@ -8,9 +8,49 @@
   --FgTertiary: #323232;
 
   --LightPrimary: #13BF51;
+  --LightSecondary: #FF0000;
+  --LightTertiary: #14ad4c;
+}
+
+@font-face {
+  font-family: "Satoshi Black";
+  src: url("public/Satoshi-Black.ttf");
+}
+
+@font-face {
+  font-family: "Satoshi Bold";
+  src: url("public/Satoshi-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Satoshi Medium";
+  src: url("public/Satoshi-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Satoshi Regular";
+  src: url("public/Satoshi-Regular.ttf");
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: var(--BgMain);
+}
+
+a {
+  text-decoration: none;
+  color: var(--FgPrimary);
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+svg {
+  transform: scale(0.8);
 }
