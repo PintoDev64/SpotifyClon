@@ -32,7 +32,7 @@ export default function Player() {
         ModifyPlayer({ action: "Loop", value: !PlayerState.Loop })
     }
 
-    let intervalId: string | number | NodeJS.Timeout | undefined;
+    let intervalId
 
     useEffect(() => {
         AudioRef.current.addEventListener("loadedmetadata", () => {
