@@ -11,6 +11,7 @@ function CreateWindow() {
         height: 720,
         minWidth: 1280,
         minHeight: 720,
+        title: "Spotify Clon",
         autoHideMenuBar: true,
         frame: false,
         titleBarStyle: "hidden",

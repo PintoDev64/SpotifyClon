@@ -1,8 +1,10 @@
 import { createContext } from "react";
-import { SidebarContextProps } from "../vite-env";
+import { PlayerContextProps, SidebarContextProps } from "../vite-env";
 
-const SidebarContext = createContext<SidebarContextProps>(null!)
+const SidebarContext = createContext<SidebarContextProps>(null!);
+const PlayerContext = createContext<PlayerContextProps>(null!);
 
 export {
-    SidebarContext
+    SidebarContext,
+    PlayerContext
 }

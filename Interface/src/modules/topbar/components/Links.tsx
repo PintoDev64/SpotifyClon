@@ -8,6 +8,7 @@ import { LibraryClose, LibraryOpen } from "../../../assets/Library";
 
 // Hooks
 import { useNavigationPanel } from "../hooks";
+import { BackwardOff } from "../../../assets/Backward";
 
 export default function Links() {
 
@@ -26,7 +27,7 @@ export default function Links() {
                 Library
             </Link>
             <button id="Topbar-Buttons-Buttons-Forward" className="Topbar-Buttons-Buttons" onClick={backward}>
-                {"◀"}
+                <BackwardOff />
             </button>
             <Link to="/" className={`Topbar-Links-Buttons ${pathname === '/' && "Topbar-Links-Buttons-Selected"}`}>
                 {

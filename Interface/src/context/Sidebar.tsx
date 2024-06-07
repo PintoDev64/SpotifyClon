@@ -1,9 +1,10 @@
+import { useReducer } from "react"
+;
 // Context
-import { useReducer } from "react";
 import { SidebarContext } from ".";
 
 // Types
-import { ContextProps, INITIALPROPS_MODIFICATOR, INITIALPROPS_SIDEBAR } from "../vite-env";
+import { ContextProps, INITIALPROPS_SIDEBAR_MODIFICATOR, INITIALPROPS_SIDEBAR } from "../vite-env";
 
 export default function SidebarContextComponent({ children }: ContextProps) {
 
@@ -11,7 +12,7 @@ export default function SidebarContextComponent({ children }: ContextProps) {
         Sidebar: ""
     }
 
-    function reducer(state: INITIALPROPS_SIDEBAR, { action, value }: INITIALPROPS_MODIFICATOR) {
+    function reducer(state: INITIALPROPS_SIDEBAR, { action, value }: INITIALPROPS_SIDEBAR_MODIFICATOR) {
         return {
             ...state,
             [action]: value
@@ -20,7 +21,7 @@ export default function SidebarContextComponent({ children }: ContextProps) {
 
     const [State, Dispatch] = useReducer(reducer, INITIAL_PROPS)
 
-    function ModifyState({ action, value }: INITIALPROPS_MODIFICATOR): void {
+    function ModifyState({ action, value }: INITIALPROPS_SIDEBAR_MODIFICATOR): void {
         Dispatch({
             action,
             value

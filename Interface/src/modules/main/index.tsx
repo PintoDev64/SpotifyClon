@@ -17,6 +17,7 @@ import { SidebarContext } from "../../context";
 
 // Contants
 import { MAINSTYLE } from "./constants";
+import Player from "./components/Player";
 
 export default function Main() {
 
@@ -40,9 +41,7 @@ export default function Main() {
                     SidebarState.Sidebar === "Friends" && <Friends />
                 }
             </div>
-            <div id="Main-Player">
-
-            </div>
+            <Player />
         </main>
     )
 }

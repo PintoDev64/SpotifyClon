@@ -65,3 +65,9 @@
     text-overflow: ellipsis;
     font-family: "Satoshi Medium";
 }
+
+/* -------- Player --------- */
+
+#Main-Player {
+    display: flex;
+}
