@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom"
-import Hide from "../../assets/Hide"
 import "./index.css"
 import { LibraryListElements } from "./constants";
 
