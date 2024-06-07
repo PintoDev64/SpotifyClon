@@ -34,18 +34,12 @@
     height: 100%;
 }
 
-.Library-Active .Library-List-Element a {
-    color: var(--FgPrimary);
-}
-
-.Library-List-Element:hover,
-.Library-List-Element:hover a {
-    color: var(--FgPrimary);
+#Library .Library-List-Element:hover a {
     background: var(--BgPrimary);
 }
 
-.Library-Active .Library-List-Element:hover {
-    background: linear-gradient(90deg, transparent 0 5px, var(--BgMain) 5px 185px, transparent 185px 190px );
+#Library.Library-Active .Library-List-Element:hover a {
+    background: linear-gradient(90deg, transparent 0 5px, var(--BgMain) 5px 185px, transparent 185px 190px);
 }
 
 .Library-List-Element a {

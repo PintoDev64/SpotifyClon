@@ -1,14 +1,21 @@
 import { Route, Routes } from "react-router-dom";
+import { useContext } from "react";
 
 // Assets
-import Home from "./routes/Home";
+import HomePage from "./routes/Home";
 
 // Styles
 import "./index.css"
+
+// Components
 import Search from "./routes/Search";
 import Friends from "./components/Friends";
+import LibraryPage from "./routes/Library";
+
+// Contexts
 import { SidebarContext } from "../../context";
-import { useContext } from "react";
+
+// Contants
 import { MAINSTYLE } from "./constants";
 
 export default function Main() {
@@ -24,8 +31,9 @@ export default function Main() {
             }>
                 <div id="MainContent-Home">
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/" element={<HomePage />} />
                         <Route path="/search" element={<Search />} />
+                        <Route path="/library" element={<LibraryPage />}/>
                     </Routes>
                 </div>
                 {

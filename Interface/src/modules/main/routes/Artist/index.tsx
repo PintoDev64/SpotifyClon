@@ -1,4 +1,4 @@
-export default function Artist() {
+export default function ArtistPage() {
 
     document.title = "Spotify Clon - Artist"
 

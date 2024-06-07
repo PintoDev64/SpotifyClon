@@ -70,13 +70,18 @@ nav#Topbar {
 
     #Topbar-Buttons-Premiun {
         position: relative;
-        width: 50px;
+        width: 40px;
         height: 35px;
         background: var(--LightTertiary);
     }
 
+    #Topbar-Buttons-Premiun svg {
+        transform: scale(.9) !important;
+    }
+
     #Topbar-Buttons-Premiun::after {
         width: 0;
+        overflow: hidden;
     }
 }
 
@@ -191,4 +196,9 @@ nav#Topbar {
 
 #Topbar-Links>.Topbar-Buttons-Buttons:hover {
     background-color: var(--BgPrimary);
+}
+
+.Topbar-Links-Buttons:hover {
+    background-color: var(--BgPrimary);
+    border-radius: 10px !important;
 }

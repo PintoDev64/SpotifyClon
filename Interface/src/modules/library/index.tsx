@@ -11,10 +11,10 @@ export default function Library() {
         <aside id="Library" className={pathname.includes("/library") ? "Library-Active" : ""}>
             <ul id="Library-List">
                 {
-                    LibraryListElements.map(({ Text, URL }) =>
+                    LibraryListElements.map(({ Text, URL, Component }) =>
                         <li key={Text} className="Library-List-Element">
                             <Link to={URL}>
-                                <Hide />
+                                <Component />
                                 {Text}
                             </Link>
                         </li>

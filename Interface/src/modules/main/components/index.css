@@ -1,0 +1,67 @@
+.Playlist {
+    display: flex;
+    height: 250px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.Playlist:hover {
+    background-color: var(--BgPrimary);
+}
+
+.Playlist-Image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    mask-image: linear-gradient(transparent,
+            black 5%);
+}
+
+.Playlist-Image-Element {
+    width: 170px;
+    height: 170px;
+    border-radius: 7.25px;
+}
+
+.Playlist-Image-DominantColor_Top,
+.Playlist-Image-DominantColor_Middle {
+    border-radius: 7.25px 7.25px 0 0;
+}
+
+.Playlist-Image-DominantColor_Top {
+    width: 80%;
+    height: 3px;
+}
+
+.Playlist-Image-DominantColor_Middle {
+    width: 90%;
+    height: 6px;
+}
+
+.Playlist-Details {
+    width: 170px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Playlist-Details-Title {
+    color: var(--FgPrimary);
+    white-space: nowrap; 
+    font-size: 16px;
+}
+
+.Playlist-Details-Description {
+    color: var(--FgSecondary);
+    font-size: 13px;
+}
+
+.Playlist-Details-Title,
+.Playlist-Details-Description {
+    overflow: hidden;   
+    text-overflow: ellipsis;
+    font-family: "Satoshi Medium";
+}

@@ -1,22 +1,33 @@
+import AlbumIcon from "../../../assets/Album";
+import ArtistIcon from "../../../assets/Artist";
+import LikeIcon from "../../../assets/Like";
+import PodcastIcon from "../../../assets/Podcast";
+import SaveIcon from "../../../assets/Save";
+
 export const LibraryListElements = [
     {
         Text: "Liked Songs",
-        URL: "library/tracks"
+        URL: "library/tracks",
+        Component: LikeIcon
     },
     {
         Text: "Saves",
-        URL: "library/saves"
+        URL: "library/saves",
+        Component: SaveIcon
     },
     {
         Text: "Albums",
-        URL: "library/albums"
+        URL: "library/albums",
+        Component: AlbumIcon
     },
     {
         Text: "Podcast",
-        URL: "library/podcast"
+        URL: "library/podcast",
+        Component: PodcastIcon
     },
     {
         Text: "Artist",
-        URL: "library/artists"
+        URL: "library/artists",
+        Component: ArtistIcon
     }
 ]
