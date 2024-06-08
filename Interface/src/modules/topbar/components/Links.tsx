@@ -10,7 +10,11 @@ import { LibraryClose, LibraryOpen } from "../../../assets/Library";
 import { useNavigationPanel } from "../hooks";
 import { BackwardOff } from "../../../assets/Backward";
 
-export default function Links() {
+interface Props {
+    LibraryStatus: string
+}
+
+export default function Links({ LibraryStatus }: Props) {
 
     const { backward } = useNavigationPanel()
 
@@ -18,7 +22,7 @@ export default function Links() {
 
     return (
         <div id="Topbar-Links">
-            <Link to="/library" id="LibraryLink" className={`Topbar-Links-Buttons ${pathname.includes("/library") && "Topbar-Links-Buttons-Selected"}`}>
+            <Link to="/library" id="LibraryLink" className={`Topbar-Links-Buttons ${pathname.includes("/library") && "Topbar-Links-Buttons-Selected"} ${LibraryStatus === "true" ? "Library-Compact-On" : ""}`}>
                 {
                     !pathname.includes("/library")
                         ? <LibraryClose />

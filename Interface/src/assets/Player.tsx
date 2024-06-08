@@ -18,7 +18,7 @@ export function LoopOn() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" style={{
             isolation: "isolate"
-        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_R2XLzQFn6rnEETdlxVrzPDxOisRCWer3"><rect width="41" height="42" /></clipPath></defs><g clipPath="url(#_clipPath_R2XLzQFn6rnEETdlxVrzPDxOisRCWer3)"><path d=" M 16.54 25.752 L 14.164 25.752 C 12.414 25.752 10.996 24.334 10.996 22.584 L 10.996 16.248 C 10.996 14.498 12.414 13.08 14.164 13.08 L 26.836 13.08 C 28.586 13.08 30.004 14.498 30.004 16.248 L 30.004 22.584 C 30.004 24.334 28.586 25.752 26.836 25.752 L 20.5 25.752 M 20.5 25.752 L 23.668 22.584 M 20.5 25.752 L 23.668 28.92" fill="none" vectorEffect="non-scaling-stroke" strokeWidth="1.901" stroke="rgb(30,215,96)" strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4" /></g></svg>
+        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx"><rect width="41" height="42"/></clipPath></defs><g clip-path="url(#_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx)"><path d=" M 16.536 27.313 L 14.16 27.313 C 12.41 27.313 10.992 25.894 10.992 24.144 L 10.992 17.808 C 10.992 16.059 12.41 14.64 14.16 14.64 L 26.832 14.64 C 28.582 14.64 30 16.059 30 17.808 L 30 24.144 C 30 25.894 28.582 27.313 26.832 27.313 L 20.496 27.313 M 20.496 27.313 L 23.664 24.144 M 20.496 27.313 L 23.664 30.481" fill="none" vector-effect="non-scaling-stroke" stroke-width="2.75" stroke="rgb(30,215,96)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4"/></g></svg>
 
     )
 }
@@ -27,7 +27,22 @@ export function LoopOff() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" style={{
             isolation: "isolate"
-        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_R2XLzQFn6rnEETdlxVrzPDxOisRCWer3"><rect width="41" height="42" /></clipPath></defs><g clipPath="url(#_clipPath_R2XLzQFn6rnEETdlxVrzPDxOisRCWer3)"><path d=" M 16.54 25.752 L 14.164 25.752 C 12.414 25.752 10.996 24.334 10.996 22.584 L 10.996 16.248 C 10.996 14.498 12.414 13.08 14.164 13.08 L 26.836 13.08 C 28.586 13.08 30.004 14.498 30.004 16.248 L 30.004 22.584 C 30.004 24.334 28.586 25.752 26.836 25.752 L 20.5 25.752 M 20.5 25.752 L 23.668 22.584 M 20.5 25.752 L 23.668 28.92" fill="none" vectorEffect="non-scaling-stroke" strokeWidth="1.901" stroke="rgb(137,137,137)" strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4" /></g></svg>
+        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx"><rect width="41" height="42"/></clipPath></defs><g clip-path="url(#_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx)"><path d=" M 16.536 27.313 L 14.16 27.313 C 12.41 27.313 10.992 25.894 10.992 24.144 L 10.992 17.808 C 10.992 16.059 12.41 14.64 14.16 14.64 L 26.832 14.64 C 28.582 14.64 30 16.059 30 17.808 L 30 24.144 C 30 25.894 28.582 27.313 26.832 27.313 L 20.496 27.313 M 20.496 27.313 L 23.664 24.144 M 20.496 27.313 L 23.664 30.481" fill="none" vector-effect="non-scaling-stroke" stroke-width="2.75" stroke="var(--FgPrimary)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4"/></g></svg>
     )
+}
 
+export function NextSong() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" style={{
+            isolation: "isolate"
+        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_ZzC42TBV6n1PCkbNKejnzN2y2rAiQC76"><rect width="41" height="42"/></clipPath></defs><g clipPath="url(#_clipPath_ZzC42TBV6n1PCkbNKejnzN2y2rAiQC76)"><g><line x1="26.478" y1="15.686" x2="26.478" y2="26.313" vectorEffect="non-scaling-stroke" strokeWidth="2.526" stroke="var(--FgPrimary)" strokeLinejoin="miter" strokeLinecap="round" strokeMiterlimit="4"/><path d=" M 24.365 19.645 C 25.353 20.278 25.353 21.722 24.365 22.355 L 17.002 27.079 C 15.93 27.766 14.522 26.997 14.522 25.723 L 14.522 16.277 C 14.522 15.003 15.93 14.234 17.002 14.921 L 24.365 19.645 Z " fill="var(--FgPrimary)"/></g></g></svg>
+    )
+}
+
+export function PreviousSong() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" style={{
+            isolation: "isolate"
+        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_daip9BP47hsXvEOS7HHvLnBiSiOuPx6C"><rect width="41" height="42"/></clipPath></defs><g clipPath="url(#_clipPath_daip9BP47hsXvEOS7HHvLnBiSiOuPx6C)"><g><line x1="14.5" y1="15.666" x2="14.5" y2="26.333" vectorEffect="non-scaling-stroke" strokeWidth="2.526" stroke="var(--FgPrimary)" strokeLinejoin="miter" strokeLinecap="round" strokeMiterlimit="4"/><path d=" M 16.621 22.36 C 15.629 21.724 15.629 20.276 16.621 19.64 L 24.011 14.899 C 25.087 14.209 26.5 14.981 26.5 16.259 L 26.5 25.741 C 26.5 27.019 25.087 27.791 24.011 27.101 L 16.621 22.36 Z " fill="var(--FgPrimary)"/></g></g></svg>
+    )
 }

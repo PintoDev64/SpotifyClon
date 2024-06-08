@@ -9,7 +9,7 @@ aside#Friends {
 }
 
 /* -------- Playlist -------- */
-
+.Song,
 .Playlist {
     display: flex;
     height: 250px;
@@ -20,11 +20,29 @@ aside#Friends {
     border-radius: 10px;
 }
 
+.Song:hover,
 .Playlist:hover {
     background-color: var(--BgPrimary);
 }
 
+.Song:hover .Song-Image-Play,
+.Playlist:hover .Playlist-Image-Play {
+    z-index: 5;
+    bottom: 0;
+    opacity: 1;
+}
+
+.Song-Image,
 .Playlist-Image {
+    overflow: hidden;
+}
+
+.Song-Image {
+    position: relative;
+    height: calc(170px + 9px);
+}
+.Playlist-Image {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,10 +50,26 @@ aside#Friends {
             black 5%);
 }
 
+.Song-Image-Element {
+    margin: 9px 0 0 0;
+}
+
+.Song-Image-Element,
 .Playlist-Image-Element {
     width: 170px;
     height: 170px;
     border-radius: 7.25px;
+}
+
+.Song-Image-Play,
+.Playlist-Image-Play {
+    opacity: 0;
+    display: grid;
+    place-content: center;
+    position: absolute;
+    right: 0px;
+    bottom: -5px;
+    transition: .2s ease;
 }
 
 .Playlist-Image-DominantColor_Top,
@@ -53,6 +87,7 @@ aside#Friends {
     height: 6px;
 }
 
+.Song-Details,
 .Playlist-Details {
     width: 170px;
     height: 60px;
@@ -60,17 +95,21 @@ aside#Friends {
     flex-direction: column;
 }
 
+.Song-Details-Title,
 .Playlist-Details-Title {
     color: var(--FgPrimary);
     white-space: nowrap;
     font-size: 16px;
 }
 
+.Song-Details-Description,
 .Playlist-Details-Description {
     color: var(--FgSecondary);
     font-size: 13px;
 }
 
+.Song-Details-Title,
+.Song-Details-Description,
 .Playlist-Details-Title,
 .Playlist-Details-Description {
     overflow: hidden;
@@ -118,30 +157,25 @@ aside#Friends {
     place-content: center;
 }
 
-.Main-Player-Controls-Repeat-Button-Elements {
-    width: 40px;
+.Main-Player-Controls-Button-Elements {
+    width: 30px;
     height: 55px;
 }
 
+#Main-Player-Controls-Play,
 #Main-Player-Controls-Play-Button,
-#Main-Player-Controls-Repeat-Button {
+.Main-Player-Controls-Button,
+.Main-Player-Controls-Button button {
     display: grid;
     place-content: center;
 }
 
-#Main-Player-Controls-Play-Button svg,
-#Main-Player-Controls-Repeat-Button svg {
+.Main-Player-Controls-Button-Elements svg {
     transition: .2s ease;
 }
 
-#Main-Player-Controls-Play-Button:hover svg,
-#Main-Player-Controls-Repeat-Button:hover svg {
+.Main-Player-Controls-Button-Elements:hover svg {
     transform: perspective(0px) scale(0.7);
-}
-
-#Main-Player-Controls-Play-Button:focus,
-#Main-Player-Controls-Repeat-Button:focus {
-    background-color: transparent;
 }
 
 #Main-Player-Controls-Timeline {
@@ -169,16 +203,34 @@ aside#Friends {
     cursor: pointer;
 }
 
+#Main-Player-Controls-Timeline-Slider::-webkit-slider-runnable-track {
+    height: 8px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
 #Main-Player-Controls-Timeline-Slider::-webkit-slider-thumb {
     position: relative;
     appearance: none;
     border-radius: 5px;
     width: 5px;
     height: 5px;
+    margin: 2px 0;
     border: none;
     outline: none;
     background: var(--FgPrimary);
     transition: all .2s ease
+}
+
+#Main-Player-Controls-Timeline-Slider:hover::-webkit-slider-thumb {
+    height: 12px;
+}
+
+#Main-Player-Controls-Timeline-Slider:hover::-webkit-slider-thumb {
+    margin: -2px 0 0 -2px;
+    width: 12px;
+    height: 12px;
 }
 
 /* ----- Player Song ----- */

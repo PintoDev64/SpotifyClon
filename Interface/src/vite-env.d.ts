@@ -18,32 +18,62 @@ export type INITIALPROPS_SIDEBAR_MODIFICATOR = {
     action: "Sidebar",
     value: any
 }
+
 export interface SidebarContextProps {
     SidebarState: INITIALPROPS_SIDEBAR,
     ModifySidebar: ({ action, value }: INITIALPROPS_SIDEBAR_MODIFICATOR) => void
 }
 
 // Player Context Types
+type INITIAL_PROPS_DATA = {
+    Id: number,
+    Src: string,
+    Name: string,
+    Artist: string,
+    Album: string,
+    Cover: string,
+    ArtistURL: string
+    AlbumURL: string
+}
 export type INITIALPROPS_PLAYER = {
     State: boolean,
     Loop: boolean,
+    Volume: number,
+    Data: INITIAL_PROPS_DATA
+    DominantColor: string,
+}
+
+export type INITIALPROPS_PLAYER_MODIFICATOR = {
+    action: "Volume" | "State" | "Loop" | "Data" | "DominantColor",
+    value: INITIAL_PROPS_DATA | INITIALPROPS_PLAYER | boolean | string | number
+}
+
+export interface PlayerContextProps {
+    PlayerState: INITIALPROPS_PLAYER,
+    ModifyPlayer: ({ action, value }: INITIALPROPS_PLAYER_MODIFICATOR) => void
+}
+
+// Queue Context Types
+export type INITIALPROPS_PLAYERSTATS = {
     Src: string,
     Volume: number,
     Name: string,
     Artist: string,
     Album: string,
     Cover: string,
-    DominantColor: string,
     ArtistURL: string
     AlbumURL: string
 }
+export type INITIALPROPS_QUEUE = {
+    List: INITIALPROPS_PLAYERSTATS[] | [],
+}
 
-export type INITIALPROPS_PLAYER_MODIFICATOR = {
-    action: "Src" | "Volume" | "Name" | "Artist" | "Album" | "State" | "Loop" | "Cover" | "DominantColor" | "ArtistURL" | "AlbumURL",
+export type INITIALPROPS_QUEUE_MODIFICATOR = {
+    action: "List",
     value: any
 }
 
-export interface PlayerContextProps {
-    PlayerState: INITIALPROPS_PLAYER,
-    ModifyPlayer: ({ action, value }: INITIALPROPS_PLAYER_MODIFICATOR) => void
+export interface QueueContextProps {
+    QueueState: INITIALPROPS_QUEUE,
+    ModifyQueue: ({ action, value }: INITIALPROPS_QUEUE_MODIFICATOR) => void
 }

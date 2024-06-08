@@ -1,9 +1,10 @@
 // Components
 import Playlist from "../../components/Playlist"
 import ScrollSection from "../../components/ScrollSection";
+import Song from "../../components/Song";
 
 // Constants
-import { PLAYLIST_EXAMPLES } from "../../constants"
+import { PLAYLIST_EXAMPLES, SONGS_EXAMPLES } from "../../constants"
 
 export default function HomePage() {
 
@@ -12,11 +13,14 @@ export default function HomePage() {
     return (
         <ScrollSection Title="Made For User" URL="/section">
             {
-                PLAYLIST_EXAMPLES.map(({ Description, Title, imageURL, URL }, index) => {
-                    return (
-                        <Playlist key={index} Description={Description} Title={Title} imageURL={imageURL} URL={URL} />
-                    )
-                })
+                PLAYLIST_EXAMPLES.map(({ Description, Title, imageURL, URL }, index) =>
+                    <Playlist key={index} Description={Description} Title={Title} imageURL={imageURL} URL={URL} />
+                )
+            }
+            {
+                SONGS_EXAMPLES.map(({ Id, Artist, Album, Title, imageURL, URL }, index) =>
+                    <Song key={index} Id={Id} Artist={Artist} Title={Title} imageURL={imageURL} URL={URL} Album={Album}/>
+                )
             }
         </ScrollSection>
     )

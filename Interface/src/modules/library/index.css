@@ -1,17 +1,62 @@
 #Library {
+    position: relative;
     box-sizing: border-box;
     grid-area: library;
     margin: 0 7px;
-    width: 190px;
     height: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+#Library_after {
+    box-sizing: border-box;
+    position: absolute;
+    width: 7.5px;
+    height: 100%;
+    content: "";
+    top: 0;
+    cursor: grab;
+    transition: .2s ease;
+    border-radius: 5px;
+}
+
+#Library_after:hover {
+    background: var(--FgPrimary);
+}
+
+#Library.Library-Compact-Off #Library_after {
+    right: -6px;
+}
+
+#Library.Library-Compact-On #Library_after {
+    right: -5px;
 }
 
 #Library-List {
-    width: 100%;
     height: 100%;
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
+}
+
+#Library-List.Library-Compact-On {
+    align-items: center;
+}
+
+#Library-List.Library-Compact-On .Library-List-Element,
+#Library-List.Library-Compact-On .Library-List-Element a {
+    width: 50px;
+}
+
+#Library-List.Library-Compact-On .Library-List-Element a {
+    overflow: hidden;
+}
+
+.Library-Compact-Off {
+    width: 190px;
+}
+
+#Library.Library-Compact-On {
+    width: 55px;
 }
 
 .Library-Active {
@@ -19,6 +64,7 @@
 }
 
 .Library-List-Element {
+    padding: 0 5px;
     border-radius: 10px;
     font-family: "Satoshi Bold";
     display: flex;
@@ -26,12 +72,21 @@
     box-sizing: border-box;
     width: 100%;
     height: 40px;
-    margin: 2px 0;
+    margin: 5px 0;
 }
 
 .Library-List-Element a {
+    text-wrap: nowrap;
     width: 100%;
     height: 100%;
+}
+
+#Library-List.Library-Compact-On .Library-List-Element svg {
+    transform: scale(.9);
+}
+
+.Library-List-Element span.Library-Compact-On {
+    display: none;
 }
 
 #Library .Library-List-Element:hover a {
@@ -39,7 +94,7 @@
 }
 
 #Library.Library-Active .Library-List-Element:hover a {
-    background: linear-gradient(90deg, transparent 0 5px, var(--BgMain) 5px 185px, transparent 185px 190px);
+    background: var(--BgMain);
 }
 
 .Library-List-Element a {
@@ -48,8 +103,4 @@
     display: flex;
     align-items: center;
     box-sizing: border-box;
-}
-
-.Library-List-Element svg {
-    transform: scale(0.7);
 }

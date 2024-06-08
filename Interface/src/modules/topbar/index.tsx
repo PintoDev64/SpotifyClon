@@ -9,14 +9,18 @@ import { TopbarStyle } from "./constants"
 // Styles
 import "./index.css"
 
-export default function Topbar() {
+interface Props {
+    LibraryStatus: string
+}
+
+export default function Topbar({ LibraryStatus }: Props) {
     return (
         <nav id="Topbar" style={
             navigator.userAgent === "SpotifyClon"
                 ? TopbarStyle.WinControls.true
                 : TopbarStyle.WinControls.false
         }>
-            <Links />
+            <Links LibraryStatus={LibraryStatus}/>
             <Buttons />
             <Controls />
         </nav>

@@ -2,19 +2,22 @@
     color: var(--FgPrimary);
     display: flex;
     grid-area: Main;
+    padding: 0 7px 0px 0;
     width: 100%;
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 #MainContent {
     grid-area: Principal;
     overflow: hidden;
-    padding: 1px;
+    padding: 1px 1px 2px;
     border-radius: 12px;
     width: 100%;
     height: calc(100% - 90px);
+    box-sizing: border-box;
     display: grid;
     grid-template-areas:
         "Content Friends";

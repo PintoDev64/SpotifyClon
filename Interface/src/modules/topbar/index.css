@@ -1,7 +1,7 @@
 nav#Topbar {
     -webkit-app-region: drag;
-    padding: 0 0 0 7px;
     box-sizing: border-box;
+    padding: 0 0 0 7px;
     width: 100%;
     height: 50px;
     display: grid;
@@ -15,7 +15,7 @@ nav#Topbar {
 #Topbar-Buttons-Buttons-Forward:hover path {
     opacity: 1;
     stroke: var(--FgPrimary);
-    stroke-width: 2.25;
+    strokeWidth: 2.25;
 }
 
 #Topbar-Links {
@@ -92,6 +92,31 @@ nav#Topbar {
     width: 190px;
 }
 
+#LibraryLink {
+    padding: 0 5px;
+}
+
+#LibraryLink.Topbar-Links-Buttons-Selected::after {
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    content: "";
+    height: 15px;
+    background-color: var(--BgPrimary);
+}
+
+#LibraryLink.Topbar-Links-Buttons-Selected::after {
+    width: 100%;
+}
+
+#LibraryLink.Topbar-Links-Buttons-Selected.Library-Compact-On{
+    border-radius: 10px 10px 10px 0;
+}
+
+#LibraryLink.Topbar-Links-Buttons-Selected.Library-Compact-On::after {
+    width: 55px;
+}
+
 .Topbar-Links-Buttons {
     border-radius: 10px;
     margin: 0 7px 0 0;
@@ -102,16 +127,6 @@ nav#Topbar {
 #LibraryLink.Topbar-Links-Buttons {
     position: relative;
     border-radius: 10px 10px 0 0;
-}
-
-#LibraryLink.Topbar-Links-Buttons-Selected::after {
-    position: absolute;
-    bottom: -7px;
-    left: 0;
-    content: "";
-    width: 100%;
-    height: 10px;
-    background-color: var(--BgPrimary);
 }
 
 #Topbar-Links-Buttons-Search {
@@ -141,7 +156,7 @@ nav#Topbar {
 }
 
 .Topbar-Links-Buttons-Selected path {
-    stroke-width: 2.5;
+    strokeWidth: 2.5;
 }
 
 #Topbar-Buttons-Premiun,
@@ -200,11 +215,16 @@ nav#Topbar {
     margin: 0 7px 0 0;
 }
 
+#Topbar-Links>.Topbar-Links-Buttons:hover {
+    background-color: var(--BgPrimary);
+    border-radius: 10px;
+}
+
 #Topbar-Links>.Topbar-Buttons-Buttons:hover {
     background-color: var(--BgPrimary);
 }
 
-.Topbar-Links-Buttons:hover {
+#Topbar-Links>.Topbar-Links-Buttons-Selected:hover {
     background-color: var(--BgPrimary);
-    border-radius: 10px !important;
+    border-radius: 10px 10px 10px 0;
 }

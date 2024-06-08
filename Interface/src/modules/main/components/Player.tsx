@@ -1,22 +1,51 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { LoopOff, LoopOn, Pause, Play } from "../../../assets/Player";
+import { LoopOff, LoopOn, NextSong, Pause, Play, PreviousSong } from "../../../assets/Player";
 import { PlayerContext } from "../../../context";
 import SongSlider from "./components/SongSlider";
-import { getDominantColor } from "../helpers";
+import { createMetaDataPlayer, getDominantColor } from "../helpers";
 import SongCover from "./components/SongCover";
 
 export default function Player() {
     const { ModifyPlayer, PlayerState } = useContext(PlayerContext);
-    const audioRef = useRef(new Audio(PlayerState.Src));
+    const audioRef = useRef(new Audio());
+
+    console.log(PlayerState.State);
+
+    useEffect(() => {
+        if (PlayerState.State) {
+            audioRef.current.play();
+        } else {
+            audioRef.current.pause();
+        }
+    }, [PlayerState.State]);
+
+    useEffect(() => {
+        audioRef.current.loop = PlayerState.Loop
+        audioRef.current.addEventListener("ended", () => {
+            if (!PlayerState.Loop) {
+                pauseAudio();
+            }
+        });
+    }, [PlayerState.Loop])
+
+    useEffect(() => {
+        console.log(PlayerState.Data.Src);
+        if (audioRef.current) {
+            audioRef.current.src = PlayerState.Data.Src
+            audioRef.current.addEventListener("loadedmetadata", (_event) => {
+                createMetaDataPlayer(PlayerState, playAudio, pauseAudio)
+                
+            });
+        }
+    }, [PlayerState.Data.Src]);
 
     const playAudio = () => {
-        getDominantColor(PlayerState.Cover)
+        getDominantColor(PlayerState.Data.Cover)
             .then((value) => ModifyPlayer({
                 action: "DominantColor",
                 value
             }));
         ModifyPlayer({ action: "State", value: true });
-        audioRef.current.play();
         navigator.mediaSession.playbackState = "playing";
     }
 
@@ -26,7 +55,6 @@ export default function Player() {
             value: "var(--BgSecondary)"
         })
         ModifyPlayer({ action: "State", value: false });
-        audioRef.current.pause();
         navigator.mediaSession.playbackState = "paused";
     }
 
@@ -38,50 +66,9 @@ export default function Player() {
         }
     }
 
-    useEffect(() => {
-        if (PlayerState.State) {
-            audioRef.current.play();
-        } else {
-            audioRef.current.pause();
-        }
-    }, [PlayerState.State]);
-
     const handleLoop = () => {
         ModifyPlayer({ action: "Loop", value: !PlayerState.Loop });
     }
-
-    useEffect(() => {
-        audioRef.current.loop = PlayerState.Loop
-    }, [PlayerState.Loop])
-
-    useEffect(() => {
-        audioRef.current.src = PlayerState.Src
-        audioRef.current.addEventListener("loadedmetadata", () => {
-            navigator.mediaSession.metadata = new MediaMetadata({
-                title: PlayerState.Name,
-                artist: PlayerState.Artist,
-                album: PlayerState.Album,
-                artwork: [
-                    {
-                        src: PlayerState.Cover,
-                        sizes: "192x192",
-                        type: "image/png"
-                    }
-                ]
-            });
-
-            navigator.mediaSession.setActionHandler("play", playAudio);
-            navigator.mediaSession.setActionHandler("pause", pauseAudio);
-            navigator.mediaSession.setActionHandler("previoustrack", () => { });
-            navigator.mediaSession.setActionHandler("nexttrack", () => { });
-        });
-
-        audioRef.current.addEventListener("ended", () => {
-            if (!PlayerState.Loop) {
-                pauseAudio();
-            }
-        });
-    }, []);
 
     return (
         <div id="Main-Player" style={{ background: PlayerState.DominantColor }}>
@@ -95,8 +82,18 @@ export default function Player() {
                         }
                     </button>
                 </div>
-                <div id="Main-Player-Controls-Repeat">
-                    <button id="Main-Player-Controls-Repeat-Button" className="Main-Player-Controls-Repeat-Button-Elements" onClick={handleLoop}>
+                <div className="Main-Player-Controls-Button">
+                    <button id="Main-Player-Controls-PreviousSong-Button" className="Main-Player-Controls-Button-Elements">
+                        <PreviousSong />
+                    </button>
+                </div>
+                <div className="Main-Player-Controls-Button">
+                    <button id="Main-Player-Controls-NextSong-Button" className="Main-Player-Controls-Button-Elements">
+                        <NextSong />
+                    </button>
+                </div>
+                <div className="Main-Player-Controls-Button">
+                    <button id="Main-Player-Controls-Repeat-Button" className="Main-Player-Controls-Button-Elements" onClick={handleLoop}>
                         {
                             PlayerState.Loop
                                 ? <LoopOn />
@@ -104,9 +101,9 @@ export default function Player() {
                         }
                     </button>
                 </div>
-                <SongSlider audio={audioRef.current} />
+                {audioRef.current && <SongSlider audio={audioRef.current} />}
             </div>
-            <SongCover />
+            {audioRef.current && <SongCover />}
         </div>
     )
 }

@@ -40,13 +40,8 @@
   padding: 0;
 }
 
-*:focus {
-  background-color: var(--BgPrimary);
-  transition: .2s ease;
-}
-
 path {
-  stroke-width: 2.25;
+  strokeWidth: 2.25;
 }
 
 body {
@@ -63,6 +58,12 @@ button {
   border: none;
 }
 
+input:focus,
+button:focus {
+  border: none;
+  outline: none;
+}
+
 svg {
   transform: scale(0.8);
 }
@@ -74,6 +75,13 @@ svg {
   grid-template-areas:
     "Navbar Navbar"
     "library Main";
-  grid-template-columns: 204px calc(100% - 211px);
   grid-template-rows: 50px calc(100% - 57px);
+}
+
+.Application-Complete {
+  grid-template-columns: 204px calc(100% - 204px);
+}
+
+.Application-Compact {
+  grid-template-columns: 70px calc(calc(100% + 132px) - 204px);
 }

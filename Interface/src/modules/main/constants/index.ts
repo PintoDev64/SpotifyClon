@@ -23,3 +23,34 @@ export const PLAYLIST_EXAMPLES = [
         URL: "/playlist"
     }
 ]
+
+export const SONGS_EXAMPLES = [
+    {
+        Id: 1,
+        Title: "A lonely Night",
+        Artist: {
+            URL: "/theweeknd",
+            Name: "The Weeknd"
+        },
+        Album: {
+            URL: "/Starboy",
+            Name: "Starboy"
+        },
+        imageURL: "https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a",
+        URL: "/ALonelyNight.mp3"
+    },
+    {
+        Id: 2,
+        Title: "Leave It Alone",
+        Artist: {
+            URL: "/a_hisa",
+            Name: "a_hisa"
+        },
+        Album: {
+            URL: "/Colors3",
+            Name: "Colors 3"
+        },
+        imageURL: "https://cdn.wikiwiki.jp/to/w/musedash/Leave%20it%20Alone/::ref/Leave%20it%20Alone.jpg?rev=e076bc56357c5bcbe15745fd94c23987&t=20190516154638",
+        URL: "/LeaveItAlone.mp3"
+    }
+]

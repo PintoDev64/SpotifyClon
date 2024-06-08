@@ -11,11 +11,13 @@ export default function SongSlider({ audio }: Props) {
 
     useEffect(() => {
         const interval = setInterval(() => {
+            if (audio) {
             navigator.mediaSession.setPositionState({
                 position: audio.currentTime,
                 duration: audio.duration
             });
             setCurrentTime(audio.currentTime);
+            }
         }, 1000);
 
         setDuration(audio.duration)
@@ -69,7 +71,7 @@ export default function SongSlider({ audio }: Props) {
                 id="Main-Player-Controls-Timeline-Slider"
                 onChange={handleSliderChange}
                 style={{
-                    background: currentTime === 0 ? "var(--FgSecondary)" : `linear-gradient(90deg, var(--FgPrimary) ${playedPercentage}%, var(--FgSecondary) ${playedPercentage}%)`
+                    background: currentTime === 0 ? "linear-gradient(90deg, var(--FgSecondary) 0 100%)" : `linear-gradient(90deg, var(--FgPrimary) ${playedPercentage}%, var(--FgSecondary) ${playedPercentage}%)`
                 }}
             />
             {!isNaN(audio.duration) ? <span>{formatTime(duration)}</span> : <span>0:00</span>}
