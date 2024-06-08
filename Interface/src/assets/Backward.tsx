@@ -26,9 +26,7 @@ export function BackwardOff() {
                 </clipPath>
             </defs>
             <g clipPath="url(#_clipPath_kSBVmlxP0IathZnHGRLK72dkXIUgz5W5)">
-                <g style={{
-                    isolation: "isolate"
-                }}>
+                <g>
                     <path d=" M 27.656 21 L 13.344 21 M 13.344 21 L 19.237 26.893 M 13.344 21 L 19.237 15.107" fill="none" vectorEffect="non-scaling-stroke" strokeWidth="2.021" stroke="rgb(137,137,137)" strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4" />
                 </g>
             </g>

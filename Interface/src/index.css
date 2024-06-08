@@ -6,6 +6,7 @@
   --FgPrimary: #E0E0E0;
   --FgSecondary: #898989;
   --FgTertiary: #323232;
+  --FgCuartionary: #bebebe;
 
   --LightPrimary: #13BF51;
   --LightSecondary: #FF0000;
@@ -42,6 +43,10 @@
 *:focus {
   background-color: var(--BgPrimary);
   transition: .2s ease;
+}
+
+path {
+  stroke-width: 2.25;
 }
 
 body {

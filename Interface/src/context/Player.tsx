@@ -15,7 +15,11 @@ export default function PlayerContextComponent({ children }: ContextProps) {
         Volume: 1,
         Album: "Colors 3",
         Artist: "a_hisa",
-        Name: "Leave It Alone"
+        Name: "Leave It Alone",
+        Cover: "https://cdn.wikiwiki.jp/to/w/musedash/Leave%20it%20Alone/::ref/Leave%20it%20Alone.jpg?rev=e076bc56357c5bcbe15745fd94c23987&t=20190516154638",
+        DominantColor: "",
+        ArtistURL: "/search",
+        AlbumURL: "/library"
     }
 
     function reducer(state: INITIALPROPS_PLAYER, { action, value }: INITIALPROPS_PLAYER_MODIFICATOR) {
@@ -31,7 +35,7 @@ export default function PlayerContextComponent({ children }: ContextProps) {
         Dispatch({
             action,
             value
-        })   
+        })
     }
 
     return (

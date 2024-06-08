@@ -26,9 +26,7 @@ export function ForwardOff() {
                 </clipPath>
             </defs>
             <g clipPath="url(#_clipPath_Oifqi8sAXxnv58uWkYbq9ZCKaY4oDyoS)">
-                <g style={{
-                    opacity: 0.5
-                }}>
+                <g>
                     <path d=" M 13.344 21 L 27.656 21 M 27.656 21 L 21.763 26.893 M 27.656 21 L 21.763 15.107" fill="none" vectorEffect="non-scaling-stroke" strokeWidth="2.021" stroke="rgb(137,137,137)" strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4" />
                 </g>
             </g>

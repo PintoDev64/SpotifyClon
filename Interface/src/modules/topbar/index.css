@@ -12,8 +12,10 @@ nav#Topbar {
     font-family: "Satoshi Medium", sans-serif;
 }
 
-#Topbar-Buttons-Buttons-Forward:hover {
-    color: var(--FgPrimary);
+#Topbar-Buttons-Buttons-Forward:hover path {
+    opacity: 1;
+    stroke: var(--FgPrimary);
+    stroke-width: 2.25;
 }
 
 #Topbar-Links {
@@ -66,7 +68,7 @@ nav#Topbar {
     transition: all .1s ease;
 }
 
-@media (max-width: 1335px) {
+@media (max-width: 1350px) {
 
     #Topbar-Buttons-Premiun {
         position: relative;
@@ -136,6 +138,10 @@ nav#Topbar {
 .Topbar-Links-Buttons-Selected {
     color: var(--FgPrimary);
     background-color: var(--BgPrimary);
+}
+
+.Topbar-Links-Buttons-Selected path {
+    stroke-width: 2.5;
 }
 
 #Topbar-Buttons-Premiun,

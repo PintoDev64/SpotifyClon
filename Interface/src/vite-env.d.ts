@@ -31,11 +31,15 @@ export type INITIALPROPS_PLAYER = {
     Volume: number,
     Name: string,
     Artist: string,
-    Album: string
+    Album: string,
+    Cover: string,
+    DominantColor: string,
+    ArtistURL: string
+    AlbumURL: string
 }
 
 export type INITIALPROPS_PLAYER_MODIFICATOR = {
-    action: "Src" | "Volume" | "Name" | "Artist" | "Album" | "State" | "Loop",
+    action: "Src" | "Volume" | "Name" | "Artist" | "Album" | "State" | "Loop" | "Cover" | "DominantColor" | "ArtistURL" | "AlbumURL",
     value: any
 }
 
