@@ -139,6 +139,15 @@
     border-radius: 10px;
     width: 500px;
     height: 500px;
+    transition: ease .2s;
+}
+
+@media (max-width: 1350px) {
+    #NowPlaying-Content-Image,
+    #NowPlaying-Content-Image img {
+        width: 350px;
+        height: 350px;
+    }
 }
 
 #NowPlaying-Content-SongDetails {
