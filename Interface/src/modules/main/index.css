@@ -123,12 +123,82 @@
 }
 
 #NowPlaying-Content {
+    padding: 37px;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(50px);
+    display: flex;
 }
 
-#NowPlaying-Content h1 {
-    width: 100%;
-    height: 100%;
+#NowPlaying-Content-Image {
+    margin: 0 50px 0 0;
+}
+
+#NowPlaying-Content-Image,
+#NowPlaying-Content-Image img {
+    border-radius: 10px;
+    width: 500px;
+    height: 500px;
+}
+
+#NowPlaying-Content-SongDetails {
+    width: calc(100% - 621px);
+}
+
+#NowPlaying-Content-SongDetails-Name {
+    font-family: "Satoshi Bold";
+    font-size: 36px;
+    margin: 0 0 20px 0;
+}
+
+#NowPlaying-Content-SongDetails-Description {
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+#NowPlaying-Content-SongDetails-Description a {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#NowPlaying-Content-SongDetails-Description svg {
+    width: 30px;
+}
+
+.NowPlaying-Content-SongDetails-Description-Text {
+    text-align: center;
+}
+
+.NowPlaying-Content-SongDetails-Description-Separators {
+    margin: 0 10px 0 18px;
+    font-size: 3px;
+}
+
+#NowPlaying-Content-SongDetails-Description * {
+    font-family: "satoshi Regular";
+    font-size: 14px;
+}
+
+#NowPlaying-Content-SongGenres {
+    display: flex;
+    margin: 20px 0;
+}
+
+.NowPlaying-Content-SongGenres-Elements {
+    padding: 10px 20px;
+    margin: 0 10px 0 0;
+    height: 20px;
+    border-radius: 44px;
+    border: 2px rgba(137, 137, 137, 25%) solid;
+    color: var(--FgSecondary);
+    font-family: "satoshi Medium";
+    font-size: 15px;
+}
+
+.NowPlaying-Content-SongGenres-Elements:hover {
+    color: var(--FgPrimary);
 }

@@ -16,17 +16,19 @@ interface SongProps {
         Name: string
     }
     imageURL: string
-    URL: string
+    URL: string,
+    Year: number,
+    Genres: string[]
 }
 
-export default function Song({ Id, Title, Album, imageURL, Artist, URL }: SongProps) {
+export default function Song({ Id, Title, Album, imageURL, Artist, URL, Year, Genres }: SongProps) {
 
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
     const PlaylistCover = useRef<HTMLImageElement>(null!);
 
     const handleMusicPlayer = () => {
 
-        if (Id !==PlayerState.Data.Id ) {
+        if (Id !== PlayerState.Data.Id) {
             ModifyPlayer({
                 action: "Data",
                 value: {
@@ -37,7 +39,9 @@ export default function Song({ Id, Title, Album, imageURL, Artist, URL }: SongPr
                     Artist: Artist.Name,
                     ArtistURL: Artist.URL,
                     Cover: imageURL,
-                    Name: Title
+                    Name: Title,
+                    Year,
+                    Genres
                 }
             })
             setTimeout(() => {

@@ -20,7 +20,9 @@ export default function PlayerContextComponent({ children }: ContextProps) {
             Name: "",
             Cover: "",
             AlbumURL: "",
-            ArtistURL: ""
+            ArtistURL: "",
+            Year: 0,
+            Genres: []
         },
         DominantColor: ""
     }

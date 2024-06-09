@@ -34,6 +34,8 @@ type INITIAL_PROPS_DATA = {
     Cover: string,
     ArtistURL: string
     AlbumURL: string
+    Year: number
+    Genres: string[]
 }
 export type INITIALPROPS_PLAYER = {
     State: boolean,
