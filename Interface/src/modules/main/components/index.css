@@ -124,7 +124,7 @@ aside#Friends {
     height: 80px;
     display: grid;
     grid-template-areas: "Controls Song Options";
-    grid-template-columns: 45% 20% 35%;
+    grid-template-columns: 50% 20% 30%;
     align-items: center;
     border-radius: 10px;
     background-color: var(--BgSecondary);
@@ -135,7 +135,7 @@ aside#Friends {
 
 @media (max-width: 1350px) {
     #Main-Player {
-        grid-template-columns: 35% 20% 45%;
+        grid-template-columns: 40% 20% 40%;
     }
 }
 
@@ -263,7 +263,7 @@ aside#Friends {
     text-overflow: ellipsis;
 }
 
-#Main-Player-Song-Details-Name {
+#Main-Player-Song-Details-Name * {
     color: var(--FgPrimary);
     font-family: "Satoshi Bold";
     font-size: 14px;
@@ -275,4 +275,13 @@ aside#Friends {
 
 .Main-Player-Song-Details-Extra *:focus {
     background-color: transparent;
+}
+
+/* ----- Player Options ----- */
+
+#Main-Player-Options {
+    grid-area: Options;
+    display: flex;
+    height: 55px;
+    justify-content: flex-end;
 }

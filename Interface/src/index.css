@@ -83,5 +83,5 @@ svg {
 }
 
 .Application-Compact {
-  grid-template-columns: 70px calc(calc(100% + 132px) - 204px);
+  grid-template-columns: 70px calc(calc(100% + 134px) - 204px);
 }

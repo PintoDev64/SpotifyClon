@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 // Contexts
-import { PlayerContext } from "../../../../context";
+import { PlayerContext } from "../../../../../context";
 import { Link } from "react-router-dom";
 
 export default function SongCover({ }) {
@@ -12,7 +12,11 @@ export default function SongCover({ }) {
         <div id="Main-Player-Song">
             <img id="Main-Player-Song-Cover" src={PlayerState.Data.Cover} alt={PlayerState.Data.Name} />
             <div id="Main-Player-Song-Details">
-                <span id="Main-Player-Song-Details-Name">{PlayerState.Data.Name}</span>
+                <span id="Main-Player-Song-Details-Name">
+                    <Link to="/now-playing">
+                        {PlayerState.Data.Name}
+                    </Link>
+                </span>
                 <span className="Main-Player-Song-Details-Extra">
                     <Link to={PlayerState.Data.ArtistURL}>
                         {PlayerState.Data.Artist}

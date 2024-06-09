@@ -10,7 +10,7 @@ export default function PlayerContextComponent({ children }: ContextProps) {
 
     const INITIAL_PROPS: INITIALPROPS_PLAYER = {
         State: false,
-        Loop: false,
+        Loop: (localStorage.getItem("loop") === "true"),
         Volume: 1,
         Data: {
             Id: 2,

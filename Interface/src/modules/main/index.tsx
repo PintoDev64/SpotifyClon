@@ -11,13 +11,14 @@ import "./index.css"
 import Search from "./routes/Search";
 import Friends from "./components/Friends";
 import LibraryPage from "./routes/Library";
+import Player from "./components/Player";
+import NowPlaying from "./routes/NowPlaying";
 
 // Contexts
 import { SidebarContext } from "../../context";
 
 // Contants
 import { MAINSTYLE } from "./constants";
-import Player from "./components/Player";
 
 export default function Main() {
 
@@ -35,6 +36,7 @@ export default function Main() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/search" element={<Search />} />
                         <Route path="/library" element={<LibraryPage />}/>
+                        <Route path="/now-playing" element={<NowPlaying />}/>
                     </Routes>
                 </div>
                 {
