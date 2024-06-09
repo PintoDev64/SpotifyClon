@@ -1,4 +1,5 @@
-import { ChangeEvent, MutableRefObject, useEffect, useState } from "react";
+import { ChangeEvent, MutableRefObject, useContext, useEffect, useState } from "react";
+import { PlayerContext } from "../../../../../context";
 
 interface Props {
     audio: HTMLAudioElement
@@ -6,12 +7,14 @@ interface Props {
 
 export default function SongSlider({ audio }: Props) {
 
+    const { PlayerState } = useContext(PlayerContext);
+
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (audio) {
+            if (audio.src && PlayerState.Data.Src) {
             navigator.mediaSession.setPositionState({
                 position: audio.currentTime,
                 duration: audio.duration
@@ -74,7 +77,7 @@ export default function SongSlider({ audio }: Props) {
                     background: currentTime === 0 ? "linear-gradient(90deg, var(--FgSecondary) 0 100%)" : `linear-gradient(90deg, var(--FgPrimary) ${playedPercentage}%, var(--FgSecondary) ${playedPercentage}%)`
                 }}
             />
-            {!isNaN(audio.duration) ? <span>{formatTime(duration)}</span> : <span>0:00</span>}
+            {(!isNaN(audio.duration) && audio.duration) ? <span>{formatTime(duration)}</span> : <span>0:00</span>}
         </div>
     )
 }

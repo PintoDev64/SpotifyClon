@@ -10,7 +10,9 @@ export default function SongCover({ }) {
 
     return (
         <div id="Main-Player-Song">
-            <img id="Main-Player-Song-Cover" src={PlayerState.Data.Cover} alt={PlayerState.Data.Name} />
+            <Link to="/now-playing">
+                <img id="Main-Player-Song-Cover" src={PlayerState.Data.Cover} alt={PlayerState.Data.Name} />
+            </Link>
             <div id="Main-Player-Song-Details">
                 <span id="Main-Player-Song-Details-Name">
                     <Link to="/now-playing">

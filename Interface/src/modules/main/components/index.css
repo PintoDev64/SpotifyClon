@@ -133,12 +133,6 @@ aside#Friends {
     box-sizing: border-box;
 }
 
-@media (max-width: 1350px) {
-    #Main-Player {
-        grid-template-columns: 40% 20% 40%;
-    }
-}
-
 #Main-Player * {
     font-family: "Satoshi Regular";
     font-size: 12px;
@@ -247,6 +241,12 @@ aside#Friends {
     width: 55px;
     height: 55px;
     border-radius: 3px;
+    transition: .1s ease;
+}
+
+#Main-Player-Song-Cover:hover {
+    filter: drop-shadow(0 0 5px black);
+    transform: scale(.95);
 }
 
 #Main-Player-Song-Details {
@@ -284,4 +284,25 @@ aside#Friends {
     display: flex;
     height: 55px;
     justify-content: flex-end;
+}
+
+/* ------ Media Queries ------ */
+
+@media (max-width: 1350px) {
+    #Main-Player {
+        grid-template-columns: 40% 20% 40%;
+    }
+}
+
+@media (max-width: 1025px) {
+    #Main-Player-Controls-Timeline {
+        display: none;
+        width: 0;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    #Main-Player-Controls {
+        justify-content: space-evenly;
+    }
 }

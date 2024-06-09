@@ -13,14 +13,14 @@ export default function PlayerContextComponent({ children }: ContextProps) {
         Loop: (localStorage.getItem("loop") === "true"),
         Volume: 1,
         Data: {
-            Id: 2,
-            Src: "/LeaveItAlone.mp3",
-            Album: "Colors 3",
-            Artist: "a_hisa",
-            Name: "Leave It Alone",
-            Cover: "https://cdn.wikiwiki.jp/to/w/musedash/Leave%20it%20Alone/::ref/Leave%20it%20Alone.jpg?rev=e076bc56357c5bcbe15745fd94c23987&t=20190516154638",
-            AlbumURL: "/library",
-            ArtistURL: "/search"
+            Id: 0,
+            Src: "",
+            Album: "",
+            Artist: "",
+            Name: "",
+            Cover: "",
+            AlbumURL: "",
+            ArtistURL: ""
         },
         DominantColor: ""
     }

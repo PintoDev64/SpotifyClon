@@ -49,7 +49,7 @@ export default function Song({ Id, Title, Album, imageURL, Artist, URL }: SongPr
                 } else {
                     ModifyPlayer({ action: "State", value: true })
                 }
-            }, 300)
+            }, 100)
             getDominantColor(imageURL)
                 .then(value => ModifyPlayer({
                     action: "DominantColor",

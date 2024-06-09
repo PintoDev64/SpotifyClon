@@ -27,7 +27,7 @@ export default function Player() {
     return (
         <div id="Main-Player" style={{ background: PlayerState.DominantColor }}>
             <Controls audioRef={audioRef}/>
-            {audioRef.current && <SongCover />}
+            {(audioRef.current && PlayerState.Data.Cover) && <SongCover />}
             <Options />
         </div>
     )
