@@ -5,13 +5,23 @@ export interface SongProps {
     Title: string,
     Artist: ArtistList[],
     Album: {
-        URL: string,
+        Id: string
+        URL: string
         Name: string
     }
     imageURL: string
     URL: string,
     Year: number,
     Genres: string[]
+}
+
+export interface PlaylistProps {
+    Id: strign
+    Title: string
+    Description: string
+    imageURL: string
+    URL: string
+    Songs: SongProps[]
 }
 
 type ArtistList = {
@@ -33,7 +43,7 @@ export interface ContextProps {
 
 // Sidebar Context Types
 export type INITIALPROPS_SIDEBAR = {
-    Sidebar: "" | "Friends"
+    Sidebar: string | "Queue" | "Friends" | ""
 }
 export type INITIALPROPS_SIDEBAR_MODIFICATOR = {
     action: "Sidebar",
@@ -52,6 +62,7 @@ type INITIAL_PROPS_DATA = {
     Src: string,
     Name: string,
     Artist: ArtistList[],
+    AlbumId: string
     Album: string,
     Cover: string,
     ArtistURL: string
@@ -89,12 +100,12 @@ export type INITIALPROPS_PLAYERSTATS = {
     AlbumURL: string
 }
 export type INITIALPROPS_QUEUE = {
-    List: INITIALPROPS_PLAYERSTATS[] | [],
+    List: SongProps[] | [],
 }
 
 export type INITIALPROPS_QUEUE_MODIFICATOR = {
     action: "List",
-    value: any
+    value: SongProps[] | []
 }
 
 export interface QueueContextProps {

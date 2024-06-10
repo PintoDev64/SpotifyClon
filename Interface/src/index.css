@@ -40,6 +40,16 @@
   padding: 0;
 }
 
+*::-webkit-scrollbar {
+  appearance: none;
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--StrokeDef);
+}
+
 path {
   strokeWidth: 2.25;
 }

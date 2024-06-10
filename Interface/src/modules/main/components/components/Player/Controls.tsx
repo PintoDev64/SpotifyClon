@@ -1,10 +1,10 @@
 import { MutableRefObject, useContext, useEffect } from "react";
 
 // Contexts
-import { PlayerContext } from "../../../../../context";
+import { PlayerContext, QueueContext } from "../../../../../context";
 
 // H
-import { createMetaDataPlayer, getDominantColor } from "../../../helpers";
+import { createMetaDataPlayer } from "../../../helpers";
 import { LoopOff, LoopOn, NextSong, Pause, Play, PreviousSong } from "../../../../../assets/Player";
 import SongSlider from "./SongSlider";
 
@@ -14,45 +14,82 @@ interface Props {
 
 export default function Controls({ audioRef }: Props) {
 
+    const { QueueState, ModifyQueue } = useContext(QueueContext);
     const { ModifyPlayer, PlayerState } = useContext(PlayerContext);
 
+    const handleNextSong = () => {
+        audioRef.current.currentTime = 0;
+        if (QueueState.List.length > 0) {
+            ModifyPlayer({
+                action: "Data",
+                value: {
+                    Id: QueueState.List[0].Id,
+                    Src: QueueState.List[0].URL,
+                    Album: QueueState.List[0].Album.Name,
+                    AlbumId: QueueState.List[0].Album.Id,
+                    AlbumURL: QueueState.List[0].Album.URL,
+                    Artist: QueueState.List[0].Artist,
+                    ArtistURL: QueueState.List[0].Artist[0].URL,
+                    Cover: QueueState.List[0].imageURL,
+                    Name: QueueState.List[0].Title,
+                    Year: QueueState.List[0].Year,
+                    Genres: QueueState.List[0].Genres
+                }
+            })
+            ModifyQueue({
+                action: "List",
+                value: QueueState.List.splice(1, QueueState.List.length)
+            })
+        }
+        if (QueueState.List.length !== 0) {
+            setTimeout(() => {
+                if (PlayerState.State && QueueState.List.length > 0) {
+                    ModifyPlayer({ action: "State", value: false })
+                    setTimeout(() => {
+                        ModifyPlayer({ action: "State", value: true })
+                    }, 100);
+                } else {
+                    ModifyPlayer({ action: "State", value: true })
+                }
+            }, 100)
+        } else {
+            ModifyPlayer({ action: "State", value: false })
+        }
+    }
+
     useEffect(() => {
-        localStorage.setItem("loop",`${PlayerState.Loop}`)
+        localStorage.setItem("loop", `${PlayerState.Loop}`)
         audioRef.current.loop = PlayerState.Loop
-        audioRef.current.addEventListener("ended", () => {
-            if (!PlayerState.Loop) {
-                pauseAudio();
-            }
-        });
     }, [PlayerState.Loop])
-    
+
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.src = PlayerState.Data.Src
             audioRef.current.addEventListener("loadedmetadata", (_event) => {
                 createMetaDataPlayer(PlayerState, playAudio, pauseAudio)
-
             });
         }
     }, [PlayerState.Data.Src]);
 
+    useEffect(() => {
+        console.log(QueueState.List.length);
+        audioRef.current.addEventListener("ended", () => {
+            console.log(QueueState.List.length);
+            if (!PlayerState.Loop && QueueState.List.length === 0) {
+                pauseAudio();
+            } else {
+                console.log("Siguiente");
+                handleNextSong()
+            }
+        });
+    }, [])
+
     const playAudio = () => {
-        getDominantColor(PlayerState.Data.Cover)
-            .then((value) => ModifyPlayer({
-                action: "DominantColor",
-                value
-            }));
         ModifyPlayer({ action: "State", value: true });
-        navigator.mediaSession.playbackState = "playing";
     }
 
     const pauseAudio = () => {
-        ModifyPlayer({
-            action: "DominantColor",
-            value: "var(--BgSecondary)"
-        })
         ModifyPlayer({ action: "State", value: false });
-        navigator.mediaSession.playbackState = "paused";
     }
 
     const handlePlay = () => {
@@ -78,13 +115,13 @@ export default function Controls({ audioRef }: Props) {
                     }
                 </button>
             </div>
-            <div className="Main-Player-Controls-Button">
+            {/* <div className="Main-Player-Controls-Button">
                 <button id="Main-Player-Controls-PreviousSong-Button" className="Main-Player-Controls-Button-Elements">
                     <PreviousSong />
                 </button>
-            </div>
+            </div> */}
             <div className="Main-Player-Controls-Button">
-                <button id="Main-Player-Controls-NextSong-Button" className="Main-Player-Controls-Button-Elements">
+                <button id="Main-Player-Controls-NextSong-Button" className="Main-Player-Controls-Button-Elements" onClick={handleNextSong}>
                     <NextSong />
                 </button>
             </div>

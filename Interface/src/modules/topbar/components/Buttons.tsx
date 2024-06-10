@@ -26,10 +26,10 @@ export default function Buttons() {
             </Link>
             <button className="Topbar-Buttons-Buttons" onClick={() => ModifySidebar({
                 action: "Sidebar",
-                value: SidebarState.Sidebar === "Friends" ? "" : "Friends"
+                value: SidebarState.Sidebar !== "Friends" ? "Friends" : ""
             })}>
                 {
-                    (SidebarState.Sidebar !== "Friends") ? <FriendsClose /> : <FriendsOpen />
+                    SidebarState.Sidebar !== "Friends" ? <FriendsClose /> : <FriendsOpen />
                 }
             </button>
             <Link to="settings" className="Topbar-Buttons-Buttons">

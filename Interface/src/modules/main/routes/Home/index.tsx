@@ -14,44 +14,8 @@ export default function HomePage() {
         <>
             <ScrollSection Title="Made For User" URL="/section">
                 {
-                    PLAYLIST_EXAMPLES.map(({ Description, Title, imageURL, URL }, index) =>
-                        <Playlist key={index} Description={Description} Title={Title} imageURL={imageURL} URL={URL} />
-                    )
-                }
-                {
-                    SONGS_EXAMPLES.map(({ Id, Genres, Year, Artist, Album, Title, imageURL, URL }, index) =>
-                        <Song key={index} Id={Id} Artist={Artist} Title={Title} imageURL={imageURL} URL={URL} Album={Album} Genres={Genres} Year={Year} />
-                    )
-                }
-            </ScrollSection>
-            <ScrollSection Title="Made For User" URL="/section">
-                {
-                    PLAYLIST_EXAMPLES.map(({ Description, Title, imageURL, URL }, index) =>
-                        <Playlist key={index} Description={Description} Title={Title} imageURL={imageURL} URL={URL} />
-                    )
-                }
-                {
-                    SONGS_EXAMPLES.map(({ Id, Genres, Year, Artist, Album, Title, imageURL, URL }, index) =>
-                        <Song key={index} Id={Id} Artist={Artist} Title={Title} imageURL={imageURL} URL={URL} Album={Album} Genres={Genres} Year={Year} />
-                    )
-                }
-            </ScrollSection>
-            <ScrollSection Title="Made For User" URL="/section">
-                {
-                    PLAYLIST_EXAMPLES.map(({ Description, Title, imageURL, URL }, index) =>
-                        <Playlist key={index} Description={Description} Title={Title} imageURL={imageURL} URL={URL} />
-                    )
-                }
-                {
-                    SONGS_EXAMPLES.map(({ Id, Genres, Year, Artist, Album, Title, imageURL, URL }, index) =>
-                        <Song key={index} Id={Id} Artist={Artist} Title={Title} imageURL={imageURL} URL={URL} Album={Album} Genres={Genres} Year={Year} />
-                    )
-                }
-            </ScrollSection>
-            <ScrollSection Title="Made For User" URL="/section">
-                {
-                    PLAYLIST_EXAMPLES.map(({ Description, Title, imageURL, URL }, index) =>
-                        <Playlist key={index} Description={Description} Title={Title} imageURL={imageURL} URL={URL} />
+                    PLAYLIST_EXAMPLES.map(({ Description,Id, Songs, Title, imageURL, URL }, index) =>
+                        <Playlist key={index} Description={Description} Title={Title} imageURL={imageURL} URL={URL} Id={Id} Songs={Songs}/>
                     )
                 }
                 {

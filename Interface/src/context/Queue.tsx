@@ -2,7 +2,7 @@ import { useReducer } from "react"
 import { QueueContext } from "."
 import { ContextProps, INITIALPROPS_QUEUE, INITIALPROPS_QUEUE_MODIFICATOR } from "../vite-env"
 
-export default function PlayerContextComponent({ children }: ContextProps) {
+export default function QueueContextComponent({ children }: ContextProps) {
 
     const INITIAL_PROPS: INITIALPROPS_QUEUE = {
         List: []

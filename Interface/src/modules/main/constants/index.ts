@@ -1,4 +1,4 @@
-import { SongProps } from "../../../vite-env"
+import { PlaylistProps, SongProps } from "../../../vite-env"
 
 export const MAINSTYLE = {
     Friends: {
@@ -11,21 +11,6 @@ export const MAINSTYLE = {
     }
 }
 
-export const PLAYLIST_EXAMPLES = [
-    {
-        Title: "Discover Weekly",
-        Description: "Your weekly mixtape of fresh music",
-        imageURL: "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/43EFKgbWhoTr7lGkU2sUuPVSURXqmVhfdqYiU_p1-Zp5p4ZLmqixFb06yU6_iqpbS5edsvKDILrz2FrTh0xSpOIB5A2m2MLL71H6hYXxZ-s=/NjE6NjE6MzFUNTEtNjAtNA==",
-        URL: "/playlist"
-    },
-    {
-        Title: "Wakamo",
-        Description: "Playlist for Blue archive Fans",
-        imageURL: "https://steamuserimages-a.akamaihd.net/ugc/1850418301803078440/DEA1D8E30EE56AF19872FD292A96E92CE183B68D/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
-        URL: "/playlist"
-    }
-]
-
 export const SONGS_EXAMPLES: SongProps[] = [
     {
         Id: 1,
@@ -37,6 +22,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
             Role: ["Main artist", "Composer"]
         }],
         Album: {
+            Id: "10",
             URL: "/Starboy",
             Name: "Starboy"
         },
@@ -51,10 +37,11 @@ export const SONGS_EXAMPLES: SongProps[] = [
         Artist: [{
             URL: "/a_hisa",
             Name: "a_hisa",
-            ImageURL: "https://i.scdn.co/image/ab67616100005174a53f14485bfdfc4917a5e448" ,
+            ImageURL: "https://i.scdn.co/image/ab67616100005174a53f14485bfdfc4917a5e448",
             Role: ["Main artist"]
         }],
         Album: {
+            Id: "10",
             URL: "/Colors3",
             Name: "Colors 3"
         },
@@ -62,5 +49,36 @@ export const SONGS_EXAMPLES: SongProps[] = [
         Year: 2017,
         URL: "/LeaveItAlone.mp3",
         Genres: ["New Age", "J-Pop", "Anime"]
+    },
+    {
+        Id: 3,
+        Title: "After Hours",
+        Artist: [{
+            URL: "/theweeknd",
+            Name: "The Weeknd",
+            ImageURL: "https://i.scdn.co/image/ab6761610000f178214f3cf1cbe7139c1e26ffbb",
+            Role: ["Main artist", "Composer"]
+        }],
+        Album: {
+            Id: "10",
+            URL: "/AfterHours",
+            Name: "After Hours"
+        },
+        imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
+        Year: 2016,
+        URL: "/AfterHours.mp3",
+        Genres: ["R&B/Soul", "Alternativa/Independiente"]
+    }
+]
+
+
+export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
+    {
+        Id: "10",
+        Title: "Discover Weekly",
+        Description: "Your weekly mixtape of fresh music",
+        imageURL: "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/43EFKgbWhoTr7lGkU2sUuPVSURXqmVhfdqYiU_p1-Zp5p4ZLmqixFb06yU6_iqpbS5edsvKDILrz2FrTh0xSpOIB5A2m2MLL71H6hYXxZ-s=/NjE6NjE6MzFUNTEtNjAtNA==",
+        URL: "/playlist",
+        Songs: SONGS_EXAMPLES
     }
 ]

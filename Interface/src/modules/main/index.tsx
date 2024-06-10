@@ -19,6 +19,7 @@ import { PlayerContext, SidebarContext } from "../../context";
 
 // Contants
 import { MAINSTYLE } from "./constants";
+import Queue from "./components/Queue";
 
 export default function Main() {
 
@@ -38,7 +39,7 @@ export default function Main() {
     return (
         <main id="Main">
             <div id="MainContent" style={
-                SidebarState.Sidebar === "Friends"
+                SidebarState.Sidebar !== ""
                     ? MAINSTYLE.Friends.true
                     : MAINSTYLE.Friends.false
             }>
@@ -51,7 +52,7 @@ export default function Main() {
                     </Routes>
                 </div>
                 {
-                    SidebarState.Sidebar === "Friends" && <Friends />
+                    SidebarState.Sidebar === "Friends" ? <Friends /> : <Queue />
                 }
             </div>
             <Player />

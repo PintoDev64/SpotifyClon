@@ -1,5 +1,5 @@
-aside#Friends {
-    grid-area: Friends;
+#Sidebar {
+    grid-area: Sidebar;
     width: calc(100% - 5px);
     height: 100%;
     padding: 26px;
@@ -25,6 +25,8 @@ aside#Friends {
     background-color: var(--BgPrimary);
 }
 
+#Song-Image-Play-Active,
+#Playlist-Image-Play-Active,
 .Song:hover .Song-Image-Play,
 .Playlist:hover .Playlist-Image-Play {
     z-index: 5;
@@ -41,6 +43,7 @@ aside#Friends {
     position: relative;
     height: calc(170px + 9px);
 }
+
 .Playlist-Image {
     position: relative;
     display: flex;
@@ -154,6 +157,8 @@ aside#Friends {
 .Main-Player-Controls-Button-Elements {
     width: 30px;
     height: 55px;
+    display: grid;
+    place-content: center;
 }
 
 #Main-Player-Controls-Play,
@@ -284,6 +289,54 @@ aside#Friends {
     display: flex;
     height: 55px;
     justify-content: flex-end;
+}
+
+/* ------ Queue List ------ */
+
+#Sidebar-Queue-Title {
+    font-family: "Satoshi Bold";
+    margin: 30px 0;
+}
+
+#Sidebar-Queue {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Sidebar-Queue-Elements {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Sidebar-Queue-Elements:nth-child(even) {
+    margin: 11px 0;
+}
+
+.Sidebar-Queue-Elements-Image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.Sidebar-Queue-Elements-Details {
+    font-family: "Satoshi Medium";
+    margin: 0 0 0 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 40px;
+}
+
+.Sidebar-Queue-Elements-Details p {
+    font-size: 16px;
+    color: var(--FgPrimary);
+}
+
+.Sidebar-Queue-Elements-Details small {
+    color: var(--FgSecondary);
 }
 
 /* ------ Media Queries ------ */

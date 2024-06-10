@@ -20,9 +20,15 @@
     box-sizing: border-box;
     display: grid;
     grid-template-areas:
-        "Content Friends";
+        "Content Sidebar";
     justify-content: space-between;
     justify-items: end;
+}
+
+#Sidebar {
+    grid-area: Sidebar;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 #MainContent-Home {
@@ -34,16 +40,6 @@
     box-sizing: border-box;
     border-radius: 10px;
     outline: 1px var(--StrokeDef) solid;
-}
-
-#MainContent-Home::-webkit-scrollbar {
-    appearance: none;
-    width: 5px;
-}
-
-#MainContent-Home::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: var(--StrokeDef);
 }
 
 #MainContent-Home-Content {
