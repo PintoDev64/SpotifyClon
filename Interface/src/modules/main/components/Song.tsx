@@ -3,23 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Pause, Play } from "../../../assets/Player";
 import { PlayerContext } from "../../../context";
 import { getDominantColor } from "../helpers";
-
-interface SongProps {
-    Id: number,
-    Title: string,
-    Artist: {
-        URL: string,
-        Name: string
-    },
-    Album: {
-        URL: string,
-        Name: string
-    }
-    imageURL: string
-    URL: string,
-    Year: number,
-    Genres: string[]
-}
+import { SongProps } from "../../../vite-env";
 
 export default function Song({ Id, Title, Album, imageURL, Artist, URL, Year, Genres }: SongProps) {
 
@@ -36,8 +20,8 @@ export default function Song({ Id, Title, Album, imageURL, Artist, URL, Year, Ge
                     Src: URL,
                     Album: Album.Name,
                     AlbumURL: Album.URL,
-                    Artist: Artist.Name,
-                    ArtistURL: Artist.URL,
+                    Artist: Artist,
+                    ArtistURL: Artist[0].URL,
                     Cover: imageURL,
                     Name: Title,
                     Year,
@@ -84,7 +68,7 @@ export default function Song({ Id, Title, Album, imageURL, Artist, URL, Year, Ge
                 </span>
                 {
                     Artist
-                        ? <span className="Song-Details-Description">{Artist.Name}</span>
+                        ? <span className="Song-Details-Description">{Artist[0].Name}</span>
                         : <span className="Song-Details-Description">{Album.Name}</span>
                 }
             </div>

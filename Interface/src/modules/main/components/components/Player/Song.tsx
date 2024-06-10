@@ -21,7 +21,7 @@ export default function SongCover({ }) {
                 </span>
                 <span className="Main-Player-Song-Details-Extra">
                     <Link to={PlayerState.Data.ArtistURL}>
-                        {PlayerState.Data.Artist}
+                        {PlayerState.Data.Artist[0].Name}
                     </Link>
                 </span>
                 <span className="Main-Player-Song-Details-Extra">

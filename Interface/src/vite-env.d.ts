@@ -1,5 +1,26 @@
 /// <reference types="vite/client" />
 
+export interface SongProps {
+    Id: number,
+    Title: string,
+    Artist: ArtistList[],
+    Album: {
+        URL: string,
+        Name: string
+    }
+    imageURL: string
+    URL: string,
+    Year: number,
+    Genres: string[]
+}
+
+type ArtistList = {
+    URL: string,
+    Name: string,
+    ImageURL: string,
+    Role: string[]
+}
+
 export interface controls {
     Maximize: () => void
     Minimize: () => void
@@ -25,11 +46,12 @@ export interface SidebarContextProps {
 }
 
 // Player Context Types
+
 type INITIAL_PROPS_DATA = {
     Id: number,
     Src: string,
     Name: string,
-    Artist: string,
+    Artist: ArtistList[],
     Album: string,
     Cover: string,
     ArtistURL: string

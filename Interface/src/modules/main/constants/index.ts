@@ -1,3 +1,5 @@
+import { SongProps } from "../../../vite-env"
+
 export const MAINSTYLE = {
     Friends: {
         true: {
@@ -24,14 +26,16 @@ export const PLAYLIST_EXAMPLES = [
     }
 ]
 
-export const SONGS_EXAMPLES = [
+export const SONGS_EXAMPLES: SongProps[] = [
     {
         Id: 1,
         Title: "A lonely Night",
-        Artist: {
+        Artist: [{
             URL: "/theweeknd",
-            Name: "The Weeknd"
-        },
+            Name: "The Weeknd",
+            ImageURL: "https://i.scdn.co/image/ab6761610000f178214f3cf1cbe7139c1e26ffbb",
+            Role: ["Main artist", "Composer"]
+        }],
         Album: {
             URL: "/Starboy",
             Name: "Starboy"
@@ -44,10 +48,12 @@ export const SONGS_EXAMPLES = [
     {
         Id: 2,
         Title: "Leave It Alone",
-        Artist: {
+        Artist: [{
             URL: "/a_hisa",
-            Name: "a_hisa"
-        },
+            Name: "a_hisa",
+            ImageURL: "https://i.scdn.co/image/ab67616100005174a53f14485bfdfc4917a5e448" ,
+            Role: ["Main artist"]
+        }],
         Album: {
             URL: "/Colors3",
             Name: "Colors 3"
