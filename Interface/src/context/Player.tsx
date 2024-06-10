@@ -16,7 +16,7 @@ export default function PlayerContextComponent({ children }: ContextProps) {
             Id: 0,
             Src: "",
             Album: "",
-            Artist: "",
+            Artist: [],
             Name: "",
             Cover: "",
             AlbumURL: "",

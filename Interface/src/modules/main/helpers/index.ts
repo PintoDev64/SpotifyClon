@@ -31,7 +31,7 @@ export function getDominantColor(imageUrl: string): Promise<string> {
 export function createMetaDataPlayer(PlayerState: INITIALPROPS_PLAYER, playAudio: () => void, pauseAudio: () => void) {
   navigator.mediaSession.metadata = new MediaMetadata({
     title: PlayerState.Data.Name,
-    artist: PlayerState.Data.Artist,
+    artist: PlayerState.Data.Artist[0].Name,
     album: PlayerState.Data.Album,
     artwork: [
       {
