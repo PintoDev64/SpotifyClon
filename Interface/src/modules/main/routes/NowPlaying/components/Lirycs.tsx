@@ -5,39 +5,27 @@ export default function Lirycs() {
 
     const { PlayerState } = useContext(PlayerContext);
     const Letras = useRef<HTMLDivElement>(null!)
-    const [elementCount, setElementCount] = useState(0);
-    const [top, setTop] = useState(30);
-
-    console.log(elementCount);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        if (Letras.current) {
-            const count = Letras.current.getElementsByClassName('NowPlaying-Content-DownDetails-Lirycs-Text-Pass').length;
-            setElementCount(count);
+        if (PlayerState.Data.Lirycs) {
+            const index = PlayerState.Data.Lirycs.findIndex(({ time }) => time > PlayerState.CurrentTime);
+            setCurrentIndex(index === -1 ? PlayerState.Data.Lirycs.length : index);
         }
-        if (PlayerState.CurrentTime === 0) {
-            setTop(30)
-        }
-    }, [PlayerState.CurrentTime]); // Observa los cambios en PlayerState.CurrentTime
+    }, [PlayerState.CurrentTime]);
 
-    useEffect(() => {
-        if (elementCount > 5) {
-            setTop(top - ((elementCount % 2) === 0 ? 68 : 38))
-        }
-    }, [elementCount]); // Observa los cambios en elementCount
+    // Calcula la posición superior basada en el índice actual
+    const top = currentIndex > 3 ? ((currentIndex - 2) * -43) + 43 : 25; // Ajusta el valor según el tamaño de tus letras
 
     return (
-        <div id="NowPlaying-Content-DownDetails-Lirycs" ref={Letras}>
-            <div id="NowPlaying-Content-DownDetails-Lirycs-Container" style={{
-                top
-            }}>
+        <div id="NowPlaying-Content-DownDetails-Lirycs">
+            <div id="NowPlaying-Content-DownDetails-Lirycs-Container" style={{ top }}>
                 {
-                    PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ time, text }) =>
-                        <p className={`NowPlaying-Content-DownDetails-Lirycs-Text ${PlayerState.CurrentTime > time ? "NowPlaying-Content-DownDetails-Lirycs-Text-Pass" : "NowPlaying-Content-DownDetails-Lirycs-Text-NonPass"}`}>{text}</p>
+                    PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ time, text }, index) =>
+                        <p ref={Letras} className={`NowPlaying-Content-DownDetails-Lirycs-Text ${index < currentIndex ? "NowPlaying-Content-DownDetails-Lirycs-Text-Pass" : "NowPlaying-Content-DownDetails-Lirycs-Text-NonPass"}`}>{text}</p>
                     )
                 }
             </div>
         </div>
     )
 }
-

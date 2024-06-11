@@ -195,13 +195,10 @@
 
 .NowPlaying-Content-DownDetails-Lirycs-Text {
     font-family: "Satoshi Bold";
-    height: 38;
+    height: 40;
     font-size: 28px;
     cursor: default;
-}
-
-.NowPlaying-Content-DownDetails-Lirycs-Text:nth-child(even) {
-    margin: 15px 0;
+    margin: 5px 0;
 }
 
 .NowPlaying-Content-DownDetails-Lirycs-Text-Pass {
