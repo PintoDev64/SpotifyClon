@@ -160,6 +160,8 @@
     height: 100%;
     padding: 37px;
     width: calc(100% - 74px);
+    display: flex;
+    justify-content: center;
 }
 
 #NowPlaying-Content-DownDetails-Lirycs-Container {
