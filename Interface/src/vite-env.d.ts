@@ -49,7 +49,7 @@ export interface ContextProps {
 
 // Sidebar Context Types
 export type INITIALPROPS_SIDEBAR = {
-    Sidebar: "Queue" | "Friends" | ""
+    Sidebar: "Queue" | "Friends" | "" | string
 }
 export type INITIALPROPS_SIDEBAR_MODIFICATOR = {
     action: "Sidebar",
