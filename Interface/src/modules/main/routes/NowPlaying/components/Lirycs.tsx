@@ -21,7 +21,7 @@ export default function Lirycs() {
         <div id="NowPlaying-Content-DownDetails-Lirycs">
             <div id="NowPlaying-Content-DownDetails-Lirycs-Container" style={{ top }}>
                 {
-                    PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ time, text }, index) =>
+                    PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ text }, index) =>
                         <p ref={Letras} className={`NowPlaying-Content-DownDetails-Lirycs-Text ${index < currentIndex ? "NowPlaying-Content-DownDetails-Lirycs-Text-Pass" : "NowPlaying-Content-DownDetails-Lirycs-Text-NonPass"}`}>{text}</p>
                     )
                 }
