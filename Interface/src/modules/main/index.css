@@ -116,6 +116,17 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    animation: appear .15s ease-out;
+}
+
+@keyframes appear {
+    0% {
+        margin: 100% 0 0 0;
+    }
+    100% {
+        margin: 0;
+        
+    }
 }
 
 #NowPlaying-Content {
