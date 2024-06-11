@@ -7,6 +7,8 @@ import { PlayerContext, QueueContext } from "../../../../../context";
 import { createMetaDataPlayer } from "../../../helpers";
 import { LoopOff, LoopOn, NextSong, Pause, Play, PreviousSong } from "../../../../../assets/Player";
 import SongSlider from "./SongSlider";
+import { SongProps } from "../../../../../vite-env";
+import { PLAYLIST_EXAMPLES } from "../../../constants";
 
 interface Props {
     audioRef: MutableRefObject<HTMLAudioElement>
@@ -17,72 +19,59 @@ export default function Controls({ audioRef }: Props) {
     const { QueueState, ModifyQueue } = useContext(QueueContext);
     const { ModifyPlayer, PlayerState } = useContext(PlayerContext);
 
-    const handleNextSong = () => {
+    const handleNextSong = (List: SongProps[]) => {
+        const PlaylistIndex = PLAYLIST_EXAMPLES.findIndex(({ Id }) => PlayerState.Data.Album.Id === Id)
         audioRef.current.currentTime = 0;
-        if (QueueState.List.length > 0) {
+        if (List.length !== 0) {
             ModifyPlayer({
                 action: "Data",
                 value: {
-                    Id: QueueState.List[0].Id,
-                    Src: QueueState.List[0].URL,
-                    Album: QueueState.List[0].Album.Name,
-                    AlbumId: QueueState.List[0].Album.Id,
-                    AlbumURL: QueueState.List[0].Album.URL,
-                    Artist: QueueState.List[0].Artist,
-                    ArtistURL: QueueState.List[0].Artist[0].URL,
-                    Cover: QueueState.List[0].imageURL,
-                    Name: QueueState.List[0].Title,
-                    Year: QueueState.List[0].Year,
-                    Genres: QueueState.List[0].Genres
+                    ...List[0]
                 }
             })
             ModifyQueue({
                 action: "List",
-                value: QueueState.List.splice(1, QueueState.List.length)
+                value: [...List].splice(1, List.length)
             })
-        }
-        if (QueueState.List.length !== 0) {
-            setTimeout(() => {
-                if (PlayerState.State && QueueState.List.length > 0) {
-                    ModifyPlayer({ action: "State", value: false })
-                    setTimeout(() => {
-                        ModifyPlayer({ action: "State", value: true })
-                    }, 100);
-                } else {
-                    ModifyPlayer({ action: "State", value: true })
-                }
-            }, 100)
+            console.log("Siguiente Cancion");
+            ModifyPlayer({ action: "State", value: true })
         } else {
+            console.log("detenido");
+            ModifyPlayer({
+                action: "Data",
+                value: {
+                    ...PLAYLIST_EXAMPLES[PlaylistIndex].Songs[0]
+                }
+            })
+            ModifyQueue({
+                action: "List",
+                value: [...PLAYLIST_EXAMPLES[PlaylistIndex].Songs].splice(1, PLAYLIST_EXAMPLES[PlaylistIndex].Songs.length)
+            })
             ModifyPlayer({ action: "State", value: false })
         }
     }
 
     useEffect(() => {
-        localStorage.setItem("loop", `${PlayerState.Loop}`)
         audioRef.current.loop = PlayerState.Loop
     }, [PlayerState.Loop])
 
     useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.src = PlayerState.Data.Src
-            audioRef.current.addEventListener("loadedmetadata", (_event) => {
-                createMetaDataPlayer(PlayerState, playAudio, pauseAudio)
-            });
+            audioRef.current.src = PlayerState.Data.URL
+            createMetaDataPlayer(PlayerState, QueueState, playAudio, pauseAudio, handleNextSong)
         }
-    }, [PlayerState.Data.Src]);
+    }, [PlayerState.Data.URL]);
 
     useEffect(() => {
-        console.log(QueueState.List.length);
         audioRef.current.addEventListener("ended", () => {
-            console.log(QueueState.List.length);
             if (!PlayerState.Loop && QueueState.List.length === 0) {
                 pauseAudio();
             } else {
                 console.log("Siguiente");
-                handleNextSong()
+                handleNextSong(QueueState.List)
             }
         });
-    }, [])
+    }, [QueueState.List])
 
     const playAudio = () => {
         ModifyPlayer({ action: "State", value: true });
@@ -121,7 +110,7 @@ export default function Controls({ audioRef }: Props) {
                 </button>
             </div> */}
             <div className="Main-Player-Controls-Button">
-                <button id="Main-Player-Controls-NextSong-Button" className="Main-Player-Controls-Button-Elements" onClick={handleNextSong}>
+                <button id="Main-Player-Controls-NextSong-Button" className="Main-Player-Controls-Button-Elements" onClick={() => handleNextSong(QueueState.List)}>
                     <NextSong />
                 </button>
             </div>

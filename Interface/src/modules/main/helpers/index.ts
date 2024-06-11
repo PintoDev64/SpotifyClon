@@ -1,4 +1,4 @@
-import { INITIALPROPS_PLAYER } from "../../../vite-env";
+import { INITIALPROPS_PLAYER, INITIALPROPS_QUEUE, SongProps } from "../../../vite-env";
 
 export function getDominantColor(imageUrl: string): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -28,21 +28,27 @@ export function getDominantColor(imageUrl: string): Promise<string> {
   });
 }
 
-export function createMetaDataPlayer(PlayerState: INITIALPROPS_PLAYER, playAudio: () => void, pauseAudio: () => void) {
-  navigator.mediaSession.metadata = new MediaMetadata({
-    title: PlayerState.Data.Name,
-    artist: PlayerState.Data.Artist[0].Name,
-    album: PlayerState.Data.Album,
-    artwork: [
-      {
-        src: PlayerState.Data.Cover,
-        sizes: "192x192",
-        type: "image/png"
-      }
-    ]
-  });
-  navigator.mediaSession.setActionHandler("play", playAudio);
-  navigator.mediaSession.setActionHandler("pause", pauseAudio);
-  navigator.mediaSession.setActionHandler("previoustrack", () => { });
-  navigator.mediaSession.setActionHandler("nexttrack", () => { });
+export function createMetaDataPlayer(PlayerState: INITIALPROPS_PLAYER, QueueState: INITIALPROPS_QUEUE, playAudio: () => void, pauseAudio: () => void, handleNextSong: (List: SongProps[]) => void) {
+
+  const { Title, Artist, Album, imageURL } = PlayerState.Data;
+
+  if (Title && Artist && Album && imageURL) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: Title,
+      artist: Artist[0].Name,
+      album: Album.Name,
+      artwork: [
+        {
+          src: imageURL,
+          sizes: "192x192",
+          type: "image/png"
+        }
+      ]
+    });
+    navigator.mediaSession.setActionHandler("play", playAudio);
+    navigator.mediaSession.setActionHandler("pause", pauseAudio);
+    navigator.mediaSession.setActionHandler("previoustrack", () => { });
+    navigator.mediaSession.setActionHandler("nexttrack", () =>handleNextSong(QueueState.List));
+  }
+
 }

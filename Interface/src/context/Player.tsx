@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 
 // Context
 import { PlayerContext } from ".";
@@ -7,21 +7,23 @@ import { PlayerContext } from ".";
 import { ContextProps, INITIALPROPS_PLAYER, INITIALPROPS_PLAYER_MODIFICATOR } from "../vite-env";
 
 export default function PlayerContextComponent({ children }: ContextProps) {
-
     const INITIAL_PROPS: INITIALPROPS_PLAYER = {
         State: false,
-        Loop: (localStorage.getItem("loop") === "true"),
-        Volume: 1,
+        Loop: (localStorage.getItem("Loop") === "true"),
+        Volume: localStorage.getItem("Volume") || "1",
+        CurrentTime: 0,
         Data: {
             Id: 0,
-            Src: "",
-            Album: "",
-            AlbumId: "",
+            URL: "",
+            imageURL: "",
+            Title: "",
+            Album: {
+                Id: "",
+                Name: "",
+                URL: ""
+            },
+            Lirycs: [],
             Artist: [],
-            Name: "",
-            Cover: "",
-            AlbumURL: "",
-            ArtistURL: "",
             Year: 0,
             Genres: []
         },
@@ -36,6 +38,11 @@ export default function PlayerContextComponent({ children }: ContextProps) {
     }
 
     const [State, Dispatch] = useReducer(reducer, INITIAL_PROPS)
+
+    useEffect(() => {
+        localStorage.setItem("Loop", `${State.Loop}`)
+        localStorage.setItem("Volume", `${State.Volume}`)
+    }, [State.Loop, State.Volume])
 
     function ModifyState({ action, value }: INITIALPROPS_PLAYER_MODIFICATOR): void {
         Dispatch({

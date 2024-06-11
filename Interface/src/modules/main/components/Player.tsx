@@ -17,7 +17,7 @@ export default function Player() {
 
     useEffect(() => {
         if (PlayerState.State) {
-            getDominantColor(PlayerState.Data.Cover)
+            getDominantColor(PlayerState.Data.imageURL)
                 .then((value) => ModifyPlayer({
                     action: "DominantColor",
                     value
@@ -32,16 +32,16 @@ export default function Player() {
             navigator.mediaSession.playbackState = "paused";
             audioRef.current.pause();
         }
-    }, [PlayerState.State]);
+    }, [PlayerState.State, PlayerState.Data.URL]);
 
     useEffect(() => {
-        audioRef.current.volume = PlayerState.Volume
+        audioRef.current.volume = parseInt(PlayerState.Volume)
     }, [PlayerState.Volume])
 
     return (
         <div id="Main-Player" style={{ background: PlayerState.DominantColor }}>
             <Controls audioRef={audioRef} />
-            {(audioRef.current && PlayerState.Data.Cover) && <SongCover />}
+            {(audioRef.current && PlayerState.Data.imageURL) && <SongCover />}
             <Options />
         </div>
     )

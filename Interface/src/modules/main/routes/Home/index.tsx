@@ -19,8 +19,8 @@ export default function HomePage() {
                     )
                 }
                 {
-                    SONGS_EXAMPLES.map(({ Id, Genres, Year, Artist, Album, Title, imageURL, URL }, index) =>
-                        <Song key={index} Id={Id} Artist={Artist} Title={Title} imageURL={imageURL} URL={URL} Album={Album} Genres={Genres} Year={Year} />
+                    SONGS_EXAMPLES.map(({ Id, Lirycs, Genres, Year, Artist, Album, Title, imageURL, URL }, index) =>
+                        <Song key={index} Lirycs={Lirycs} Id={Id} Artist={Artist} Title={Title} imageURL={imageURL} URL={URL} Album={Album} Genres={Genres} Year={Year} />
                     )
                 }
             </ScrollSection>

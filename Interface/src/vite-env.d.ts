@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+import { MutableRefObject } from "react"
+
 export interface SongProps {
     Id: number,
     Title: string,
@@ -9,6 +11,10 @@ export interface SongProps {
         URL: string
         Name: string
     }
+    Lirycs: {
+        time: number
+        text: string
+    }[] | []
     imageURL: string
     URL: string,
     Year: number,
@@ -16,7 +22,7 @@ export interface SongProps {
 }
 
 export interface PlaylistProps {
-    Id: strign
+    Id: string
     Title: string
     Description: string
     imageURL: string
@@ -43,7 +49,7 @@ export interface ContextProps {
 
 // Sidebar Context Types
 export type INITIALPROPS_SIDEBAR = {
-    Sidebar: string | "Queue" | "Friends" | ""
+    Sidebar: "Queue" | "Friends" | ""
 }
 export type INITIALPROPS_SIDEBAR_MODIFICATOR = {
     action: "Sidebar",
@@ -57,30 +63,18 @@ export interface SidebarContextProps {
 
 // Player Context Types
 
-type INITIAL_PROPS_DATA = {
-    Id: number,
-    Src: string,
-    Name: string,
-    Artist: ArtistList[],
-    AlbumId: string
-    Album: string,
-    Cover: string,
-    ArtistURL: string
-    AlbumURL: string
-    Year: number
-    Genres: string[]
-}
 export type INITIALPROPS_PLAYER = {
     State: boolean,
     Loop: boolean,
-    Volume: number,
-    Data: INITIAL_PROPS_DATA
+    Volume: string,
+    Data: SongProps
+    CurrentTime: number
     DominantColor: string,
 }
 
 export type INITIALPROPS_PLAYER_MODIFICATOR = {
-    action: "Volume" | "State" | "Loop" | "Data" | "DominantColor",
-    value: INITIAL_PROPS_DATA | INITIALPROPS_PLAYER | boolean | string | number
+    action: "Volume" | "State" | "Loop" | "Data" | "DominantColor" | "CurrentTime",
+    value: SongProps | INITIALPROPS_PLAYER | boolean | string | number
 }
 
 export interface PlayerContextProps {

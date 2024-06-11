@@ -7,19 +7,21 @@ interface Props {
 
 export default function SongSlider({ audio }: Props) {
 
-    const { PlayerState } = useContext(PlayerContext);
+    const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
 
-    const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (audio.src && PlayerState.Data.Src) {
-            navigator.mediaSession.setPositionState({
-                position: audio.currentTime,
-                duration: audio.duration
-            });
-            setCurrentTime(audio.currentTime);
+            if (audio.src && PlayerState.Data.URL) {
+                navigator.mediaSession.setPositionState({
+                    position: audio.currentTime,
+                    duration: audio.duration
+                });
+                ModifyPlayer({
+                    action: "CurrentTime",
+                    value: audio.currentTime
+                });
             }
         }, 1000);
 
@@ -34,20 +36,25 @@ export default function SongSlider({ audio }: Props) {
 
     useEffect(() => {
         audio.addEventListener('timeupdate', handleTimeUpdate)
-
         return () => {
             audio.removeEventListener('timeupdate', handleTimeUpdate)
         }
     }, [audio])
 
     const handleTimeUpdate = () => {
-        setCurrentTime(audio.currentTime)
+        ModifyPlayer({
+            action: "CurrentTime",
+            value: audio.currentTime
+        });
     }
 
     const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newTime = parseFloat(e.target.value);
         audio.currentTime = newTime;
-        setCurrentTime(newTime);
+        ModifyPlayer({
+            action: "CurrentTime",
+            value: newTime
+        });
     }
 
     const formatTime = (time: number) => {
@@ -60,21 +67,21 @@ export default function SongSlider({ audio }: Props) {
     }
 
     // Calcular el porcentaje de la canción que se ha reproducido
-    const playedPercentage = (currentTime / duration) * 100;
+    const playedPercentage = (PlayerState.CurrentTime / duration) * 100;
 
     return (
         <div id="Main-Player-Controls-Timeline">
-            {currentTime > 0 ? <span>{formatTime(currentTime)}</span> : <span>0:00</span>}
+            {PlayerState.CurrentTime > 0 ? <span>{formatTime(PlayerState.CurrentTime)}</span> : <span>0:00</span>}
             <input
                 min={0}
                 max={`${duration}`}
-                value={currentTime}
+                value={PlayerState.CurrentTime}
                 type="range"
                 name="Timeline"
                 id="Main-Player-Controls-Timeline-Slider"
                 onChange={handleSliderChange}
                 style={{
-                    background: currentTime === 0 ? "linear-gradient(90deg, var(--FgSecondary) 0 100%)" : `linear-gradient(90deg, var(--FgPrimary) ${playedPercentage}%, var(--FgSecondary) ${playedPercentage}%)`
+                    background: PlayerState.CurrentTime === 0 ? "linear-gradient(90deg, var(--FgSecondary) 0 100%)" : `linear-gradient(90deg, var(--FgPrimary) ${playedPercentage}%, var(--FgSecondary) ${playedPercentage}%)`
                 }}
             />
             {(!isNaN(audio.duration) && audio.duration) ? <span>{formatTime(duration)}</span> : <span>0:00</span>}

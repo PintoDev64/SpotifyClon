@@ -15,7 +15,7 @@ import Player from "./components/Player";
 import NowPlaying from "./routes/NowPlaying";
 
 // Contexts
-import { PlayerContext, SidebarContext } from "../../context";
+import { PlayerContext, QueueContext, SidebarContext } from "../../context";
 
 // Contants
 import { MAINSTYLE } from "./constants";
@@ -28,21 +28,43 @@ export default function Main() {
 
     const NowPlayingToHome = async () => {
         console.log("redirect");
-        if (PlayerState.Data.Cover.length === 0) {
+        if (PlayerState.Data.imageURL.length === 0) {
             return redirect("/");
         }
         return new Response("", {
             status: 302,
-          });
+        });
+    }
+
+    const StyleMain = () => {
+        if (SidebarState.Sidebar !== "") {
+            if (SidebarState.Sidebar === "Friends") {
+                return MAINSTYLE.Friends.true
+            } else if (SidebarState.Sidebar === "Queue" && PlayerState.Data.Title.length !== 0) {
+                return MAINSTYLE.Friends.true
+            } else {
+                return MAINSTYLE.Friends.false
+            }
+        } else {
+            return MAINSTYLE.Friends.false
+        }
+    }
+
+    const ComponentMain = () => {
+        if (SidebarState.Sidebar !== "") {
+            if (SidebarState.Sidebar === "Friends") {
+                return <Friends />
+            } else if (SidebarState.Sidebar === "Queue" && PlayerState.Data.Title.length !== 0) {
+                return <Queue />
+            }
+        } else {
+            return <></>
+        }
     }
 
     return (
         <main id="Main">
-            <div id="MainContent" style={
-                SidebarState.Sidebar !== ""
-                    ? MAINSTYLE.Friends.true
-                    : MAINSTYLE.Friends.false
-            }>
+            <div id="MainContent" style={StyleMain()}>
                 <div id="MainContent-Home">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
@@ -52,7 +74,7 @@ export default function Main() {
                     </Routes>
                 </div>
                 {
-                    SidebarState.Sidebar === "Friends" ? <Friends /> : <Queue />
+                    ComponentMain()
                 }
             </div>
             <Player />

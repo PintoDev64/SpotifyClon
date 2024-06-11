@@ -12,6 +12,9 @@
   --LightSecondary: #FF0000;
   --LightTertiary: #14ad4c;
 
+  --Primary: #1ED760;
+  --LirycsOpaque: rgba(219,219,219, 20%);
+
   --StrokeDef: #202020
 }
 
@@ -66,6 +69,7 @@ a {
 button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 input:focus,

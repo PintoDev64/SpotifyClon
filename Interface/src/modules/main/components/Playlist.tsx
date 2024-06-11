@@ -12,7 +12,9 @@ import { PlaylistProps } from "../../../vite-env"
 import { Pause, Play } from "../../../assets/Player"
 import Song from "./Song"
 
-export default function Playlist({ Id, Songs, Title, imageURL, Description, URL }: PlaylistProps) {
+export default function Playlist(props: PlaylistProps) {
+
+    const { Id, Songs, Title, imageURL, Description, URL } = props
 
     const { ModifyQueue } = useContext(QueueContext);
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
@@ -24,42 +26,25 @@ export default function Playlist({ Id, Songs, Title, imageURL, Description, URL 
 
     const handleMusicPlayer = () => {
 
-        if ((Songs[0].Id !== PlayerState.Data.Id) && (PlayerState.Data.AlbumId !== Id)) {
+        if ((Songs[0].Id !== PlayerState.Data.Id) && (PlayerState.Data.Album.Id !== Id)) {
             ModifyPlayer({
                 action: "Data",
                 value: {
-                    Id: Songs[0].Id,
-                    Src: Songs[0].URL,
-                    Album: Title,
-                    AlbumId: Id,
-                    AlbumURL: URL,
-                    Artist: Songs[0].Artist,
-                    ArtistURL: Songs[0].Artist[0].URL,
-                    Cover: Songs[0].imageURL,
-                    Name: Songs[0].Title,
-                    Year: Songs[0].Year,
-                    Genres: Songs[0].Genres
+                    ...props.Songs[0]
                 }
             })
             ModifyQueue({
                 action: "List",
                 value: Songs.slice(1, (Songs.length))
             })
-            setTimeout(() => {
-                if (PlayerState.State) {
-                    ModifyPlayer({ action: "State", value: false })
-                    setTimeout(() => {
-                        ModifyPlayer({ action: "State", value: true })
-                    }, 100);
-                } else {
+            if (PlayerState.State) {
+                ModifyPlayer({ action: "State", value: false })
+                setTimeout(() => {
                     ModifyPlayer({ action: "State", value: true })
-                }
-            }, 100)
-            getDominantColor(imageURL)
-                .then(value => ModifyPlayer({
-                    action: "DominantColor",
-                    value
-                }))
+                }, 100);
+            } else {
+                ModifyPlayer({ action: "State", value: true })
+            }
         } else {
             ModifyPlayer({ action: "State", value: !PlayerState.State })
         }
@@ -79,9 +64,9 @@ export default function Playlist({ Id, Songs, Title, imageURL, Description, URL 
             <div className="Playlist-Image">
                 <div className="Playlist-Image-DominantColor_Top" style={{ background: DominantColor }} />
                 <div className="Playlist-Image-DominantColor_Middle" style={{ background: DominantColor }} />
-                <img className="Playlist-Image-Element" src={imageURL} alt={Title} ref={PlaylistCover} width={170} height={170} onClick={() => handleNavigate(URL)}/>
-                <button id={`${PlayerState.Data.AlbumId === Id && "Playlist-Image-Play-Active"}`} className="Playlist-Image-Play" onClick={handleMusicPlayer}>
-                    {(Id === PlayerState.Data.AlbumId && PlayerState.State)
+                <img className="Playlist-Image-Element" src={imageURL} alt={Title} ref={PlaylistCover} width={170} height={170} onClick={() => handleNavigate(URL)} />
+                <button id={`${PlayerState.Data.Album.Id === Id && "Playlist-Image-Play-Active"}`} className="Playlist-Image-Play" onClick={handleMusicPlayer}>
+                    {(Id === PlayerState.Data.Album.Id && PlayerState.State)
                         ? <Play />
                         : <Pause />}
                 </button>

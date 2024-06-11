@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { QueueOff, QueueOn } from "../../../../../assets/Queue";
-import { SidebarContext } from "../../../../../context";
+import { PlayerContext, SidebarContext } from "../../../../../context";
 
 export default function Options() {
 
+    const { PlayerState } = useContext(PlayerContext);
     const { SidebarState, ModifySidebar } = useContext(SidebarContext);
 
     const handleSidebar = () => {
-        ModifySidebar({
+        PlayerState.Data.Title.length !== 0 && ModifySidebar({
             action: "Sidebar",
             value: SidebarState.Sidebar !== "Queue" ? "Queue" : ""
         })
@@ -17,7 +18,7 @@ export default function Options() {
         <div id="Main-Player-Options">
             <button className="Main-Player-Controls-Button-Elements" onClick={handleSidebar}>
                 {
-                    SidebarState.Sidebar === "Queue"
+                    (SidebarState.Sidebar === "Queue") && (PlayerState.Data.Title.length !== 0)
                     ? <QueueOn/>
                     : <QueueOff />
                 }

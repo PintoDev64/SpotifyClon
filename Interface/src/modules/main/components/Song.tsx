@@ -5,7 +5,9 @@ import { PlayerContext, QueueContext } from "../../../context";
 import { getDominantColor } from "../helpers";
 import { SongProps } from "../../../vite-env";
 
-export default function Song({ Id,  Title, Album, imageURL, Artist, URL, Year, Genres }: SongProps) {
+export default function Song(props: SongProps) {
+
+    const { Id,  Title, Album, imageURL, Artist } = props
 
     const { QueueState, ModifyQueue } = useContext(QueueContext);
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
@@ -17,17 +19,7 @@ export default function Song({ Id,  Title, Album, imageURL, Artist, URL, Year, G
             ModifyPlayer({
                 action: "Data",
                 value: {
-                    Id,
-                    Src: URL,
-                    Artist: Artist,
-                    Album: Album.Name,
-                    AlbumURL: Album.URL,
-                    AlbumId: Album.Id,
-                    ArtistURL: Artist[0].URL,
-                    Cover: imageURL,
-                    Name: Title,
-                    Year,
-                    Genres
+                    ...props
                 }
             })
 
@@ -60,7 +52,7 @@ export default function Song({ Id,  Title, Album, imageURL, Artist, URL, Year, G
             <div className="Song-Image">
                 <img className="Song-Image-Element" src={imageURL} alt={Title} ref={PlaylistCover} width={170} height={170} onClick={() => handleNavigate(Album.URL)} />
                 <button id={`${PlayerState.Data.Id === Id && "Song-Image-Play-Active"}`} className="Song-Image-Play" onClick={handleMusicPlayer}>
-                    {(Id === PlayerState.Data.Id && PlayerState.State) && PlayerState.Data.AlbumId === Album.Id
+                    {(Id === PlayerState.Data.Id && PlayerState.State) && PlayerState.Data.Album.Id === Album.Id
                         ? <Play />
                         : <Pause />}
                 </button>

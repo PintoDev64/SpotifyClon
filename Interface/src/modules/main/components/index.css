@@ -167,6 +167,7 @@
 .Main-Player-Controls-Button button {
     display: grid;
     place-content: center;
+    overflow: hidden;
 }
 
 .Main-Player-Controls-Button-Elements svg {
@@ -315,10 +316,23 @@
     margin: 11px 0;
 }
 
-.Sidebar-Queue-Elements-Image {
+.Sidebar-Queue-Elements-Image,
+.Sidebar-Queue-Elements-Image img {
+    position: relative;
     width: 50px;
     height: 50px;
     border-radius: 5px;
+}
+
+#Sidebar-Queue-Elements-Image-NowPlaying {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 51%);
+    display: grid;
+    place-content: center;
 }
 
 .Sidebar-Queue-Elements-Details {
