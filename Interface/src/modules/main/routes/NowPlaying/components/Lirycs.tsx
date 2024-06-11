@@ -21,7 +21,7 @@ export default function Lirycs() {
     }, [PlayerState.CurrentTime]); // Observa los cambios en PlayerState.CurrentTime
 
     useEffect(() => {
-        if (elementCount > 3) {
+        if (elementCount > 5) {
             setTop(top - ((elementCount % 2) === 0 ? 68 : 38))
         }
     }, [elementCount]); // Observa los cambios en elementCount

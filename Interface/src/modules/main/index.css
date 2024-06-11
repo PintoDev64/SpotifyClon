@@ -153,6 +153,7 @@
 
 #NowPlaying-Content-DownDetails-Lirycs-Container {
     position: absolute;
+    transition: .2s ease;
 }
 
 #NowPlaying-Content-DownDetails-Navbar {
