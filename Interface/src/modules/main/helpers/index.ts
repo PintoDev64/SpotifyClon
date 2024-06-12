@@ -1,6 +1,15 @@
 import { INITIALPROPS_PLAYER, INITIALPROPS_QUEUE, SongProps } from "../../../vite-env";
 
-export function getDominantColor(imageUrl: string): Promise<string> {
+export function formatTime(time: number) {
+  if (time == null) return `0:00`
+
+  const seconds = Math.floor(time % 60)
+  const minutes = Math.floor(time / 60)
+
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`
+}
+
+export function getDominantColor(imageUrl: string, transparency?: number): Promise<string> {
   return new Promise((resolve, reject) => {
     let imgEl = new Image();
     imgEl.src = imageUrl;
@@ -23,7 +32,11 @@ export function getDominantColor(imageUrl: string): Promise<string> {
       let g = data[1];
       let b = data[2];
 
-      resolve('rgb(' + r + ',' + g + ',' + b + ')');
+      if (transparency) {
+        resolve('rgba(' + r + ',' + g + ',' + b + ',' + transparency + '%)');
+        } else {
+        resolve('rgb(' + r + ',' + g + ',' + b + ')');
+      }
     }
   });
 }

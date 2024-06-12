@@ -6,9 +6,10 @@ import { PlayerContext, QueueContext } from "../../../../../context";
 // H
 import { createMetaDataPlayer } from "../../../helpers";
 import { LoopOff, LoopOn, NextSong, Pause, Play, PreviousSong } from "../../../../../assets/Player";
-import SongSlider from "./SongSlider";
+import SongSlider from "./Slider";
 import { SongProps } from "../../../../../vite-env";
 import { PLAYLIST_EXAMPLES } from "../../../constants";
+import Volume from "./Volume";
 
 interface Props {
     audioRef: MutableRefObject<HTMLAudioElement>
@@ -124,6 +125,7 @@ export default function Controls({ audioRef }: Props) {
                 </button>
             </div>
             {audioRef.current && <SongSlider audio={audioRef.current} />}
+            <Volume />
         </div>
     )
 }

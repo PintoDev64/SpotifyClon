@@ -16,6 +16,8 @@ export default function Playlist(props: PlaylistProps) {
 
     const { Id, Songs, Title, imageURL, Description, URL } = props
 
+    console.log(URL);
+
     const { ModifyQueue } = useContext(QueueContext);
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
     const [DominantColor, setDominantColor] = useState<string>()
@@ -33,6 +35,10 @@ export default function Playlist(props: PlaylistProps) {
                     ...props.Songs[0]
                 }
             })
+            setTimeout(() => ModifyPlayer({
+                action: "CurrentTime",
+                value: 0
+            }), 100)
             ModifyQueue({
                 action: "List",
                 value: Songs.slice(1, (Songs.length))

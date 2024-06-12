@@ -180,6 +180,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
         imageURL: "https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a",
         Year: 2016,
         URL: "/ALonelyNight.mp3",
+        Duration: 220,
         Genres: ["R&B/Soul", "Hip-hop/rap", "Dance/Electronica"]
     },
     {
@@ -199,6 +200,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
         imageURL: "https://cdn.wikiwiki.jp/to/w/musedash/Leave%20it%20Alone/::ref/Leave%20it%20Alone.jpg?rev=e076bc56357c5bcbe15745fd94c23987&t=20190516154638",
         Year: 2017,
         URL: "/LeaveItAlone.mp3",
+        Duration: 251,
         Lirycs: [],
         Genres: ["New Age", "J-Pop", "Anime"]
     },
@@ -219,6 +221,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
         imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
         Year: 2016,
         URL: "/AfterHours.mp3",
+        Duration: 361,
         Lirycs: [],
         Genres: ["R&B/Soul", "Alternativa/Independiente"]
     }
@@ -231,7 +234,14 @@ export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
         Title: "Discover Weekly",
         Description: "Your weekly mixtape of fresh music",
         imageURL: "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/43EFKgbWhoTr7lGkU2sUuPVSURXqmVhfdqYiU_p1-Zp5p4ZLmqixFb06yU6_iqpbS5edsvKDILrz2FrTh0xSpOIB5A2m2MLL71H6hYXxZ-s=/NjE6NjE6MzFUNTEtNjAtNA==",
-        URL: "/playlist",
+        URL: "/playlist/10",
+        Artist: {
+            ImageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png",
+            Name: "Spotify",
+            Role: ["Main Artist"],
+            URL: ""
+        },
+        Year: 2024,
         Songs: SONGS_EXAMPLES
     }
 ]

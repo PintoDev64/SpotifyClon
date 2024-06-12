@@ -2,22 +2,36 @@ import { useContext } from "react";
 
 // Contexts
 import { PlayerContext } from "../../../../../context";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export default function SongCover({ }) {
+export default function SongCover() {
+
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     const { PlayerState } = useContext(PlayerContext);
 
     return (
         <div id="Main-Player-Song">
-            <Link to="/now-playing">
-                <img id="Main-Player-Song-Cover" src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} />
-            </Link>
+            {
+                pathname.includes("/now-playing")
+                    ? <button onClick={() => navigate(-1)}>
+                        <img id="Main-Player-Song-Cover" src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} />
+                    </button>
+                    : <Link to="/now-playing">
+                        <img id="Main-Player-Song-Cover" src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} />
+                    </Link>
+            }
             <div id="Main-Player-Song-Details">
                 <span id="Main-Player-Song-Details-Name">
-                    <Link to="/now-playing">
-                        {PlayerState.Data.Title}
-                    </Link>
+                    {
+                        pathname.includes("/now-playing")
+                            ? <button onClick={() => navigate(-1)}>
+                                {PlayerState.Data.Title}
+                            </button>
+                            : <Link to="/now-playing">
+                                {PlayerState.Data.Title}
+                            </Link>}
                 </span>
                 <span className="Main-Player-Song-Details-Extra">
                     <Link to={PlayerState.Data.Artist[0].URL}>

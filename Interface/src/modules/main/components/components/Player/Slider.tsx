@@ -1,5 +1,6 @@
 import { ChangeEvent, MutableRefObject, useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../../../../../context";
+import { formatTime } from "../../../helpers";
 
 interface Props {
     audio: HTMLAudioElement
@@ -49,21 +50,14 @@ export default function SongSlider({ audio }: Props) {
     }
 
     const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const newTime = parseFloat(e.target.value);
-        audio.currentTime = newTime;
-        ModifyPlayer({
-            action: "CurrentTime",
-            value: newTime
-        });
-    }
-
-    const formatTime = (time: number) => {
-        if (time == null) return `0:00`
-
-        const seconds = Math.floor(time % 60)
-        const minutes = Math.floor(time / 60)
-
-        return `${minutes}:${seconds.toString().padStart(2, '0')}`
+        if (PlayerState.Data.Title.length !== 0) {
+            const newTime = parseFloat(e.target.value);
+            audio.currentTime = newTime;
+            ModifyPlayer({
+                action: "CurrentTime",
+                value: newTime
+            });
+        } else return
     }
 
     // Calcular el porcentaje de la canción que se ha reproducido

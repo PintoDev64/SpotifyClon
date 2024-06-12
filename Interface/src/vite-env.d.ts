@@ -16,6 +16,7 @@ export interface SongProps {
         text: string
     }[] | []
     imageURL: string
+    Duration: number
     URL: string,
     Year: number,
     Genres: string[]
@@ -26,7 +27,9 @@ export interface PlaylistProps {
     Title: string
     Description: string
     imageURL: string
+    Artist: ArtistList
     URL: string
+    Year: number,
     Songs: SongProps[]
 }
 
@@ -83,16 +86,6 @@ export interface PlayerContextProps {
 }
 
 // Queue Context Types
-export type INITIALPROPS_PLAYERSTATS = {
-    Src: string,
-    Volume: number,
-    Name: string,
-    Artist: string,
-    Album: string,
-    Cover: string,
-    ArtistURL: string
-    AlbumURL: string
-}
 export type INITIALPROPS_QUEUE = {
     List: SongProps[] | [],
 }

@@ -10,16 +10,17 @@ import "./index.css"
 // Components
 import Search from "./routes/Search";
 import Friends from "./components/Friends";
-import LibraryPage from "./routes/Library";
+import LibraryPage from "./routes/Collections";
 import Player from "./components/Player";
 import NowPlaying from "./routes/NowPlaying";
 
 // Contexts
-import { PlayerContext, QueueContext, SidebarContext } from "../../context";
+import { PlayerContext, SidebarContext } from "../../context";
 
 // Contants
 import { MAINSTYLE } from "./constants";
 import Queue from "./components/Queue";
+import PlaylistPage from "./routes/Playlist";
 
 export default function Main() {
 
@@ -69,7 +70,7 @@ export default function Main() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/search" element={<Search />} />
-                        <Route path="/library" element={<LibraryPage />} />
+                        <Route path="/playlist/:playlist" element={<PlaylistPage />} />
                         <Route path="/now-playing" loader={NowPlayingToHome} element={<NowPlaying />} />
                     </Routes>
                 </div>

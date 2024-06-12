@@ -38,7 +38,7 @@ export default function Buttons() {
                 }
             </Link>
             <Link to="user" className="Topbar-Buttons-Buttons">
-                <img src="ProfilePicture.png" alt="ProfilePictureAccount" className={`Topbar-Buttons-Buttons-ProfilePictureAccount ${useLocation().pathname === '/user' && "ProfilePictureAccountSelect"}`} />
+                <img src="/ProfilePicture.png" alt="ProfilePictureAccount" className={`Topbar-Buttons-Buttons-ProfilePictureAccount ${useLocation().pathname === '/user' && "ProfilePictureAccountSelect"}`} />
             </Link>
         </div>
     )

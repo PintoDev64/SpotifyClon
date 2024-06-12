@@ -20,7 +20,7 @@ export default function Library({ setLibraryStatus }: Props) {
     }
 
     return (
-        <aside id="Library" className={`${pathname.includes("/library") ? "Library-Active" : ""} ${LibraryState === "true" ? "Library-Compact-On" : "Library-Compact-Off"}`}>
+        <aside id="Library" className={`${pathname.includes("/collections") ? "Library-Active" : ""} ${LibraryState === "true" ? "Library-Compact-On" : "Library-Compact-Off"}`}>
             <ul id="Library-List" className={`${LibraryState === "true" ? "Library-Compact-On" : ""}`}>
                 {
                     LibraryListElements.map(({ Text, URL, Component }) =>

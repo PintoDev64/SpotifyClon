@@ -59,7 +59,7 @@ export default function NowPlaying() {
         }}>
             <div id={PlayerState.Data.Lirycs?.length !== 0 ? "NowPlaying-Content" : "NowPlaying-Content-NoLirycs"} ref={Content}>
                 <div id="NowPlaying-Content-TopDetails">
-                    <div id={Content.current?.offsetWidth > 1050 ? "NowPlaying-Content-Image" : "NowPlaying-Content-ImageSmall"}>
+                    <div id={(Content.current?.offsetWidth > 1050 && PlayerState.State) ? "NowPlaying-Content-Image" : "NowPlaying-Content-ImageSmall"}>
                         <img src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} width={500} height={500} />
                     </div>
                     <div id="NowPlaying-Content-SongDetails">

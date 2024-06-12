@@ -35,7 +35,7 @@ export default function Player() {
     }, [PlayerState.State, PlayerState.Data.URL]);
 
     useEffect(() => {
-        audioRef.current.volume = parseInt(PlayerState.Volume)
+        audioRef.current.volume = parseInt(PlayerState.Volume) / 100
     }, [PlayerState.Volume])
 
     return (

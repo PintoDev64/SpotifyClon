@@ -16,7 +16,7 @@
     padding: 1px 1px 2px;
     border-radius: 12px;
     width: 100%;
-    height: calc(100% - 85px);
+    height: calc(100% - 80px);
     box-sizing: border-box;
     display: grid;
     grid-template-areas:
@@ -123,9 +123,10 @@
     0% {
         margin: 100% 0 0 0;
     }
+
     100% {
         margin: 0;
-        
+
     }
 }
 
@@ -343,3 +344,187 @@
 .NowPlaying-Content-Artist-Element-Details span {
     color: var(--FgSecondary);
 }
+
+/* ------ Playlist Styles ------ */
+
+#Playlist{
+    display: flex;
+    width: 100%;
+}
+
+#Playlist-Content {
+    width: 100%;
+    padding: 37px;
+}
+
+#Playlist-Content-Details {
+    width: fit-content;
+}
+
+#Playlist-Content-Details-Name {
+    font-family: "Satoshi Bold";
+    font-size: 36px;
+    margin: 0 0 20px 6px;
+}
+
+#Playlist-Content-Details-Description {
+    font-family: "Satoshi Medium";
+    margin: 0 0 20px 9px;
+}
+
+#Playlist-Content-SongDetails-Description {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    margin: 20px 0 20px 6px;
+}
+
+#Playlist-Content-SongDetails-Description * {
+    font-family: "satoshi Regular";
+    font-size: 14px;
+    color: var(--FgSecondary);
+}
+
+#Playlist-Content-SongDetails-Description a {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Playlist-Content-SongDetails-Description svg {
+    width: 30px;
+}
+
+.Playlist-Content-SongDetails-Description-Text {
+    text-align: center;
+}
+
+.Playlist-Content-SongDetails-Description-Separators {
+    margin: 0 15px;
+    font-size: 3px;
+}
+
+#Playlist-Content-List {
+    width: 100%;
+    height: 50px;
+}
+
+
+#Playlist-Content-List-Header {
+    display: grid;
+    grid-template-areas: "Number Title Duration";
+    grid-template-columns: 30px 300px 150px;
+    padding: 0 0 10px;
+    border-bottom: 2px var(--FgPrimary) solid;
+    margin: 0 0 10px 0;
+}
+
+#Playlist-Content-List-Header * {
+    font-family: "satoshi Regular";
+    color: var(--FgPrimary);
+    margin: 0 0 0 15px;
+}
+
+#Playlist-Content-List-Header-Number {
+    grid-area: Number;
+}
+
+#Playlist-Content-List-Header-Title {
+    grid-area: Title;
+}
+
+#Playlist-Content-List-Header-Duration {
+    grid-area: Duration;
+}
+
+#Playlist-Content-List-Content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.Playlist-Content-List-Content-Element {
+    display: grid;
+    grid-template-areas: "Number Title Duration Options";
+    grid-template-columns: 30px 300px 150px;
+    margin: 5px 0;
+    padding: 5px 0;
+    height: 45px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.Playlist-Content-List-Content-Element:focus {
+    background: var(--BgSecondary);
+}
+
+.Playlist-Content-List-Content-Element:hover {
+    background: var(--BgPrimary);
+}
+
+.Playlist-Content-List-Content-Element * {
+    font-family: "Satoshi Medium";
+}
+
+.Playlist-Content-List-Content-Element-Number {
+    grid-area: Number;
+    width: 30px;
+    height: 30px;
+    margin: 0 0 0 4px;
+    display: grid;
+    place-content: center;
+    color: var(--FgSecondary);
+}
+
+.Playlist-Content-List-Content-Element-Data {
+    grid-area: Title;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 15px;
+}
+
+.Playlist-Content-List-Content-Element-Data small * {
+    color: var(--FgSecondary);
+}
+
+.Playlist-Content-List-Content-Element-Duration {
+    grid-area: Duration;
+    margin: 0 0 0 15px;
+    color: var(--FgSecondary);
+}
+
+#Playlist-Sidebar {
+    width: calc(500px - 74px);
+    padding: 37px 37px 37px 0;
+    height: fit-content;
+}
+
+#Playlist-Sidebar img {
+    border-radius: 10px;
+}
+
+#Playlist-Sidebar-SongGenres {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px 0 0;
+}
+
+.Playlist-Sidebar-SongGenres-Elements {
+    padding: 10px 20px;
+    margin: 5px;
+    height: 20px;
+    border-radius: 44px;
+    border: 2px rgba(137, 137, 137, 25%) solid;
+    color: var(--FgSecondary);
+    font-family: "satoshi Medium";
+    font-size: 15px;
+}
+
+.Playlist-Sidebar-SongGenres-Elements:hover {
+    color: var(--FgPrimary);
+    border: 2px var(--FgPrimary) solid;
+}
+

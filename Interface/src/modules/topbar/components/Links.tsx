@@ -22,9 +22,9 @@ export default function Links({ LibraryStatus }: Props) {
 
     return (
         <div id="Topbar-Links">
-            <Link to="/library" id="LibraryLink" className={`Topbar-Links-Buttons ${pathname.includes("/library") && "Topbar-Links-Buttons-Selected"} ${LibraryStatus === "true" ? "Library-Compact-On" : ""}`}>
+            <Link to="/collections" id="LibraryLink" className={`Topbar-Links-Buttons ${pathname.includes("/collections") && "Topbar-Links-Buttons-Selected"} ${LibraryStatus === "true" ? "Library-Compact-On" : ""}`}>
                 {
-                    !pathname.includes("/library")
+                    !pathname.includes("/collections")
                         ? <LibraryClose />
                         : <LibraryOpen />
                 }
