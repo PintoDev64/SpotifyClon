@@ -14,16 +14,22 @@ export default function NowPlaying() {
     const { QueueState, ModifyQueue } = useContext(QueueContext);
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
 
+    const NowPlayingRef = useRef<HTMLDivElement>(null!)
     const Content = useRef<HTMLDivElement>(null!)
+    const DownDetails = useRef<HTMLDivElement>(null!)
 
     const navigate = useNavigate()
-
-    console.log(Section);
 
     useEffect(() => {
         PlayerState.Data.Lirycs?.length === 0 ? setSection("Credits") : setSection("Lirycs")
         PlayerState.Data.URL.length === 0 && navigate("/")
     }, [PlayerState.Data.URL])
+
+    useEffect(() => {
+        console.log(NowPlayingRef.current?.offsetHeight);
+        DownDetails.current.style.height = `${NowPlayingRef.current.offsetHeight - 50}px`
+    }, [])
+
 
     const handlePlay = () => {
         ModifyPlayer({
@@ -51,15 +57,13 @@ export default function NowPlaying() {
         Function: () => Section !== "Credits" && setSection("Credits")
     }]
 
-    console.log(Content.current?.offsetWidth);
-
     return (
         <div id="NowPlaying" style={{
             backgroundImage: `linear-gradient(rgba(2, 2, 2, 0.60), rgba(2, 2, 2, 0.60)), url("${PlayerState.Data.imageURL}")`,
-        }}>
+        }} ref={NowPlayingRef}>
             <div id={PlayerState.Data.Lirycs?.length !== 0 ? "NowPlaying-Content" : "NowPlaying-Content-NoLirycs"} ref={Content}>
                 <div id="NowPlaying-Content-TopDetails">
-                    <div id={(Content.current?.offsetWidth > 1050 && PlayerState.State) ? "NowPlaying-Content-Image" : "NowPlaying-Content-ImageSmall"}>
+                    <div id={(Content.current?.offsetWidth > 1050) ? "NowPlaying-Content-Image" : "NowPlaying-Content-ImageSmall"}>
                         <img src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} width={500} height={500} />
                     </div>
                     <div id="NowPlaying-Content-SongDetails">
@@ -117,13 +121,13 @@ export default function NowPlaying() {
                         </div>
                     </div>
                 </div>
-                <div id="NowPlaying-Content-DownDetails">
+                <div id="NowPlaying-Content-DownDetails" ref={DownDetails}>
                     <ul id="NowPlaying-Content-DownDetails-Navbar">
                         {SectionsList.map(({ Condition, Id, Text, Function }, index) => Condition && <li key={index} id={Id} className="NowPlaying-Content-DownDetails-Navbar-Options" onClick={Function}>
                             {Text}
                         </li>)}
                     </ul>
-                    {(Section === "Lirycs" && PlayerState.Data.Lirycs?.length !== 0) && <Lirycs/>}
+                    {(Section === "Lirycs" && PlayerState.Data.Lirycs?.length !== 0) && <Lirycs />}
                 </div>
             </div>
         </div>

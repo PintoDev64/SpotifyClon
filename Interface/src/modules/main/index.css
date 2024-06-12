@@ -42,13 +42,21 @@
     outline: 1px var(--StrokeDef) solid;
 }
 
+#MainContent-Home::-webkit-scrollbar {
+    width: 0;
+}
+
 #MainContent-Home-Content {
     grid-area: Content;
 }
 
 /*-------------- Componente --------------*/
-.MainContent-Section {
+
+#HomePage {
     padding: 26px;
+}
+
+.MainContent-Section {
     font-family: "Satoshi Bold";
 }
 
@@ -134,7 +142,6 @@
     backdrop-filter: blur(50px);
     display: flex;
     flex-direction: column;
-    height: calc(100% + calc(100% - 404px));
 }
 
 #NowPlaying-Content-NoLirycs {
@@ -150,23 +157,18 @@
 }
 
 #NowPlaying-Content-DownDetails {
-    overflow: hidden;
     height: 100%;
 }
 
 #NowPlaying-Content-DownDetails-Lirycs {
-    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 0 100px;
     position: relative;
+    scroll-behavior: smooth;
     overflow: hidden;
+    overflow-y: auto;
     height: 100%;
-    padding: 37px;
-    width: calc(100% - 74px);
-    display: flex;
-    justify-content: center;
-}
-
-#NowPlaying-Content-DownDetails-Lirycs-Container {
-    position: absolute;
+    width: 100%;
     transition: .2s ease;
 }
 
@@ -201,6 +203,7 @@
     height: 40;
     font-size: 28px;
     cursor: default;
+    padding: 0 0 0 65px;
     margin: 5px 0;
 }
 
@@ -219,8 +222,8 @@
 #NowPlaying-Content-Image,
 #NowPlaying-Content-Image img {
     border-radius: 10px;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     transition: ease .1s;
 }
 
@@ -285,6 +288,11 @@
     align-items: center;
 }
 
+#NowPlaying-Content-Artist a {
+    display: block;
+    width: fit-content;
+}
+
 #NowPlaying-Content-Options-Play {
     cursor: pointer;
 }
@@ -299,7 +307,7 @@
 }
 
 .NowPlaying-Content-SongGenres-Elements {
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin: 5px;
     height: 20px;
     border-radius: 44px;
@@ -528,3 +536,21 @@
     border: 2px var(--FgPrimary) solid;
 }
 
+@media (max-width: 800px) {
+
+    #NowPlaying-Content-Image {
+        display: none;
+    }
+    
+    #NowPlaying-Content-ImageSmall {
+        display: none;
+    }
+
+    .NowPlaying-Content-SongGenres-Elements {
+        padding: 5px 10px;
+    }
+
+    #NowPlaying-Content-Options {
+        margin: 20px 0 5px;
+    }
+}

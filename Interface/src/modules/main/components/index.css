@@ -11,6 +11,7 @@
 /* -------- Playlist -------- */
 .Song,
 .Playlist {
+    position: relative;
     display: flex;
     height: 250px;
     flex-direction: column;
@@ -20,9 +21,35 @@
     border-radius: 10px;
 }
 
+.Playlist-Image:after {
+    position: absolute;
+    content: "Album";
+    padding: 2.5px 5px;
+    left: -100%;
+    top: 10px;
+    color: var(--FgPrimary);
+    background: var(--BgSecondary);
+    border-radius: 5px 0 5px 0;
+}
+
+.Playlist:hover .Playlist-Image:after{
+    left: 0;
+    animation: AppearAlbum .2s ease;
+}
+
+@keyframes AppearAlbum {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
 .Song:hover,
 .Playlist:hover {
-    background-color: var(--BgPrimary);
+    background-color: var(--BgSecondary);
 }
 
 #Song-Image-Play-Active,

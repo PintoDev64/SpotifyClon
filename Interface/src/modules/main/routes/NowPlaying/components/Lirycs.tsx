@@ -4,8 +4,12 @@ import { PlayerContext } from "../../../../../context"
 export default function Lirycs() {
 
     const { PlayerState } = useContext(PlayerContext);
-    const Letras = useRef<HTMLDivElement>(null!)
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [Hover, setHover] = useState(false)
+
+    const LirycsContainer = useRef<HTMLDivElement>(null!)
+    const Lirycs = useRef<HTMLDivElement>(null!)
+    const lyricsLineRefs = useRef<HTMLParagraphElement[]>([null!]);
 
     useEffect(() => {
         if (PlayerState.Data.Lirycs) {
@@ -14,18 +18,40 @@ export default function Lirycs() {
         }
     }, [PlayerState.CurrentTime]);
 
-    // Calcula la posición superior basada en el índice actual
-    const top = currentIndex > 3 ? ((currentIndex - 2) * -43) + 43 : 25; // Ajusta el valor según el tamaño de tus letras
+    useEffect(() => {
+        if (lyricsLineRefs.current[currentIndex] && Hover) {
+            if (currentIndex > 6) {
+                lyricsLineRefs.current[currentIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                });
+            } else {
+                LirycsContainer.current.scrollTo(0, 0)
+            }
+        } else {
+            if (currentIndex > 6) {
+                LirycsContainer.current.scrollBy(0, currentIndex > 3 ? 43 : 25)
+            } else {
+                LirycsContainer.current.scrollTo(0, 0)
+            }
+        }
+    }, [currentIndex])
+
+    const handleMouseOn = () => {
+        setHover(true)
+    }
+
+    const handleMouseOff = () => {
+        setHover(false)
+    }
 
     return (
-        <div id="NowPlaying-Content-DownDetails-Lirycs">
-            <div id="NowPlaying-Content-DownDetails-Lirycs-Container" style={{ top }}>
-                {
-                    PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ text }, index) =>
-                        <p ref={Letras} className={`NowPlaying-Content-DownDetails-Lirycs-Text ${index < currentIndex ? "NowPlaying-Content-DownDetails-Lirycs-Text-Pass" : "NowPlaying-Content-DownDetails-Lirycs-Text-NonPass"}`}>{text}</p>
-                    )
-                }
-            </div>
+        <div id="NowPlaying-Content-DownDetails-Lirycs" ref={LirycsContainer} onMouseEnter={handleMouseOn} onMouseLeave={handleMouseOff}>
+            {
+                PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ text }, index) =>
+                    <p key={index} ref={ref => lyricsLineRefs.current[index] = ref!} className={`NowPlaying-Content-DownDetails-Lirycs-Text ${index < currentIndex ? "NowPlaying-Content-DownDetails-Lirycs-Text-Pass" : "NowPlaying-Content-DownDetails-Lirycs-Text-NonPass"}`}>{text}</p>
+                )
+            }
         </div>
     )
 }

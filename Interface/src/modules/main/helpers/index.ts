@@ -33,9 +33,9 @@ export function getDominantColor(imageUrl: string, transparency?: number): Promi
       let b = data[2];
 
       if (transparency) {
-        resolve('rgba(' + r + ',' + g + ',' + b + ',' + transparency + '%)');
+        resolve('rgba(' + (r < 100 ? r + 50 : r) + ',' + (g < 100 ? g + 50 : g) + ',' + (b < 100 ? b + 50 : b) + ',' + transparency + '%)');
         } else {
-        resolve('rgb(' + r + ',' + g + ',' + b + ')');
+        resolve('rgb(' + (r < 100 ? r + 50 : r) + ',' + (g < 100 ? g + 50 : g) + ',' + (b < 100 ? b + 50 : b) + ')');
       }
     }
   });

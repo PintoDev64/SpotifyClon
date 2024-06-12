@@ -21,7 +21,9 @@ export default function PlaylistPage() {
     console.log(playlist);
 
     useEffect(() => {
-        const data = PLAYLIST_EXAMPLES[PLAYLIST_EXAMPLES.findIndex(({ Id }) => Id === playlist)]
+        const data = PLAYLIST_EXAMPLES[
+            PLAYLIST_EXAMPLES.findIndex(({ Id }) => Id === playlist)
+        ]
         if (data.Title.length !== 0) {
             setData(data)
         } else {
@@ -55,7 +57,7 @@ export default function PlaylistPage() {
             <div id="Playlist-Content">
                 <div id="Playlist-Content-Details">
                     <h1 id="Playlist-Content-Details-Name">{Data?.Title}</h1>
-                    <p id="Playlist-Content-Details-Description">{Data?.Description}</p>
+                    {/* <p id="Playlist-Content-Details-Description">{Data?.Description}</p> */}
                     <div id="Playlist-Content-SongDetails-Description">
                         <Link to={Data?.Artist?.URL!}>
                             <ArtistIcon />
