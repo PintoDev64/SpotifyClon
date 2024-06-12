@@ -9,6 +9,9 @@ export default function Queue() {
 
     return (
         <aside id="Sidebar">
+            <p id="Sidebar-Queue-Title">
+                Now Playing
+            </p>
             {
                 PlayerState.Data.Title && <div className="Sidebar-Queue-Elements">
                     <div className="Sidebar-Queue-Elements-Image">
@@ -23,9 +26,9 @@ export default function Queue() {
                     </div>
                 </div>
             }
-            <p id="Sidebar-Queue-Title">
-                Next Up:
-            </p>
+            {QueueState.List.length > 0 && <p id="Sidebar-Queue-SecondTitle">
+                Next From: {PlayerState.Playlist}
+            </p>}
             <ul id="Sidebar-Queue">
                 {
                     QueueState.List.length > 0 && QueueState.List.map(({ Artist, Title, imageURL }, index) =>

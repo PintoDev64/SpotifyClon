@@ -26,7 +26,6 @@ export default function NowPlaying() {
     }, [PlayerState.Data.URL])
 
     useEffect(() => {
-        console.log(NowPlayingRef.current?.offsetHeight);
         DownDetails.current.style.height = `${NowPlayingRef.current.offsetHeight - 50}px`
     }, [])
 
@@ -97,7 +96,7 @@ export default function NowPlaying() {
                         </div>
                         <div id="NowPlaying-Content-SongGenres">
                             {
-                                PlayerState.Data.Genres.length > 0 && PlayerState.Data.Genres.map(genre => <div className="NowPlaying-Content-SongGenres-Elements">{genre}</div>)
+                                PlayerState.Data.Genres.length > 0 && PlayerState.Data.Genres.map((genre, index) => <div key={index}  className="NowPlaying-Content-SongGenres-Elements">{genre}</div>)
                             }
                         </div>
                         <div id="NowPlaying-Content-Artist">

@@ -72,11 +72,12 @@ export type INITIALPROPS_PLAYER = {
     Volume: string,
     Data: SongProps
     CurrentTime: number
+    Playlist: string,
     DominantColor: string,
 }
 
 export type INITIALPROPS_PLAYER_MODIFICATOR = {
-    action: "Volume" | "State" | "Loop" | "Data" | "DominantColor" | "CurrentTime",
+    action: "Volume" | "State" | "Loop" | "Data" | "DominantColor" | "CurrentTime" | "Playlist",
     value: SongProps | INITIALPROPS_PLAYER | boolean | string | number
 }
 

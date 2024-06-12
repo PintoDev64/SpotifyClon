@@ -18,8 +18,6 @@ export default function PlaylistPage() {
     const [Data, setData] = useState<PlaylistProps>()
     const [DominantColor, setDominantColor] = useState<string>()
 
-    console.log(playlist);
-
     useEffect(() => {
         const data = PLAYLIST_EXAMPLES[
             PLAYLIST_EXAMPLES.findIndex(({ Id }) => Id === playlist)
@@ -95,8 +93,8 @@ export default function PlaylistPage() {
                                         <span>{Title}</span>
                                         <small>
                                             {
-                                                Artist.map(({ Name, URL }) =>
-                                                    <Link to={URL}>
+                                                Artist.map(({ Name, URL }, index) =>
+                                                    <Link key={index} to={URL}>
                                                         {`${((Artist.length > 1) && index > 0) ? ", " : ""}${Name}`}
                                                     </Link>
                                                 )
@@ -117,8 +115,8 @@ export default function PlaylistPage() {
                 <div id="Playlist-Sidebar-SongGenres">
                     {
                         Data?.Songs?.length! > 0 && Data?.Songs?.map(({ Genres }) =>
-                            Genres?.map(value =>
-                                <div className="Playlist-Sidebar-SongGenres-Elements">{value}</div>
+                            Genres?.map((value, index) =>
+                                <div key={index} className="Playlist-Sidebar-SongGenres-Elements">{value}</div>
                             )
                         )
                     }

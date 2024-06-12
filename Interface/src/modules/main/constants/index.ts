@@ -214,7 +214,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
             Role: ["Main artist", "Composer"]
         }],
         Album: {
-            Id: "djsahdkjsub",
+            Id: "jhdksajhgdia",
             URL: "/AfterHours",
             Name: "After Hours"
         },
@@ -229,7 +229,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
         Id: 4,
         Title: "Heartless",
         Album: {
-            Id: "djsahdkjsub",
+            Id: "jhdksajhgdia",
             URL: "/AfterHours",
             Name: "After Hours"
         },
@@ -410,7 +410,7 @@ export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
         Id: "10",
         Title: "Discover Weekly",
         Description: "Your weekly mixtape of fresh music",
-        imageURL: "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/43EFKgbWhoTr7lGkU2sUuPVSURXqmVhfdqYiU_p1-Zp5p4ZLmqixFb06yU6_iqpbS5edsvKDILrz2FrTh0xSpOIB5A2m2MLL71H6hYXxZ-s=/NjE6NjE6MzFUNTEtNjAtNA==",
+        imageURL: "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/kbaM22cYJUbHfZ8lGAtix5s_JpHenJTcDpcSeARlJTa0k_SxlwalmIPSZ_X7WhH25s8AJUImpKhf3Oku8TdndEK2zRF_gX3eYCxUIKrHapc=/NjE6ODQ6MjFUMjItNjAtNA==",
         URL: "/playlist/10",
         Artist: {
             ImageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png",

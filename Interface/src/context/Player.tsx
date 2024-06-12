@@ -9,6 +9,7 @@ import { ContextProps, INITIALPROPS_PLAYER, INITIALPROPS_PLAYER_MODIFICATOR } fr
 export default function PlayerContextComponent({ children }: ContextProps) {
     const INITIAL_PROPS: INITIALPROPS_PLAYER = {
         State: false,
+        Playlist: "",
         Loop: (localStorage.getItem("Loop") === "true"),
         Volume: localStorage.getItem("Volume") || "100",
         CurrentTime: 0,

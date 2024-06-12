@@ -30,7 +30,7 @@ export default function Lirycs() {
             }
         } else {
             if (currentIndex > 6) {
-                LirycsContainer.current.scrollBy(0, currentIndex > 3 ? 43 : 25)
+                LirycsContainer.current.scrollTo(0, ([...lyricsLineRefs.current].splice(0, currentIndex).length * 42) - (42 * 4.5))
             } else {
                 LirycsContainer.current.scrollTo(0, 0)
             }

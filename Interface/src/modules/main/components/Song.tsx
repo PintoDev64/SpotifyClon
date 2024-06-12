@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Pause, Play } from "../../../assets/Player";
-import { PlayerContext, QueueContext } from "../../../context";
+import { PlayerContext } from "../../../context";
 import { getDominantColor } from "../helpers";
 import { SongProps } from "../../../vite-env";
 
@@ -9,7 +9,8 @@ export default function Song(props: SongProps) {
 
     const { Id,  Title, Album, imageURL, Artist } = props
 
-    const { QueueState, ModifyQueue } = useContext(QueueContext);
+    const navigate = useNavigate()
+
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
     const PlaylistCover = useRef<HTMLImageElement>(null!);
 
@@ -22,7 +23,10 @@ export default function Song(props: SongProps) {
                     ...props
                 }
             })
-
+            ModifyPlayer({
+                action: "Playlist",
+                value: Title
+            })
             setTimeout(() => {
                 if (PlayerState.State) {
                     ModifyPlayer({ action: "State", value: false })
@@ -44,7 +48,7 @@ export default function Song(props: SongProps) {
     }
 
     const handleNavigate = (route: string) => {
-        useNavigate()(route)
+        navigate(route)
     }
 
     return (

@@ -21,6 +21,12 @@ export default function Controls({ audioRef }: Props) {
     const { ModifyPlayer, PlayerState } = useContext(PlayerContext);
 
     const handleNextSong = (List: SongProps[]) => {
+        console.log("Result", PLAYLIST_EXAMPLES.findIndex(({ Id }) => {
+            console.log(PlayerState.Data.Album.Id);
+            console.log(Id);
+            return PlayerState.Data.Album.Id === Id
+        }));
+        
         const PlaylistIndex = PLAYLIST_EXAMPLES.findIndex(({ Id }) => PlayerState.Data.Album.Id === Id)
         audioRef.current.currentTime = 0;
         if (List.length !== 0) {
@@ -34,10 +40,9 @@ export default function Controls({ audioRef }: Props) {
                 action: "List",
                 value: [...List].splice(1, List.length)
             })
-            console.log("Siguiente Cancion");
-            ModifyPlayer({ action: "State", value: true })
+            !PlayerState.State && ModifyPlayer({ action: "State", value: true })
         } else {
-            console.log("detenido");
+            console.log(PLAYLIST_EXAMPLES[PlaylistIndex].Songs[0]);
             ModifyPlayer({
                 action: "Data",
                 value: {
@@ -68,7 +73,6 @@ export default function Controls({ audioRef }: Props) {
             if (!PlayerState.Loop && QueueState.List.length === 0) {
                 pauseAudio();
             } else {
-                console.log("Siguiente");
                 handleNextSong(QueueState.List)
             }
         });
