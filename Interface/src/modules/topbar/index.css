@@ -15,7 +15,7 @@ nav#Topbar {
 #Topbar-Buttons-Buttons-Forward:hover path {
     opacity: 1;
     stroke: var(--FgPrimary);
-    strokeWidth: 2.25;
+    stroke-width: 2.25;
 }
 
 #Topbar-Links {
@@ -156,7 +156,7 @@ nav#Topbar {
 }
 
 .Topbar-Links-Buttons-Selected path {
-    strokeWidth: 2.5;
+    stroke-width: 2.5;
 }
 
 #Topbar-Buttons-Premiun,

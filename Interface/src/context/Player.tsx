@@ -24,6 +24,7 @@ export default function PlayerContextComponent({ children }: ContextProps) {
             },
             Lirycs: [],
             Artist: [],
+            Duration: 0,
             Year: 0,
             Genres: []
         },
