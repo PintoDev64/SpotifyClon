@@ -12,7 +12,6 @@ export default function Song(props: SongProps) {
     const navigate = useNavigate()
 
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
-    const PlaylistCover = useRef<HTMLImageElement>(null!);
 
     const handleMusicPlayer = () => {
 
@@ -54,7 +53,7 @@ export default function Song(props: SongProps) {
     return (
         <div className="Song">
             <div className="Song-Image">
-                <img className="Song-Image-Element" src={imageURL} alt={Title} ref={PlaylistCover} width={170} height={170} onClick={() => handleNavigate(Album.URL)} />
+                <img className="Song-Image-Element" src={imageURL} alt={Title} width={170} height={170} onClick={() => handleNavigate(Album.URL)} />
                 <button id={`${PlayerState.Data.Id === Id && "Song-Image-Play-Active"}`} className="Song-Image-Play" onClick={handleMusicPlayer}>
                     {(Id === PlayerState.Data.Id && PlayerState.State) && PlayerState.Data.Album.Id === Album.Id
                         ? <Play />

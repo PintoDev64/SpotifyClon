@@ -1,4 +1,4 @@
-import { PlaylistProps, SongProps } from "../../../vite-env"
+import { ArtistList, PlaylistProps, SongProps } from "../../../vite-env"
 
 export const MAINSTYLE = {
     Friends: {
@@ -11,19 +11,39 @@ export const MAINSTYLE = {
     }
 }
 
+export const ARTIST_EXAMPLE: ArtistList[] = [
+    {
+        URL: "1Xyo4u8uXC1ZmMpatF05PJ",
+        Name: "The Weeknd",
+        ImageURL: "https://i.scdn.co/image/ab6761610000f178214f3cf1cbe7139c1e26ffbb",
+        Role: ["Main artist", "Composer"],
+        Banner: "https://i.scdn.co/image/ab6761860000101606f7730314d8eff6663d6918"
+    },
+    {
+        URL: "1Z0wvI3WTpFLvbVrIBoDr7",
+        Name: "a_hisa",
+        ImageURL: "https://i.scdn.co/image/ab67616100005174a53f14485bfdfc4917a5e448",
+        Role: ["Main artist"],
+        Banner: "",
+    },
+    {
+        ImageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png",
+        Name: "Spotify",
+        Role: ["Main Artist"],
+        URL: "",
+        Banner: "",
+        Visible: false
+    }
+]
+
 export const SONGS_EXAMPLES: SongProps[] = [
     {
         Id: 1,
         Title: "A lonely Night",
-        Artist: [{
-            URL: "/theweeknd",
-            Name: "The Weeknd",
-            ImageURL: "https://i.scdn.co/image/ab6761610000f178214f3cf1cbe7139c1e26ffbb",
-            Role: ["Main artist", "Composer"]
-        }],
+        Artist: [ARTIST_EXAMPLE[0]],
         Album: {
-            Id: "10",
-            URL: "/Starboy",
+            Id: "4AdZV63ycxFLF6Hcol0QnB",
+            URL: "/playlist/4AdZV63ycxFLF6Hcol0QnB",
             Name: "Starboy"
         },
         Lirycs: [{
@@ -186,12 +206,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
     {
         Id: 2,
         Title: "Leave It Alone",
-        Artist: [{
-            URL: "/a_hisa",
-            Name: "a_hisa",
-            ImageURL: "https://i.scdn.co/image/ab67616100005174a53f14485bfdfc4917a5e448",
-            Role: ["Main artist"]
-        }],
+        Artist: [ARTIST_EXAMPLE[1]],
         Album: {
             Id: "10",
             URL: "/Colors3",
@@ -207,15 +222,10 @@ export const SONGS_EXAMPLES: SongProps[] = [
     {
         Id: 3,
         Title: "After Hours",
-        Artist: [{
-            URL: "/theweeknd",
-            Name: "The Weeknd",
-            ImageURL: "https://i.scdn.co/image/ab6761610000f178214f3cf1cbe7139c1e26ffbb",
-            Role: ["Main artist", "Composer"]
-        }],
+        Artist: [ARTIST_EXAMPLE[0]],
         Album: {
             Id: "jhdksajhgdia",
-            URL: "/AfterHours",
+            URL: "/playlist/jhdksajhgdia",
             Name: "After Hours"
         },
         imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
@@ -230,15 +240,10 @@ export const SONGS_EXAMPLES: SongProps[] = [
         Title: "Heartless",
         Album: {
             Id: "jhdksajhgdia",
-            URL: "/AfterHours",
+            URL: "/playlist/jhdksajhgdia",
             Name: "After Hours"
         },
-        Artist: [{
-            URL: "/theweeknd",
-            Name: "The Weeknd",
-            ImageURL: "https://i.scdn.co/image/ab6761610000f178214f3cf1cbe7139c1e26ffbb",
-            Role: ["Main artist", "Composer"]
-        }],
+        Artist: [ARTIST_EXAMPLE[0]],
         Duration: 198,
         Genres: ["R&B contemporary", "Trap", "R&B/Soul", "Alternativa/Independiente"],
         imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
@@ -404,7 +409,6 @@ export const SONGS_EXAMPLES: SongProps[] = [
     }
 ]
 
-
 export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
     {
         Id: "10",
@@ -412,12 +416,7 @@ export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
         Description: "Your weekly mixtape of fresh music",
         imageURL: "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/kbaM22cYJUbHfZ8lGAtix5s_JpHenJTcDpcSeARlJTa0k_SxlwalmIPSZ_X7WhH25s8AJUImpKhf3Oku8TdndEK2zRF_gX3eYCxUIKrHapc=/NjE6ODQ6MjFUMjItNjAtNA==",
         URL: "/playlist/10",
-        Artist: {
-            ImageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png",
-            Name: "Spotify",
-            Role: ["Main Artist"],
-            URL: ""
-        },
+        Artist: [ARTIST_EXAMPLE[2]],
         Year: 2024,
         Songs: SONGS_EXAMPLES
     },
@@ -427,13 +426,18 @@ export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
         Description: "The Weeknd",
         imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
         URL: "/playlist/jhdksajhgdia",
-        Artist: {
-            ImageURL: "https://i.scdn.co/image/ab6761610000f178214f3cf1cbe7139c1e26ffbb",
-            Name: "The Weeknd",
-            Role: ["Main Artist"],
-            URL: "/theweeknd",
-        },
+        Artist: [ARTIST_EXAMPLE[0]],
         Year: 2020,
         Songs: [{ ...SONGS_EXAMPLES[2] }, { ...SONGS_EXAMPLES[3] }]
+    },
+    {
+        Id: "4AdZV63ycxFLF6Hcol0QnB",
+        Title: "Starboy",
+        Description: ARTIST_EXAMPLE[2].Name,
+        imageURL: "https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a",
+        Year: 2016,
+        Artist: [ARTIST_EXAMPLE[0]],
+        Songs: [{ ...SONGS_EXAMPLES[0] }],
+        URL: "/playlist/4AdZV63ycxFLF6Hcol0QnB"
     }
 ]

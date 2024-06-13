@@ -7,10 +7,13 @@ import AlbumIcon from "../../../../assets/Album"
 import { formatTime, getDominantColor } from "../../helpers"
 import { PlayerContext, QueueContext } from "../../../../context"
 
+// Styles
+import "./index.css"
+
 export default function PlaylistPage() {
 
     const { ModifyQueue } = useContext(QueueContext);
-    const { ModifyPlayer } = useContext(PlayerContext);
+    const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
 
     const { playlist } = useParams<{ playlist: string }>()
     const navigate = useNavigate()
@@ -45,8 +48,17 @@ export default function PlaylistPage() {
 
     useEffect(() => {
         getDominantColor(Data?.imageURL!, 30)
-        .then(value => setDominantColor(value))
+            .then(value => setDominantColor(value))
     }, [Data?.imageURL])
+
+    useEffect(() => {
+        Data?.Songs.map(({ Album }) => {
+            PLAYLIST_EXAMPLES[PLAYLIST_EXAMPLES.findIndex(({ Title }) => {
+                console.log()
+            })]
+        });
+    }, [Data?.Songs])
+
 
     return (
         <div id="Playlist" style={{
@@ -57,9 +69,9 @@ export default function PlaylistPage() {
                     <h1 id="Playlist-Content-Details-Name">{Data?.Title}</h1>
                     {/* <p id="Playlist-Content-Details-Description">{Data?.Description}</p> */}
                     <div id="Playlist-Content-SongDetails-Description">
-                        <Link to={Data?.Artist?.URL!}>
+                        <Link to={Data?.Artist[0]?.URL!}>
                             <ArtistIcon />
-                            <span className="Playlist-Content-SongDetails-Description-Text">{Data?.Artist?.Name}
+                            <span className="Playlist-Content-SongDetails-Description-Text">{Data?.Artist[0]?.Name}
                             </span>
                         </Link>
                         <span className="Playlist-Content-SongDetails-Description-Separators">
@@ -84,11 +96,15 @@ export default function PlaylistPage() {
                     </div>
                     <ul id="Playlist-Content-List-Content">
                         {
-                            Data?.Songs.map(({ Title, Artist, Duration }, index) =>
+                            Data?.Songs.map(({ Title, Artist, Duration, Id, Album }, index) =>
                                 <li key={index} className="Playlist-Content-List-Content-Element"
                                     onDoubleClick={() => handlePlayerSong(index)}
                                 >
-                                    <p className="Playlist-Content-List-Content-Element-Number">{index + 1}</p>
+                                    <p className="Playlist-Content-List-Content-Element-Number">{
+                                        (PlayerState.Data.Title.length !== 0 && PlayerState.Data.Id === Id && Album.Name === Data.Title)
+                                            ? <img src="https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f5eb96f2.gif" width={15} height={15} />
+                                            : index + 1
+                                    }</p>
                                     <div className="Playlist-Content-List-Content-Element-Data">
                                         <span>{Title}</span>
                                         <small>
@@ -111,13 +127,27 @@ export default function PlaylistPage() {
                 </div>
             </div>
             <div id="Playlist-Sidebar">
-                <img src={Data?.imageURL} alt="" />
+                <img id="Playlist-Sidebar-Image" src={Data?.imageURL} alt={Data?.Title} width={320} height={320}/>
                 <div id="Playlist-Sidebar-SongGenres">
                     {
                         Data?.Songs?.length! > 0 && Data?.Songs?.map(({ Genres }) =>
                             Genres?.map((value, index) =>
                                 <div key={index} className="Playlist-Sidebar-SongGenres-Elements">{value}</div>
                             )
+                        )
+                    }
+                </div>
+                <div id="Playlist-Sidebar-Artist">
+                    {
+                        Data?.Artist && Data.Artist.map(({ ImageURL, Name, URL }, index) =>
+                            <Link to={URL} key={index}>
+                                <div className="Playlist-Sidebar-Artist-Element">
+                                    <img src={ImageURL} alt={Name} className="Playlist-Sidebar-Artist-Element-Image" />
+                                    <div className="Playlist-Sidebar-Artist-Element-Details">
+                                        <p>{Name}</p>
+                                    </div>
+                                </div>
+                            </Link>
                         )
                     }
                 </div>

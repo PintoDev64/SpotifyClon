@@ -21,11 +21,6 @@ export default function Controls({ audioRef }: Props) {
     const { ModifyPlayer, PlayerState } = useContext(PlayerContext);
 
     const handleNextSong = (List: SongProps[]) => {
-        console.log("Result", PLAYLIST_EXAMPLES.findIndex(({ Id }) => {
-            console.log(PlayerState.Data.Album.Id);
-            console.log(Id);
-            return PlayerState.Data.Album.Id === Id
-        }));
         
         const PlaylistIndex = PLAYLIST_EXAMPLES.findIndex(({ Id }) => PlayerState.Data.Album.Id === Id)
         audioRef.current.currentTime = 0;
@@ -42,7 +37,6 @@ export default function Controls({ audioRef }: Props) {
             })
             !PlayerState.State && ModifyPlayer({ action: "State", value: true })
         } else {
-            console.log(PLAYLIST_EXAMPLES[PlaylistIndex].Songs[0]);
             ModifyPlayer({
                 action: "Data",
                 value: {

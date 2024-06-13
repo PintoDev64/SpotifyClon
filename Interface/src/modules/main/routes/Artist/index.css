@@ -1,0 +1,43 @@
+#ArtistPage-Top {
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 0 37px 37px;
+}
+
+#ArtistPage-Top * {
+    font-family: "Satoshi black";
+}
+
+#ArtistPage-Top-Info {
+    display: flex;
+    align-items: center;
+}
+
+#ArtistPage-Top-Info-Image {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+}
+
+#ArtistPage-Top-Info-Text {
+    margin: 0 0 0 25px;
+}
+
+#ArtistPage-Top-Info-Text-Name {
+    font-size: 50px;
+    width: fit-content;
+}
+
+#ArtistPage-Top-Info-Text-MonthlyListeners {
+    font-family: "Satoshi Medium";
+    font-size: 14px;
+    color: var(--FgPrimary);
+}

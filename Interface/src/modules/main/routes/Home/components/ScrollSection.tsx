@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { ReactNode } from "react";
 
 // Assets
-import { BackwardOn } from "../../../assets/Backward";
-import { ForwardOn } from "../../../assets/Forward";
+import { BackwardOn } from "../../../../../assets/Backward";
+import { ForwardOn } from "../../../../../assets/Forward";
 
 // Hooks
-import { useScroll } from "../../../hooks";
+import { useScroll } from "../../../../../hooks";
 
 // Definitions
 interface ComponenteContext {

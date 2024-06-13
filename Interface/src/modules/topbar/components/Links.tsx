@@ -9,6 +9,8 @@ import { LibraryClose, LibraryOpen } from "../../../assets/Library";
 // Hooks
 import { useNavigationPanel } from "../hooks";
 import { BackwardOff } from "../../../assets/Backward";
+import { ChangeEvent, useContext } from "react";
+import { AppContext } from "../../../context";
 
 interface Props {
     LibraryStatus: string
@@ -16,9 +18,17 @@ interface Props {
 
 export default function Links({ LibraryStatus }: Props) {
 
-    const { backward } = useNavigationPanel()
+    const { ModifyApp } = useContext(AppContext);
+    const { backward } = useNavigationPanel();
 
     const { pathname } = useLocation();
+
+    const handleSearchParams = (event: ChangeEvent<HTMLInputElement>) => {
+        ModifyApp({
+            action: "Query",
+            value: event.target.value
+        })
+    }
 
     return (
         <div id="Topbar-Links">
@@ -58,7 +68,7 @@ export default function Links({ LibraryStatus }: Props) {
                         </>
                         : <>
                             <SearchOpen />
-                            <input type="search" name="Search" id="Topbar-Links-Buttons-Search" spellCheck="false" placeholder="Search..." autoComplete="off" autoFocus />
+                            <input type="search" name="Search" id="Topbar-Links-Buttons-Search" spellCheck="false" placeholder="Search..." autoComplete="off" autoFocus onChange={handleSearchParams}/>
                         </>
                 }
 

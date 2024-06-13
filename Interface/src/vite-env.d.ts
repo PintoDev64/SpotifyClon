@@ -27,7 +27,7 @@ export interface PlaylistProps {
     Title: string
     Description: string
     imageURL: string
-    Artist: ArtistList
+    Artist: ArtistList[]
     URL: string
     Year: number,
     Songs: SongProps[]
@@ -38,6 +38,8 @@ type ArtistList = {
     Name: string,
     ImageURL: string,
     Role: string[]
+    Banner: string
+    Visible?: true | boolean
 }
 
 export interface controls {
@@ -99,4 +101,19 @@ export type INITIALPROPS_QUEUE_MODIFICATOR = {
 export interface QueueContextProps {
     QueueState: INITIALPROPS_QUEUE,
     ModifyQueue: ({ action, value }: INITIALPROPS_QUEUE_MODIFICATOR) => void
+}
+
+// Search Context Types
+export type INITIALPROPS_APP = {
+    Query: string
+}
+
+export type INITIALPROPS_APP_MODIFICATOR = {
+    action: "Query",
+    value: string
+}
+
+export interface AppContextProps {
+    AppState: INITIALPROPS_APP,
+    ModifyApp: ({ action, value }: INITIALPROPS_APP_MODIFICATOR) => void
 }

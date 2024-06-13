@@ -13,7 +13,7 @@ export default function SongSlider({ audio }: Props) {
     const [duration, setDuration] = useState(0)
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        setInterval(() => {
             if (audio.src && PlayerState.Data.URL) {
                 navigator.mediaSession.setPositionState({
                     position: audio.currentTime,
@@ -25,11 +25,8 @@ export default function SongSlider({ audio }: Props) {
                 });
             }
         }, 1000);
-
         setDuration(audio.duration)
-
-        return () => clearInterval(interval);
-    }, [audio]);
+    }, [audio.currentTime]);
 
     useEffect(() => {
         setDuration(audio.duration)

@@ -4,9 +4,6 @@ import { useContext } from "react";
 // Assets
 import HomePage from "./routes/Home";
 
-// Styles
-import "./index.css"
-
 // Components
 import Search from "./routes/Search";
 import Friends from "./components/Friends";
@@ -21,6 +18,7 @@ import { PlayerContext, SidebarContext } from "../../context";
 import { MAINSTYLE } from "./constants";
 import Queue from "./components/Queue";
 import PlaylistPage from "./routes/Playlist";
+import ArtistPage from "./routes/Artist";
 
 export default function Main() {
 
@@ -69,14 +67,14 @@ export default function Main() {
                 <div id="MainContent-Home">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/artist/:artist" element={<ArtistPage />} />
                         <Route path="/search" element={<Search />} />
                         <Route path="/playlist/:playlist" element={<PlaylistPage />} />
+                        <Route path="/collections" element={<LibraryPage />} />
                         <Route path="/now-playing" loader={NowPlayingToHome} element={<NowPlaying />} />
                     </Routes>
                 </div>
-                {
-                    ComponentMain()
-                }
+                {ComponentMain()}
             </div>
             <Player />
         </main>

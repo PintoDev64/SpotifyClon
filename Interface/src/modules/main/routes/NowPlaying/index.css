@@ -1,0 +1,255 @@
+/* -------- Now Playing -------- */
+
+#NowPlaying {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: appear .15s ease-out;
+}
+
+@keyframes appear {
+    0% {
+        margin: 100% 0 0 0;
+    }
+
+    100% {
+        margin: 0;
+
+    }
+}
+
+#NowPlaying-Content {
+    backdrop-filter: blur(50px);
+    display: flex;
+    flex-direction: column;
+}
+
+#NowPlaying-Content-NoLirycs {
+    backdrop-filter: blur(50px);
+    display: flex;
+    flex-direction: column;
+    height: 100%
+}
+
+#NowPlaying-Content-TopDetails {
+    padding: 37px;
+    display: flex;
+}
+
+#NowPlaying-Content-DownDetails {
+    height: 100%;
+}
+
+#NowPlaying-Content-DownDetails-Lirycs {
+    box-sizing: border-box;
+    padding: 30px 0 100px;
+    position: relative;
+    scroll-behavior: smooth;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    transition: .2s ease;
+}
+
+#NowPlaying-Content-DownDetails-Navbar {
+    font-family: "Satoshi Medium";
+    height: 50px;
+    display: flex;
+    padding: 0 37px;
+    list-style: none;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--FgPrimary);
+}
+
+.NowPlaying-Content-DownDetails-Navbar-Options:nth-child(even) {
+    margin: 0 30px;
+}
+
+#NowPlaying-Content-DownDetails-Navbar-Selected {
+    border-bottom: 5px var(--Primary) solid;
+}
+
+.NowPlaying-Content-DownDetails-Navbar-Options {
+    padding: 16px 8px;
+    display: grid;
+    height: 15px;
+    place-content: center;
+    cursor: pointer;
+}
+
+.NowPlaying-Content-DownDetails-Lirycs-Text {
+    font-family: "Satoshi Bold";
+    height: 40;
+    font-size: 28px;
+    cursor: default;
+    padding: 0 0 0 65px;
+    margin: 5px 0;
+}
+
+.NowPlaying-Content-DownDetails-Lirycs-Text-Pass {
+    color: var(--FgPrimary);
+}
+
+.NowPlaying-Content-DownDetails-Lirycs-Text-NonPass {
+    color: var(--LirycsOpaque);
+}
+
+#NowPlaying-Content-Image {
+    margin: 0 50px 0 0;
+}
+
+#NowPlaying-Content-Image,
+#NowPlaying-Content-Image img {
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+    transition: ease .1s;
+}
+
+#NowPlaying-Content-ImageSmall {
+    margin: 0 50px 0 0;
+}
+
+#NowPlaying-Content-ImageSmall,
+#NowPlaying-Content-ImageSmall img {
+    border-radius: 10px;
+    width: 350px;
+    height: 350px;
+    transition: ease .1s;
+}
+
+#NowPlaying-Content-SongDetails {
+    width: fit-content;
+}
+
+#NowPlaying-Content-SongDetails-Name {
+    font-family: "Satoshi Bold";
+    font-size: 36px;
+    margin: 0 0 20px 10px;
+}
+
+#NowPlaying-Content-SongDetails-Description {
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+#NowPlaying-Content-SongDetails-Description a {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#NowPlaying-Content-SongDetails-Description svg {
+    width: 30px;
+}
+
+.NowPlaying-Content-SongDetails-Description-Text {
+    text-align: center;
+}
+
+.NowPlaying-Content-SongDetails-Description-Separators {
+    margin: 0 10px 0 18px;
+    font-size: 3px;
+}
+
+#NowPlaying-Content-SongDetails-Description * {
+    font-family: "satoshi Regular";
+    font-size: 14px;
+}
+
+#NowPlaying-Content-Options {
+    height: 40px;
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+}
+
+#NowPlaying-Content-Artist a {
+    display: block;
+    width: fit-content;
+}
+
+#NowPlaying-Content-Options-Play {
+    cursor: pointer;
+}
+
+#NowPlaying-Content-SongGenres {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#NowPlaying-Content-Artist {
+    margin: 20px 0;
+}
+
+.NowPlaying-Content-SongGenres-Elements {
+    padding: 10px 15px;
+    margin: 5px;
+    height: 20px;
+    border-radius: 44px;
+    border: 2px rgba(137, 137, 137, 25%) solid;
+    color: var(--FgSecondary);
+    font-family: "satoshi Medium";
+    font-size: 15px;
+}
+
+.NowPlaying-Content-SongGenres-Elements:hover {
+    color: var(--FgPrimary);
+    border: 2px var(--FgPrimary) solid;
+}
+
+.NowPlaying-Content-Artist-Element * {
+    font-family: "Satoshi Medium";
+    font-size: 16px;
+}
+
+.NowPlaying-Content-Artist-Element {
+    height: 60px;
+    display: flex;
+}
+
+.NowPlaying-Content-Artist-Element-Image {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin: 0 20px 0 0;
+}
+
+.NowPlaying-Content-Artist-Element-Details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.NowPlaying-Content-Artist-Element-Details p {
+    color: var(--FgPrimary);
+}
+
+.NowPlaying-Content-Artist-Element-Details span {
+    color: var(--FgSecondary);
+}
+
+@media (max-width: 800px) {
+
+    #NowPlaying-Content-Image {
+        display: none;
+    }
+    
+    #NowPlaying-Content-ImageSmall {
+        display: none;
+    }
+
+    .NowPlaying-Content-SongGenres-Elements {
+        padding: 5px 10px;
+    }
+
+    #NowPlaying-Content-Options {
+        margin: 20px 0 5px;
+    }
+}

@@ -7,6 +7,9 @@ import { Pause, Play } from "../../../../assets/Player";
 import { AddToQueue } from "../../../../assets/Queue";
 import Lirycs from "./components/Lirycs";
 
+// Styles
+import "./index.css"
+
 export default function NowPlaying() {
 
     const [Section, setSection] = useState<"Lirycs" | "Credits">("Lirycs")
@@ -70,7 +73,7 @@ export default function NowPlaying() {
                             {PlayerState.Data.Title}
                         </h1>
                         <div id="NowPlaying-Content-SongDetails-Description">
-                            <Link to={PlayerState.Data.Artist[0]?.URL}>
+                            <Link to={`/artist/${PlayerState.Data.Artist[0]?.URL}`}>
                                 <ArtistIcon />
                                 <span className="NowPlaying-Content-SongDetails-Description-Text">{PlayerState.Data.Artist[0]?.Name}</span>
                             </Link>

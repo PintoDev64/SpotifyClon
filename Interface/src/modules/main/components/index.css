@@ -10,6 +10,7 @@
 
 /* -------- Playlist -------- */
 .Song,
+.Artist,
 .Playlist {
     position: relative;
     display: flex;
@@ -32,7 +33,7 @@
     border-radius: 5px 0 5px 0;
 }
 
-.Playlist:hover .Playlist-Image:after{
+.Playlist:hover .Playlist-Image:after {
     left: 0;
     animation: AppearAlbum .2s ease;
 }
@@ -48,6 +49,7 @@
 }
 
 .Song:hover,
+.Artist:hover,
 .Playlist:hover {
     background-color: var(--BgSecondary);
 }
@@ -55,6 +57,7 @@
 #Song-Image-Play-Active,
 #Playlist-Image-Play-Active,
 .Song:hover .Song-Image-Play,
+.Artist:hover .Artist-Image-Play,
 .Playlist:hover .Playlist-Image-Play {
     z-index: 5;
     bottom: 0;
@@ -64,6 +67,11 @@
 .Song-Image,
 .Playlist-Image {
     overflow: hidden;
+}
+
+.Artist-Image {
+    position: relative;
+    border-radius: 85px;
 }
 
 .Song-Image {
@@ -85,12 +93,22 @@
 }
 
 .Song-Image-Element,
+.Artist-Image-Element,
 .Playlist-Image-Element {
     width: 170px;
     height: 170px;
+}
+
+.Artist-Image-Element {
+    border-radius: 85px;
+}
+
+.Song-Image-Element,
+.Playlist-Image-Element {
     border-radius: 7.25px;
 }
 
+.Artist-Image-Play,
 .Song-Image-Play,
 .Playlist-Image-Play {
     opacity: 0;
@@ -117,6 +135,7 @@
     height: 6px;
 }
 
+.Artist-Details,
 .Song-Details,
 .Playlist-Details {
     width: 170px;
@@ -125,6 +144,7 @@
     flex-direction: column;
 }
 
+.Artist-Details-Title,
 .Song-Details-Title,
 .Playlist-Details-Title {
     color: var(--FgPrimary);
@@ -132,12 +152,15 @@
     font-size: 16px;
 }
 
+.Artist-Details-Description,
 .Song-Details-Description,
 .Playlist-Details-Description {
     color: var(--FgSecondary);
     font-size: 13px;
 }
 
+.Artist-Details-Title,
+.Artist-Details-Description,
 .Song-Details-Title,
 .Song-Details-Description,
 .Playlist-Details-Title,
@@ -154,7 +177,7 @@
     height: 70px;
     display: grid;
     grid-template-areas: "Controls Song Options";
-    grid-template-columns: 50% 20% 30%;
+    grid-template-columns: 40% 20% 40%;
     align-items: center;
     border-radius: 10px;
     background-color: var(--BgSecondary);
@@ -186,6 +209,11 @@
     height: 40px;
     display: grid;
     place-content: center;
+    
+}
+
+.Main-Player-Controls-Button-Elements * {
+    stroke: var(--FgPrimary)
 }
 
 #Main-Player-Controls-Play,
@@ -225,6 +253,10 @@
     transition: .2s ease;
     width: 55px;
     min-width: 55px;
+}
+
+#Main-Player-Options-Volume * {
+    stroke: var(--FgPrimary)
 }
 
 #Main-Player-Options-Volume:hover {
@@ -311,11 +343,16 @@
     justify-content: center;
 }
 
+#Main-Player-Song-Cover-Replace,
 #Main-Player-Song-Cover {
     width: 55px;
     height: 55px;
     border-radius: 3px;
     transition: .1s ease;
+}
+
+#Main-Player-Song-Cover-Replace {
+    background: var(--FgTertiary);
 }
 
 #Main-Player-Song-Cover:hover {
@@ -330,8 +367,14 @@
     justify-content: space-evenly;
 }
 
+#Main-Player-Song-Details span {
+    display: flex;
+    align-items: center;
+}
+
 #Main-Player-Song-Details-Name,
 .Main-Player-Song-Details-Extra {
+    width: 100%;
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -343,10 +386,25 @@
     font-size: 14px;
 }
 
+.Main-Player-Song-Details-Extra-Replace,
+#Main-Player-Song-Details-Name-Link-Replace {
+    min-width: 75px;
+    background-color: var(--FgTertiary);
+}
+
+.Main-Player-Song-Details-Extra-Replace {
+    height: 10px;
+}
+
+#Main-Player-Song-Details-Name-Link-Replace {
+    height: 18px;
+}
+
 .Main-Player-Song-Details-Extra {
     color: var(--FgCuartionary);
 }
 
+.Main-Player-Song-Details-Extra-Replace *:focus,
 .Main-Player-Song-Details-Extra *:focus {
     background-color: transparent;
 }
