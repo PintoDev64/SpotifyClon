@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 export default function SongCover() {
 
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     const { PlayerState } = useContext(PlayerContext);
 
@@ -14,7 +15,7 @@ export default function SongCover() {
         <div id="Main-Player-Song">
             {
                 pathname.includes("/now-playing")
-                    ? <button onClick={() => {}}>
+                    ? <button onClick={() => {navigate(-1)}}>
                         {
                             PlayerState.Data.imageURL
                                 ? <img id="Main-Player-Song-Cover" src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} />
@@ -33,7 +34,7 @@ export default function SongCover() {
                 <span id="Main-Player-Song-Details-Name">
                     {
                         pathname.includes("/now-playing")
-                            ? <button onClick={() => {}} id={PlayerState.Data.Title ? "Main-Player-Song-Details-Name-Link" : "Main-Player-Song-Details-Name-Link-Replace"}>
+                            ? <button onClick={() => {navigate(-1)}} id={PlayerState.Data.Title ? "Main-Player-Song-Details-Name-Link" : "Main-Player-Song-Details-Name-Link-Replace"}>
                                 {PlayerState.Data.Title ? PlayerState.Data.Title : ""}
                             </button>
                             : <Link to="/now-playing" id={PlayerState.Data.Title ? "Main-Player-Song-Details-Name-Link" : "Main-Player-Song-Details-Name-Link-Replace"}>

@@ -1,5 +1,5 @@
-import { Route, Routes, redirect } from "react-router-dom";
-import { useContext } from "react";
+import { Outlet, Route, Routes, redirect } from "react-router-dom";
+import { ReactNode, useContext } from "react";
 
 // Assets
 import HomePage from "./routes/Home";
@@ -20,20 +20,10 @@ import Queue from "./components/Queue";
 import PlaylistPage from "./routes/Playlist";
 import ArtistPage from "./routes/Artist";
 
-export default function Main() {
+export default function Main({ children }: { children?: ReactNode }) {
 
     const { SidebarState } = useContext(SidebarContext);
     const { PlayerState } = useContext(PlayerContext);
-
-    const NowPlayingToHome = async () => {
-        console.log("redirect");
-        if (PlayerState.Data.imageURL.length === 0) {
-            return redirect("/");
-        }
-        return new Response("", {
-            status: 302,
-        });
-    }
 
     const StyleMain = () => {
         if (SidebarState.Sidebar !== "") {
@@ -65,14 +55,8 @@ export default function Main() {
         <main id="Main">
             <div id="MainContent" style={StyleMain()}>
                 <div id="MainContent-Home">
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/artist/:artist" element={<ArtistPage />} />
-                        <Route path="/search" element={<Search />} />
-                        <Route path="/playlist/:playlist" element={<PlaylistPage />} />
-                        <Route path="/collections" element={<LibraryPage />} />
-                        <Route path="/now-playing" loader={NowPlayingToHome} element={<NowPlaying />} />
-                    </Routes>
+                    {children && children}
+                    <Outlet />
                 </div>
                 {ComponentMain()}
             </div>

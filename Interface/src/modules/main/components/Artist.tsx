@@ -9,7 +9,8 @@ export default function Artist(props: ArtistList) {
     const { ImageURL, URL, Name, Visible = true } = props
 
     const { PlayerState } = useContext(PlayerContext);
-    const navigate = useNavigate();
+
+    const navigate = useNavigate()
 
     const handleNavigate = (URL: string) => {
         if (URL.length > 0) {

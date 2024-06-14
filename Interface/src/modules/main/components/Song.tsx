@@ -9,9 +9,9 @@ export default function Song(props: SongProps) {
 
     const { Id,  Title, Album, imageURL, Artist } = props
 
-    const navigate = useNavigate()
-
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
+
+    const navigate = useNavigate()
 
     const handleMusicPlayer = () => {
 

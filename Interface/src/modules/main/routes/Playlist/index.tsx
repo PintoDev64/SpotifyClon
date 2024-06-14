@@ -15,8 +15,9 @@ export default function PlaylistPage() {
     const { ModifyQueue } = useContext(QueueContext);
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
 
-    const { playlist } = useParams<{ playlist: string }>()
     const navigate = useNavigate()
+
+    const { playlist } = useParams<{ playlist: string }>()
 
     const [Data, setData] = useState<PlaylistProps>()
     const [DominantColor, setDominantColor] = useState<string>()

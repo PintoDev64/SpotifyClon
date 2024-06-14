@@ -76,6 +76,7 @@ export type INITIALPROPS_PLAYER = {
     CurrentTime: number
     Playlist: string,
     DominantColor: string,
+    audioRef: MutableRefObject<HTMLAudioElement>
 }
 
 export type INITIALPROPS_PLAYER_MODIFICATOR = {

@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 
 // Context
 import { PlayerContext } from ".";
@@ -29,7 +29,8 @@ export default function PlayerContextComponent({ children }: ContextProps) {
             Year: 0,
             Genres: []
         },
-        DominantColor: ""
+        DominantColor: "",
+        audioRef: useRef(new Audio())
     }
 
     function reducer(state: INITIALPROPS_PLAYER, { action, value }: INITIALPROPS_PLAYER_MODIFICATOR) {

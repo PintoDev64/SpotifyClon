@@ -20,9 +20,9 @@ export default function Playlist(props: PlaylistProps) {
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
     const [DominantColor, setDominantColor] = useState<string>()
 
-    const navigate = useNavigate()
-
     const PlaylistCover = useRef<HTMLImageElement>(null!);
+
+    const navigate = useNavigate()
 
     const handleMusicPlayer = () => {
 
