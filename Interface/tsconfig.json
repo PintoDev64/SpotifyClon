@@ -18,7 +18,20 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "paths": {
+      "@types": ["src/vite-env.d.ts"],
+      "@App": ["src/client/app"],
+      "@Router/*": ["src/client/app/routes/*"],
+      "@AppComponents/*": ["src/client/app/components/*"],
+      "@AppConstants": ["src/client/app/constants"],
+      "@assets/*": ["src/assets/*"],
+      "@contextComponent/*": ["src/context/components/*"],
+      "@context": ["src/context"],
+      "@hooks": ["src/hooks"],
+      "@helpers": ["src/helpers"]
+    }
   },
   "include": ["src", "src/vite-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

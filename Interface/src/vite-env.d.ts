@@ -33,13 +33,44 @@ export interface PlaylistProps {
     Songs: SongProps[]
 }
 
-type ArtistList = {
+export type ArtistList = {
     URL: string,
     Name: string,
     ImageURL: string,
     Role: string[]
     Banner: string
     Visible?: true | boolean
+}
+
+export interface SocialsStructure {
+    Type: "Facebook" | "Twitter" | "External" | "Instagram",
+    Text: string
+    Url: string
+}
+export interface MonthlyListener {
+    Total: number
+    Top5: {
+        NameCity: string
+        Value: number
+    }[]
+}
+
+export type ArtistList_API = {
+    URL: string,
+    Name: string,
+    ImageURL: string,
+    Role: string[]
+    Banner: string
+    Top5: [SongProps, SongProps, SongProps, SongProps, SongProps]
+    Discography: PlaylistProps[]
+    Visible?: true | boolean
+    Data: {
+        Clasification: number | 0
+        Followers: nmuber
+        Description: string
+        MonthlyListeners: MonthlyListener
+        Socials: SocialsStructure[]
+    }
 }
 
 export interface controls {
@@ -73,15 +104,22 @@ export type INITIALPROPS_PLAYER = {
     Loop: boolean,
     Volume: string,
     Data: SongProps
-    CurrentTime: number
     Playlist: string,
     DominantColor: string,
     audioRef: MutableRefObject<HTMLAudioElement>
 }
 
+type INITIALPROPS_PLAYER_MIDIFICATOR_ACTION = "Volume" | "State" | "Loop" | "Data" | "DominantColor" | "CurrentTime" | "Playlist"
+type INITIALPROPS_PLAYER_MIDIFICATOR_VALUE = SongProps | INITIALPROPS_PLAYER | boolean | string | number
+
 export type INITIALPROPS_PLAYER_MODIFICATOR = {
-    action: "Volume" | "State" | "Loop" | "Data" | "DominantColor" | "CurrentTime" | "Playlist",
-    value: SongProps | INITIALPROPS_PLAYER | boolean | string | number
+    action: INITIALPROPS_PLAYER_MIDIFICATOR_ACTION,
+    value: INITIALPROPS_PLAYER_MIDIFICATOR_VALUE
+}
+
+export type INITIALPROPS_PLAYER_DISPATCH_MODIFICATOR = {
+    action: INITIALPROPS_PLAYER_MIDIFICATOR_ACTION
+    value: INITIALPROPS_PLAYER_MIDIFICATOR_VALUE
 }
 
 export interface PlayerContextProps {
