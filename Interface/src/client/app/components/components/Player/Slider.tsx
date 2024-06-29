@@ -6,42 +6,29 @@ import { formatTime } from "@helpers";
 
 export default function SongSlider() {
 
-    const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
+    const { PlayerState } = useContext(PlayerContext);
 
     const [duration, setDuration] = useState(0)
     const [CurrentTime, setCurrentTime] = useState(0)
 
     useEffect(() => {
-        setInterval(() => {
-            if (PlayerState.audioRef.current.src && PlayerState.Data.URL) {
+        if (PlayerState.audioRef.current.src && PlayerState.Data.URL) {
+            setInterval(() => {
                 navigator.mediaSession.setPositionState({
                     position: PlayerState.audioRef.current.currentTime,
                     duration: PlayerState.audioRef.current.duration
                 });
-                ModifyPlayer({
-                    action: "CurrentTime",
-                    value: PlayerState.audioRef.current.currentTime
-                });
-            }
-        }, 1000);
+            }, 1000)
+        }
         setDuration(PlayerState.audioRef.current.duration)
-    }, []);
-
-    useEffect(() => {
-        setDuration(PlayerState.audioRef.current.duration)
-    }, [PlayerState.audioRef.current.duration])
-
-    useEffect(() => {
         PlayerState.audioRef.current.addEventListener('timeupdate', handleTimeUpdate)
         return () => {
             PlayerState.audioRef.current.removeEventListener('timeupdate', handleTimeUpdate)
         }
-    }, [PlayerState.audioRef.current])
+    }, [PlayerState.audioRef.current.duration]);
 
     const handleTimeUpdate = () => {
-        setTimeout(() => {
-            setCurrentTime(PlayerState.audioRef.current.currentTime)
-        }, 1000);
+        setCurrentTime(PlayerState.audioRef.current.currentTime)
     }
 
     const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +57,7 @@ export default function SongSlider() {
                     background: CurrentTime === 0 ? "linear-gradient(90deg, var(--FgSecondary) 0 100%)" : `linear-gradient(90deg, var(--FgPrimary) ${playedPercentage}%, var(--FgSecondary) ${playedPercentage}%)`
                 }}
             />
-            {(!isNaN(PlayerState.audioRef.current.duration) && PlayerState.audioRef.current.duration) ? <span>{formatTime(duration)}</span> : <span>0:00</span>}
+            {(!isNaN(PlayerState.audioRef.current.duration) && duration) ? <span>{formatTime(duration)}</span> : <span>0:00</span>}
         </div>
     )
 }

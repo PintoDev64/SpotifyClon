@@ -53,10 +53,6 @@
   background: var(--StrokeDef);
 }
 
-path {
-  stroke-width: 2.25;
-}
-
 body {
   background-color: var(--BgMain);
 }

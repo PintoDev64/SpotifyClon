@@ -129,12 +129,14 @@ export interface PlayerContextProps {
 
 // Queue Context Types
 export type INITIALPROPS_QUEUE = {
-    List: SongProps[] | [],
+    QueueList: SongProps[] | [],
+    PlaylistID: string | number,
+    PlaylistQueue: SongProps[] | []
 }
 
 export type INITIALPROPS_QUEUE_MODIFICATOR = {
-    action: "List",
-    value: SongProps[] | []
+    action: "QueueList" | "PlaylistQueue" | "PlaylistID",
+    value: SongProps[] | [] | string
 }
 
 export interface QueueContextProps {

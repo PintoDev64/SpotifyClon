@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { QueueOff, QueueOn } from "@assets/Queue";
 // Context
 import { PlayerContext, SidebarContext } from "@context";
+// Components
+import Volume from "./Volume";
 
 export default function Options() {
 
@@ -18,6 +20,7 @@ export default function Options() {
 
     return (
         <div id="Main-Player-Options">
+            <Volume />
             <div id="Main-Player-Options-Separator"/>
             <button className="Main-Player-Controls-Button-Elements" onClick={handleSidebar}>
                 {

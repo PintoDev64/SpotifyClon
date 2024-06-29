@@ -15,13 +15,14 @@ export default function Song(props: SongProps) {
     // Context
     const { PlayerState } = useContext(PlayerContext);
     // Hooks
-    const { ChangePlayerData, SwitchPlayer, ChangeDominantColor } = usePlayer()
+    const { ChangePlayerData, SwitchPlayer, ChangeDominantColor, PlayPlayer } = usePlayer()
     const { goTo } = useNavigationPanel()
     // Hnadlers
     function handleMusicPlayer() {
         if (Id !== PlayerState.Data.Id) {
             ChangePlayerData(props, Title)
             ChangeDominantColor(true, imageURL)
+            PlayPlayer()
         } else {
             SwitchPlayer()
         }

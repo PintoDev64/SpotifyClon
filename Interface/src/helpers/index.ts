@@ -41,7 +41,7 @@ export function getDominantColor(imageUrl: string, transparency?: number): Promi
   });
 }
 
-export function createMetaDataPlayer(PlayerState: INITIALPROPS_PLAYER, QueueState: INITIALPROPS_QUEUE, playAudio: () => void, pauseAudio: () => void, handleNextSong: (List: SongProps[]) => void) {
+export function createMetaDataPlayer(PlayerState: INITIALPROPS_PLAYER, QueueState: INITIALPROPS_QUEUE, playAudio: () => void, pauseAudio: () => void, handleNextSong: (QueueList: SongProps[], PlaylistQueue: SongProps[], PlaylistID: string | number) => void, handlePreviusSong: () => void) {
 
   const { Title, Artist, Album, imageURL } = PlayerState.Data;
 
@@ -60,8 +60,8 @@ export function createMetaDataPlayer(PlayerState: INITIALPROPS_PLAYER, QueueStat
     });
     navigator.mediaSession.setActionHandler("play", playAudio);
     navigator.mediaSession.setActionHandler("pause", pauseAudio);
-    navigator.mediaSession.setActionHandler("previoustrack", () => { });
-    navigator.mediaSession.setActionHandler("nexttrack", () =>handleNextSong(QueueState.List));
+    navigator.mediaSession.setActionHandler("previoustrack", handlePreviusSong);
+    navigator.mediaSession.setActionHandler("nexttrack", () => handleNextSong(QueueState.QueueList, QueueState.PlaylistQueue, QueueState.PlaylistID));
   }
 
 }

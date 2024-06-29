@@ -37,7 +37,7 @@ export default function Player() {
 
     return (
         <div id="Main-Player" style={{ background: PlayerState.DominantColor }}>
-            <Controls/>
+            <Controls />
             <SongCover />
             <Options />
         </div>

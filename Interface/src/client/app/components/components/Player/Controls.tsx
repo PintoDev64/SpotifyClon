@@ -1,89 +1,87 @@
-import { MutableRefObject, useContext, useEffect } from "react";
-// Assets
+import { useContext, useEffect } from "react";
 import { LoopOff, LoopOn, NextSong, Pause, Play, PreviousSong } from "@assets/Player";
-// Contexts
 import { PlayerContext, QueueContext } from "@context";
-// Helpers
 import { createMetaDataPlayer } from "@helpers";
 import SongSlider from "./Slider";
-// Contants
 import { PLAYLIST_EXAMPLES } from "@AppConstants";
-// Components
-import Volume from "./Volume";
-// Types
 import { SongProps } from "@types";
-import { usePlayer } from "@hooks";
+import { usePlayer, useQueue } from "@hooks";
 
 export default function Controls() {
-
     const { QueueState } = useContext(QueueContext);
     const { PlayerState } = useContext(PlayerContext);
+    const { ChangeQueueData, ChangePlaylistData } = useQueue();
+    const { ChangePlayerData, SwitchPlayer, PlayPlayer, PausePlayer, RepeatPlayer, RestartProgress, RestartPlayer } = usePlayer();
 
-    const { ChangePlayerData, ChangeQueueData, SwitchPlayer, PlayPlayer, PausePlayer, RepeatPlayer } = usePlayer()
+    const handleNextSong = (QueueList: SongProps[], PlaylistQueue: SongProps[], PlaylistID: string | number) => {
+        const PlaylistIndex = PLAYLIST_EXAMPLES.findIndex(({ Id }) => PlaylistID === Id);
 
-    const handleNextSong = (List: SongProps[]) => {
-        const PlaylistIndex = PLAYLIST_EXAMPLES.findIndex(({ Id }) => PlayerState.Data.Album.Id === Id)
-        PlayerState.audioRef.current.currentTime = 0;
-        if (List.length !== 0) {
-            ChangePlayerData({ ...List[0] })
-            ChangeQueueData(List)
-            PlayPlayer()
+        RestartProgress()
+
+        if (QueueList.length !== 0) {
+            ChangePlayerData({ ...QueueList[0] });
+            ChangeQueueData([...QueueList]);
+            RestartPlayer();
+            console.log("Queue");
+
+        } else if (PlaylistQueue.length !== 0) {
+            ChangePlayerData({ ...PlaylistQueue[0] });
+            ChangePlaylistData([...PlaylistQueue]);
+            RestartPlayer();
+            console.log("Playlist");
+
         } else {
-            ChangePlayerData(PLAYLIST_EXAMPLES[PlaylistIndex].Songs[0])
-            ChangeQueueData([...PLAYLIST_EXAMPLES[PlaylistIndex].Songs])
-            PausePlayer()
+            ChangePlayerData(PLAYLIST_EXAMPLES[PlaylistIndex].Songs[0]);
+            ChangePlaylistData([...PLAYLIST_EXAMPLES[PlaylistIndex].Songs]);
+            PausePlayer();
+            console.log("Restart");
+
         }
-    }
+    };
+
+    const handleEndedEvent = () => {
+        handleNextSong(QueueState.QueueList, QueueState.PlaylistQueue, QueueState.PlaylistID);
+    };
 
     useEffect(() => {
-        PlayerState.audioRef.current.loop = PlayerState.Loop
-    }, [PlayerState.Loop])
+        createMetaDataPlayer(PlayerState, QueueState, PlayPlayer, PausePlayer, handleNextSong, RestartProgress);
+
+        PlayerState.audioRef.current.addEventListener("ended", handleEndedEvent);
+
+        return () => {
+            PlayerState.audioRef.current.removeEventListener("ended", handleEndedEvent);
+        };
+    }, [QueueState.QueueList, QueueState.PlaylistQueue, QueueState.PlaylistID]);
 
     useEffect(() => {
-        if (PlayerState.audioRef.current) {
-            PlayerState.audioRef.current.src = PlayerState.Data.URL
-            createMetaDataPlayer(PlayerState, QueueState, PlayPlayer, PausePlayer, handleNextSong)
-        }
-    }, [PlayerState.Data.URL]);
+        PlayerState.audioRef.current.loop = PlayerState.Loop;
+        PlayerState.audioRef.current.src = PlayerState.Data.URL;
+    }, [PlayerState.Loop, PlayerState.Data.URL])
 
-    useEffect(() => {
-        PlayerState.audioRef.current.addEventListener("ended", () => {
-            if (!PlayerState.Loop && QueueState.List.length === 0) {
-                PausePlayer();
-            } else {
-                handleNextSong(QueueState.List)
-            }
-        });
-    }, [QueueState.List])
 
     return (
         <div id="Main-Player-Controls">
             <div id="Main-Player-Controls-Play">
                 <button id="Main-Player-Controls-Play-Button" onClick={SwitchPlayer}>
-                    <>
-                        {PlayerState.State ? <Play /> : <Pause />}
-                    </>
+                    {PlayerState.State ? <Play /> : <Pause />}
                 </button>
             </div>
             <div className="Main-Player-Controls-Button">
-                <button id="Main-Player-Controls-PreviousSong-Button" className="Main-Player-Controls-Button-Elements">
+                <button id="Main-Player-Controls-PreviousSong-Button" className="Main-Player-Controls-Button-Elements" onClick={RestartProgress}>
                     <PreviousSong />
                 </button>
             </div>
             <div className="Main-Player-Controls-Button">
-                <button id="Main-Player-Controls-NextSong-Button" className="Main-Player-Controls-Button-Elements" onClick={() => handleNextSong(QueueState.List)}>
+                <button id="Main-Player-Controls-NextSong-Button" className="Main-Player-Controls-Button-Elements" onClick={() => handleNextSong(QueueState.QueueList, QueueState.PlaylistQueue, QueueState.PlaylistID)}>
                     <NextSong />
                 </button>
             </div>
             <div className="Main-Player-Controls-Button">
                 <button id="Main-Player-Controls-Repeat-Button" className="Main-Player-Controls-Button-Elements" onClick={RepeatPlayer}>
-                    <>
-                        {PlayerState.Loop ? <LoopOn /> : <LoopOff />}
-                    </>
+                    {PlayerState.Loop ? <LoopOn /> : <LoopOff />}
                 </button>
             </div>
             <SongSlider />
-            <Volume />
         </div>
-    )
+    );
 }

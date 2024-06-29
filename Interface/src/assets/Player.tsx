@@ -18,7 +18,7 @@ export function LoopOn() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" style={{
             isolation: "isolate"
-        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx"><rect width="41" height="42"/></clipPath></defs><g clipPath="url(#_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx)"><path d=" M 16.536 27.313 L 14.16 27.313 C 12.41 27.313 10.992 25.894 10.992 24.144 L 10.992 17.808 C 10.992 16.059 12.41 14.64 14.16 14.64 L 26.832 14.64 C 28.582 14.64 30 16.059 30 17.808 L 30 24.144 C 30 25.894 28.582 27.313 26.832 27.313 L 20.496 27.313 M 20.496 27.313 L 23.664 24.144 M 20.496 27.313 L 23.664 30.481" fill="none" vectorEffect="non-scaling-stroke" strokeWidth="2.75" stroke="rgb(30,215,96)" strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4"/></g></svg>
+        }} viewBox="0 0 41 42" width="41pt" height="42pt"><defs><clipPath id="_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx"><rect width="41" height="42"/></clipPath></defs><g clipPath="url(#_clipPath_bfqd1ZVhbPjEPGanEOqmNNWsly3zlyxx)"><path d=" M 16.536 27.313 L 14.16 27.313 C 12.41 27.313 10.992 25.894 10.992 24.144 L 10.992 17.808 C 10.992 16.059 12.41 14.64 14.16 14.64 L 26.832 14.64 C 28.582 14.64 30 16.059 30 17.808 L 30 24.144 C 30 25.894 28.582 27.313 26.832 27.313 L 20.496 27.313 M 20.496 27.313 L 23.664 24.144 M 20.496 27.313 L 23.664 30.481" fill="none" vectorEffect="non-scaling-stroke" strokeWidth="3.0" stroke="var(--Primary)" strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4"/></g></svg>
 
     )
 }

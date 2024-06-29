@@ -87,9 +87,16 @@
     cursor: default;
     padding: 0 0 0 65px;
     margin: 5px 0;
+    transition: .1s ease;
 }
 
+.NowPlaying-Content-DownDetails-Lirycs-Text:hover {
+    background: linear-gradient(90deg, var(--LirycsOpaque) 0, transparent 75%);
+}
+
+.NowPlaying-Content-DownDetails-Lirycs-Text:hover,
 .NowPlaying-Content-DownDetails-Lirycs-Text-Pass {
+    cursor: pointer;
     color: var(--FgPrimary);
 }
 

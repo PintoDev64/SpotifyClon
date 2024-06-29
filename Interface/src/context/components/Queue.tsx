@@ -5,7 +5,9 @@ import { ContextProps, INITIALPROPS_QUEUE, INITIALPROPS_QUEUE_MODIFICATOR } from
 export default function QueueContextComponent({ children }: ContextProps) {
 
     const INITIAL_PROPS: INITIALPROPS_QUEUE = {
-        List: []
+        QueueList: [],
+        PlaylistID: "",
+        PlaylistQueue: []
     }
 
     function reducer(state: INITIALPROPS_QUEUE, { action, value }: INITIALPROPS_QUEUE_MODIFICATOR) {

@@ -9,12 +9,16 @@ import { PlayerContext, QueueContext } from "@context"
 
 // Styles
 import "./index.css"
+import { usePathTool, usePlayer, useQueue } from "@hooks"
 
 export default function PlaylistPage() {
 
-    const { ModifyQueue } = useContext(QueueContext);
-    const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
+    const { QueueState } = useContext(QueueContext);
+    const { PlayerState } = useContext(PlayerContext);
 
+    const { ChangePlaylistData, ChangePlaylistID } = useQueue()
+    const { ChangePlayerData, PlayPlayer } = usePlayer()
+    const { Include } = usePathTool()
     const navigate = useNavigate()
 
     const { playlist } = useParams<{ playlist: string }>()
@@ -23,6 +27,9 @@ export default function PlaylistPage() {
     const [DominantColor, setDominantColor] = useState<string>()
 
     useEffect(() => {
+        getDominantColor(Data?.imageURL!, 30)
+            .then(value => setDominantColor(value))
+
         const data = PLAYLIST_EXAMPLES[
             PLAYLIST_EXAMPLES.findIndex(({ Id }) => Id === playlist)
         ]
@@ -31,39 +38,20 @@ export default function PlaylistPage() {
         } else {
             navigate("/")
         }
-    }, [])
-
-    const handlePlayerSong = (index: number) => {
-        ModifyPlayer({
-            action: "Data",
-            value: {
-                ...Data?.Songs[index]!
-            }
-        })
-        ModifyQueue({
-            action: "List",
-            value: [...Data?.Songs!].splice(index + 1, Data?.Songs?.length)
-        })
-        ModifyPlayer({ action: "State", value: true })
-    }
-
-    useEffect(() => {
-        getDominantColor(Data?.imageURL!, 30)
-            .then(value => setDominantColor(value))
     }, [Data?.imageURL])
 
-    useEffect(() => {
-        Data?.Songs.map(({ Album }) => {
-            PLAYLIST_EXAMPLES[PLAYLIST_EXAMPLES.findIndex(({ Title }) => {
-                console.log()
-            })]
-        });
-    }, [Data?.Songs])
+    const handlePlayerSong = (index: number) => {
+        ChangePlayerData({ ...Data?.Songs[index]! })
+        ChangePlaylistID(Data?.Id!)
+        ChangePlaylistData([...Data?.Songs!].splice(index, Data?.Songs?.length))
+        PlayPlayer()
+    }
 
+    console.log(`/${QueueState.PlaylistID}`);
 
     return (
         <div id="Playlist" style={{
-            background: `linear-gradient(${DominantColor} 0%, var(--BgMain) 100%)`
+            background: `linear-gradient(${DominantColor} 50%, var(--BgMain) 100%)`
         }}>
             <div id="Playlist-Content">
                 <div id="Playlist-Content-Details">
@@ -102,7 +90,7 @@ export default function PlaylistPage() {
                                     onDoubleClick={() => handlePlayerSong(index)}
                                 >
                                     <p className="Playlist-Content-List-Content-Element-Number">{
-                                        (PlayerState.Data.Title.length !== 0 && PlayerState.Data.Id === Id && Album.Name === Data.Title)
+                                        (PlayerState.State && PlayerState.Data.Id === Id && Include(`/${QueueState.PlaylistID}`))
                                             ? <img src="https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f5eb96f2.gif" width={15} height={15} />
                                             : index + 1
                                     }</p>
@@ -128,7 +116,7 @@ export default function PlaylistPage() {
                 </div>
             </div>
             <div id="Playlist-Sidebar">
-                <img id="Playlist-Sidebar-Image" src={Data?.imageURL} alt={Data?.Title} width={320} height={320}/>
+                <img id="Playlist-Sidebar-Image" src={Data?.imageURL} alt={Data?.Title} width={320} height={320} />
                 <div id="Playlist-Sidebar-SongGenres">
                     {
                         Data?.Songs?.length! > 0 && Data?.Songs?.map(({ Genres }) =>

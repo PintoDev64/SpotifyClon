@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { PlayerContext } from "@context"
+import { usePlayer } from "@hooks";
 
 export default function Lirycs() {
 
@@ -9,6 +10,8 @@ export default function Lirycs() {
 
     const LirycsContainer = useRef<HTMLDivElement>(null!)
     const lyricsLineRefs = useRef<HTMLParagraphElement[]>([null!]);
+
+    const { setProgress } = usePlayer()
 
     if (PlayerState.Data.Lirycs) {
         setInterval(() => {
@@ -47,8 +50,8 @@ export default function Lirycs() {
     return (
         <div id="NowPlaying-Content-DownDetails-Lirycs" ref={LirycsContainer} onMouseEnter={handleMouseOn} onMouseLeave={handleMouseOff}>
             {
-                PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ text }, index) =>
-                    <p key={index} ref={ref => lyricsLineRefs.current[index] = ref!} className={`NowPlaying-Content-DownDetails-Lirycs-Text ${index < currentIndex ? "NowPlaying-Content-DownDetails-Lirycs-Text-Pass" : "NowPlaying-Content-DownDetails-Lirycs-Text-NonPass"}`}>{text}</p>
+                PlayerState.Data.Lirycs?.length !== 0 && PlayerState.Data.Lirycs?.map(({ time, text }, index) =>
+                    <p key={index} ref={ref => lyricsLineRefs.current[index] = ref!} className={`NowPlaying-Content-DownDetails-Lirycs-Text ${index < currentIndex ? "NowPlaying-Content-DownDetails-Lirycs-Text-Pass" : "NowPlaying-Content-DownDetails-Lirycs-Text-NonPass"}`} onClick={() => setProgress(time)}>{text}</p>
                 )
             }
         </div>

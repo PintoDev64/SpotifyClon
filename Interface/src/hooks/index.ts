@@ -50,9 +50,35 @@ export function usePathTool() {
     }
 }
 
+export function useQueue() {
+    const { ModifyQueue } = useContext(QueueContext);
+    function ChangeQueueData(Songs: SongProps[]) {
+        ModifyQueue({
+            action: "QueueList",
+            value: Songs.slice(1, (Songs.length))
+        })
+    }
+    function ChangePlaylistData(Songs: SongProps[]) {
+        ModifyQueue({
+            action: "PlaylistQueue",
+            value: Songs.slice(1, (Songs.length))
+        })
+    }
+    function ChangePlaylistID(ID: string) {
+        ModifyQueue({
+            action: "PlaylistID",
+            value: ID
+        })
+    }
+    return {
+        ChangeQueueData,
+        ChangePlaylistData,
+        ChangePlaylistID
+    }
+}
+
 export function usePlayer() {
     const { PlayerState, ModifyPlayer } = useContext(PlayerContext);
-    const { ModifyQueue } = useContext(QueueContext);
     function ChangePlayerData(props: SongProps, Title?: string) {
         ModifyPlayer({
             action: "Data",
@@ -64,22 +90,15 @@ export function usePlayer() {
             action: "Playlist",
             value: Title
         })
-        RestartPlayer()
     }
-    function ChangeQueueData(Songs: SongProps[]) {
-        ModifyQueue({
-            action: "List",
-            value: [...Songs].slice(1, (Songs.length))
-        })
-    }
-    function ChangeDominantColor(defaultValue: boolean = false, imageURL?: string) {
+    function ChangeDominantColor(defaultValue: boolean = false, imageURL?: string, transpacenry?: number) {
         if (defaultValue) {
             ModifyPlayer({
                 action: "DominantColor",
                 value: "var(--BgSecondary"
             })
         } else {
-            imageURL && getDominantColor(imageURL)
+            imageURL && getDominantColor(imageURL, transpacenry)
                 .then(value => ModifyPlayer({
                     action: "DominantColor",
                     value
@@ -111,14 +130,21 @@ export function usePlayer() {
     function RepeatPlayer() {
         ModifyPlayer({ action: "Loop", value: !PlayerState.Loop })
     }
+    function RestartProgress() {
+        PlayerState.audioRef.current.currentTime = 0
+    }
+    function setProgress(value: number) {
+        PlayerState.audioRef.current.currentTime = value
+    }
     return {
         ChangePlayerData,
-        ChangeQueueData,
         ChangeDominantColor,
         RestartPlayer,
         PausePlayer,
         PlayPlayer,
         RepeatPlayer,
-        SwitchPlayer
+        SwitchPlayer,
+        RestartProgress,
+        setProgress
     }
 }

@@ -9,38 +9,54 @@ import './index.css'
 import { PlayerContext, QueueContext } from "@context"
 import { PlaylistProps } from "@types"
 import { Pause, Play } from "@assets/Player"
-import { useNavigationPanel, usePlayer } from "@hooks"
+import { useNavigationPanel, usePlayer, useQueue } from "@hooks"
+import { PLAYLIST_EXAMPLES } from "@AppConstants"
 
 export default function Playlist(props: PlaylistProps) {
     // Component Properties
     const { Id, Songs, Title, imageURL, Description, URL } = props
+    // State
+    const [DominantColor, setDominantColor] = useState("")
     // Context
     const { PlayerState } = useContext(PlayerContext);
+    const { QueueState } = useContext(QueueContext);
     // Hooks 
-    const { ChangePlayerData, SwitchPlayer, ChangeQueueData, ChangeDominantColor } = usePlayer()
+    const { ChangePlayerData, SwitchPlayer, ChangeDominantColor, PlayPlayer, RestartProgress } = usePlayer()
+    const { ChangePlaylistData, ChangePlaylistID } = useQueue()
     const { goTo } = useNavigationPanel()
     // References
     const PlaylistCover = useRef<HTMLImageElement>(null!);
     // Hnadlers
-    const handleMusicPlayer = () => {
-        if ((Songs[0].Id !== PlayerState.Data.Id) && (PlayerState.Data.Album.Id !== Id)) {
+    const handleMusicPlayer = (PlaylistID: string | number, Playlist: string) => {
+        const response = PLAYLIST_EXAMPLES.find(({ Id: IdValue }) => Id === IdValue)
+        if (PlaylistID !== response?.Id) {
+            if (PlayerState.Data.Id === props.Songs[0].Id) {
+                RestartProgress()
+            }
             ChangePlayerData(props.Songs[0], Title)
             ChangeDominantColor(true, imageURL)
-            ChangeQueueData(Songs)
+            ChangePlaylistData(Songs)
+            ChangePlaylistID(Id)
+            PlayPlayer()
         } else {
             SwitchPlayer()
         }
     }
+    useEffect(() => {
+        getDominantColor(imageURL, 100)
+            .then(value => setDominantColor(value))
+            .catch(() => { })
+    }, [])
     // Component
     return (
         <div className="Playlist">
             <div className="Playlist-Image">
                 <div
                     className="Playlist-Image-DominantColor_Top"
-                    style={{ background: PlayerState.DominantColor }} />
+                    style={{ background: DominantColor }} />
                 <div
                     className="Playlist-Image-DominantColor_Middle"
-                    style={{ background: PlayerState.DominantColor }} />
+                    style={{ background: DominantColor }} />
                 <img
                     className="Playlist-Image-Element"
                     src={imageURL}
@@ -49,11 +65,11 @@ export default function Playlist(props: PlaylistProps) {
                     height={170}
                     onClick={() => goTo(URL)} />
                 <button
-                    id={`${PlayerState.Data.Album.Id === Id && "Playlist-Image-Play-Active"}`}
+                    id={`${QueueState.PlaylistID  === Id && "Playlist-Image-Play-Active"}`}
                     className="Playlist-Image-Play"
-                    onClick={handleMusicPlayer}>
+                    onClick={() => handleMusicPlayer(QueueState.PlaylistID, PlayerState.Playlist)}>
                     <>
-                        {(Id === PlayerState.Data.Album.Id && PlayerState.State) ? <Play /> : <Pause />}
+                        {(Id === QueueState.PlaylistID && PlayerState.State) ? <Play /> : <Pause />}
                     </>
                 </button>
             </div>

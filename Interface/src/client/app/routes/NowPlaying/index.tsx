@@ -24,13 +24,10 @@ export default function NowPlaying() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        DownDetails.current.style.height = `${NowPlayingRef.current.offsetHeight - 50}px`
         PlayerState.Data.Lirycs?.length === 0 ? setSection("Credits") : setSection("Lirycs")
         PlayerState.Data.URL.length === 0 && navigate("/")
     }, [PlayerState.Data.URL])
-
-    useEffect(() => {
-        DownDetails.current.style.height = `${NowPlayingRef.current.offsetHeight - 50}px`
-    }, [])
 
 
     const handlePlay = () => {
@@ -42,9 +39,10 @@ export default function NowPlaying() {
 
     const handleAddToQueue = () => {
         ModifyQueue({
-            action: "List",
-            value: [...QueueState.List, { ...PlayerState.Data }]
+            action: "QueueList",
+            value: [...QueueState.QueueList, { ...PlayerState.Data }]
         })
+        
     }
 
     const SectionsList = [{

@@ -415,16 +415,19 @@
 }
 
 /* ------ Queue List ------ */
+#Sidebar-Queue-Title-NowPlaying p {
+    color: var(--Primary);
+}
 #Sidebar-Queue-Title,
-#Sidebar-Queue-SecondTitle {
+.Sidebar-Queue-SecondTitle {
     font-family: "Satoshi Bold";
 }
 
-#Sidebar-Queue-SecondTitle {
+.Sidebar-Queue-SecondTitle {
     margin: 30px 0 12.5px;
 }
 
-#Sidebar-Queue {
+.Sidebar-Queue {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -442,7 +445,7 @@
 }
 
 .Sidebar-Queue-Elements-Image,
-.Sidebar-Queue-Elements-Image img {
+.Sidebar-Queue-Elements-Image > img {
     position: relative;
     width: 50px;
     height: 50px;
