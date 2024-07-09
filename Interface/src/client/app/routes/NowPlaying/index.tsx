@@ -26,6 +26,12 @@ export default function NowPlaying() {
     useEffect(() => {
         DownDetails.current.style.height = `${NowPlayingRef.current.offsetHeight - 50}px`
         PlayerState.Data.Lirycs?.length === 0 ? setSection("Credits") : setSection("Lirycs")
+        NowPlayingRef.current.addEventListener("scrollend", (ev) => {
+            
+        })
+    }, [])
+
+    useEffect(() => {
         PlayerState.Data.URL.length === 0 && navigate("/")
     }, [PlayerState.Data.URL])
 
@@ -42,7 +48,6 @@ export default function NowPlaying() {
             action: "QueueList",
             value: [...QueueState.QueueList, { ...PlayerState.Data }]
         })
-        
     }
 
     const SectionsList = [{
@@ -58,9 +63,10 @@ export default function NowPlaying() {
     }]
 
     return (
-        <div id="NowPlaying" style={{
-            backgroundImage: `linear-gradient(rgba(2, 2, 2, 0.60), rgba(2, 2, 2, 0.60)), url("${PlayerState.Data.imageURL}")`,
-        }} ref={NowPlayingRef}>
+        <div id="NowPlaying" ref={NowPlayingRef}>
+            <div id="NowPlaying-Image" style={{
+                backgroundImage: `linear-gradient(rgba(2, 2, 2, 0.60), rgba(2, 2, 2, 0.60)), url("${PlayerState.Data.imageURL}")`,
+            }} />
             <div id={PlayerState.Data.Lirycs?.length !== 0 ? "NowPlaying-Content" : "NowPlaying-Content-NoLirycs"} ref={Content}>
                 <div id="NowPlaying-Content-TopDetails">
                     <div id={(Content.current?.offsetWidth > 1050) ? "NowPlaying-Content-Image" : "NowPlaying-Content-ImageSmall"}>

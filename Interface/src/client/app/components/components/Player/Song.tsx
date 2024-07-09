@@ -7,7 +7,7 @@ import { useNavigationPanel, usePathTool } from "@hooks";
 
 export default function SongCover() {
     // Hooks
-    const { Include } = usePathTool()
+    const { IsNot, Is } = usePathTool()
     const { backward } = useNavigationPanel()
     // Context
     const { PlayerState } = useContext(PlayerContext);
@@ -15,32 +15,33 @@ export default function SongCover() {
     return (
         <div id="Main-Player-Song">
             {
-                Include("/now-playing")
-                    ? <button onClick={backward}>
-                        {
-                            PlayerState.Data.imageURL
-                                ? <img id="Main-Player-Song-Cover" src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} />
-                                : <div id="Main-Player-Song-Cover-Replace" />
-                        }
-                    </button>
-                    : <Link to="/now-playing">
+                IsNot("/now-playing") && PlayerState.Data.Id
+                    ? <Link to="/now-playing">
                         {
                             PlayerState.Data.imageURL
                                 ? <img id="Main-Player-Song-Cover" src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} />
                                 : <div id="Main-Player-Song-Cover-Replace" />
                         }
                     </Link>
+                    : <button onClick={Is("/now-playing") ? backward : () => {console.log("Saliendo")}}>
+                        {
+                            PlayerState.Data.imageURL
+                                ? <img id="Main-Player-Song-Cover" src={PlayerState.Data.imageURL} alt={PlayerState.Data.Title} />
+                                : <div id="Main-Player-Song-Cover-Replace" />
+                        }
+                    </button>
             }
             <div id="Main-Player-Song-Details">
                 <span id="Main-Player-Song-Details-Name">
                     {
-                        Include("/now-playing")
-                            ? <button onClick={backward} id={PlayerState.Data.Title ? "Main-Player-Song-Details-Name-Link" : "Main-Player-Song-Details-Name-Link-Replace"}>
+                        IsNot("/now-playing") && PlayerState.Data.Id
+                            ? <Link to="/now-playing" id={PlayerState.Data.Title ? "Main-Player-Song-Details-Name-Link" : "Main-Player-Song-Details-Name-Link-Replace"}>
+                                {PlayerState.Data.Title ? PlayerState.Data.Title : ""}
+                            </Link>
+                            : <button onClick={() => Is("/now-playing") ? backward() : {}} id={PlayerState.Data.Title ? "Main-Player-Song-Details-Name-Link" : "Main-Player-Song-Details-Name-Link-Replace"}>
                                 {PlayerState.Data.Title ? PlayerState.Data.Title : ""}
                             </button>
-                            : <Link to="/now-playing" id={PlayerState.Data.Title ? "Main-Player-Song-Details-Name-Link" : "Main-Player-Song-Details-Name-Link-Replace"}>
-                                {PlayerState.Data.Title ? PlayerState.Data.Title : ""}
-                            </Link>}
+                    }
                 </span>
                 <span className="Main-Player-Song-Details-Extra">
                     {

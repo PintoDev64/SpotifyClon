@@ -197,7 +197,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
             time: 203,
             text: "Baby, na-na-na-na-na-na-na-na-na-na, ay"
         }],
-        imageURL: "https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a",
+        imageURL: "/StarboyCover.jpeg",
         Year: 2016,
         URL: "/ALonelyNight.mp3",
         Duration: 220,
@@ -212,7 +212,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
             URL: "/Colors3",
             Name: "Colors 3"
         },
-        imageURL: "https://cdn.wikiwiki.jp/to/w/musedash/Leave%20it%20Alone/::ref/Leave%20it%20Alone.jpg?rev=e076bc56357c5bcbe15745fd94c23987&t=20190516154638",
+        imageURL: "/LeaveItAlone.jpg",
         Year: 2017,
         URL: "/LeaveItAlone.mp3",
         Duration: 251,
@@ -228,7 +228,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
             URL: "/playlist/jhdksajhgdia",
             Name: "After Hours"
         },
-        imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
+        imageURL: "/AfterHoursCover.jpeg",
         Year: 2016,
         URL: "/AfterHours.mp3",
         Duration: 361,
@@ -246,7 +246,7 @@ export const SONGS_EXAMPLES: SongProps[] = [
         Artist: [ARTIST_EXAMPLE[0]],
         Duration: 198,
         Genres: ["R&B contemporary", "Trap", "R&B/Soul", "Alternativa/Independiente"],
-        imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
+        imageURL: "/AfterHoursCover.jpeg",
         Lirycs: [{
             time: 23,
             text: "Never need a bitch, I'm what a bitch need (Bitch need)"
@@ -406,6 +406,176 @@ export const SONGS_EXAMPLES: SongProps[] = [
         }],
         URL: "/Heartless.mp3",
         Year: 2020
+    },
+    {
+        Id: 5,
+        Title: "Take My Breath",
+        Artist: [ARTIST_EXAMPLE[0]],
+        Album: {
+            Id: "dhjasgdjhasg",
+            URL: "/playlist/dhjasgdjhasg",
+            Name: "Dawn FM"
+        },
+        imageURL: "/DawnFMCover.jpeg",
+        Year: 2022,
+        URL: "/TakeMyBreath.mp3",
+        Duration: 339,
+        Lirycs: [],
+        Genres: ["R&B/Soul", "Dance/Electronica", "Alternativa/Independiente"]
+    },
+    {
+        Id: 6,
+        Title: "Sacrifice",
+        Artist: [ARTIST_EXAMPLE[0]],
+        Album: {
+            Id: "dhjasgdjhasg",
+            URL: "/playlist/dhjasgdjhasg",
+            Name: "Dawn FM"
+        },
+        imageURL: "/DawnFMCover.jpeg",
+        Year: 2022,
+        URL: "/Sacrifice.mp3",
+        Duration: 188,
+        Lirycs: [{
+            time: 7,
+            text: "I was born in a city"
+        }, {
+            time: 11,
+            text: "Where the winter nights don't ever sleep"
+        }, {
+            time: 14,
+            text: "So this life's always with me"
+        }, {
+            time: 19,
+            text: "The ice inside my veins will never bleed"
+        }, {
+            time: 23,
+            text: "♪"
+        }, {
+            time: 29,
+            text: "Uh, every time you try to fix me"
+        }, {
+            time: 34,
+            text: "I know you'll never find that missing piece"
+        }, {
+            time: 38,
+            text: "When you cry and say you miss me"
+        }, {
+            time: 42,
+            text: "I lie and tell you that I'll never leave, but"
+        }, {
+            time: 46,
+            text: "I sacrifice (sacrifice)"
+        }, {
+            time: 48,
+            text: "Your love for more of the night (of the night)"
+        }, {
+            time: 53,
+            text: "I try to put up a fight (up a fight)"
+        }, {
+            time: 57,
+            text: "Can't tie me down (down)"
+        }, {
+            time: 61,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 65,
+            text: "For your love, I try"
+        }, {
+            time: 69,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 73,
+            text: "But I love my time"
+        }, {
+            time: 79,
+            text: "♪"
+        }, {
+            time: 84,
+            text: "I hold you through the toughest parts"
+        }, {
+            time: 87,
+            text: "When you feel like it's the end"
+        }, {
+            time: 89,
+            text: "'Cause life is still worth living"
+        }, {
+            time: 91.5,
+            text: "Yeah, this life is still worth living"
+        }, {
+            time: 94,
+            text: "I can break you down and pick you up"
+        }, {
+            time: 95,
+            text: "And fuck like we are friends"
+        }, {
+            time: 97,
+            text: "But don't be catching feelings"
+        }, {
+            time: 99,
+            text: "Don't be out here catching feelings 'cause"
+        }, {
+            time: 102,
+            text: "I sacrifice (sacrifice)"
+        }, {
+            time: 104,
+            text: "Your love for more of the night (of the night)"
+        }, {
+            time: 108,
+            text: "I try to put up a fight (up a fight)"
+        }, {
+            time: 112,
+            text: "Can't tie me down (down, down, down)"
+        }, {
+            time: 116,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 120,
+            text: "For your love, I try"
+        }, {
+            time: 124,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 128,
+            text: "But I love my time"
+        }, {
+            time: 132,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 136,
+            text: "For your love, I try"
+        }, {
+            time: 139,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 144,
+            text: "But I love my time"
+        }, {
+            time: 149,
+            text: "Oh, baby"
+        }, {
+            time: 151,
+            text: "I hope you know that I, I tried"
+        }, {
+            time: 157,
+            text: "Oh, baby (baby)"
+        }, {
+            time: 159,
+            text: "I hope you know I love my time, oh"
+        }, {
+            time: 164,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 168,
+            text: "I don't wanna, I try (hey)"
+        }, {
+            time: 172,
+            text: "I don't wanna sacrifice"
+        }, {
+            time: 176,
+            text: "But I love my time"
+        }],
+        Genres: ["R&B/Soul", "Dance/Electronica", "Alternativa/Independiente"]
     }
 ]
 
@@ -414,7 +584,7 @@ export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
         Id: "10",
         Title: "Discover Weekly",
         Description: "Your weekly mixtape of fresh music",
-        imageURL: "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/kbaM22cYJUbHfZ8lGAtix5s_JpHenJTcDpcSeARlJTa0k_SxlwalmIPSZ_X7WhH25s8AJUImpKhf3Oku8TdndEK2zRF_gX3eYCxUIKrHapc=/NjE6ODQ6MjFUMjItNjAtNA==",
+        imageURL: "/DiscoverWeeklyCover.jpeg",
         URL: "/playlist/10",
         Artist: [ARTIST_EXAMPLE[2]],
         Year: 2024,
@@ -424,7 +594,7 @@ export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
         Id: "jhdksajhgdia",
         Title: "After Hours",
         Description: "The Weeknd",
-        imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
+        imageURL: "/AfterHoursCover.jpeg",
         URL: "/playlist/jhdksajhgdia",
         Artist: [ARTIST_EXAMPLE[0]],
         Year: 2020,
@@ -434,11 +604,21 @@ export const PLAYLIST_EXAMPLES: PlaylistProps[] = [
         Id: "4AdZV63ycxFLF6Hcol0QnB",
         Title: "Starboy",
         Description: ARTIST_EXAMPLE[2].Name,
-        imageURL: "https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a",
+        imageURL: "/StarboyCover.jpeg",
         Year: 2016,
         Artist: [ARTIST_EXAMPLE[0]],
         Songs: [{ ...SONGS_EXAMPLES[0] }],
         URL: "/playlist/4AdZV63ycxFLF6Hcol0QnB"
+    },
+    {
+        Id: "dhjasgdjhasg",
+        Title: "Dawn FM",
+        Description: "The Weeknd",
+        imageURL: "/DawnFMCover.jpeg",
+        Year: 2016,
+        Artist: [ARTIST_EXAMPLE[0]],
+        Songs: [{ ...SONGS_EXAMPLES[4] }, { ...SONGS_EXAMPLES[5] }],
+        URL: "/playlist/dhjasgdjhasg"
     }
 ]
 
@@ -455,7 +635,7 @@ export const ARTIST_COMPLETE_EXAMPLE: ArtistList_API[] = [
                 Id: "jhdksajhgdia",
                 Title: "After Hours",
                 Description: "The Weeknd",
-                imageURL: "https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36",
+                imageURL: "/AfterHoursCover.jpeg",
                 URL: "/playlist/jhdksajhgdia",
                 Artist: [ARTIST_EXAMPLE[0]],
                 Year: 2020,
@@ -465,7 +645,7 @@ export const ARTIST_COMPLETE_EXAMPLE: ArtistList_API[] = [
                 Id: "4AdZV63ycxFLF6Hcol0QnB",
                 Title: "Starboy",
                 Description: ARTIST_EXAMPLE[2].Name,
-                imageURL: "https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a",
+                imageURL: "/StarboyCover.jpeg",
                 Year: 2016,
                 Artist: [ARTIST_EXAMPLE[0]],
                 Songs: [{ ...SONGS_EXAMPLES[0] }],
